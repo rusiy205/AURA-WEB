@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI元能力课程 - Aura school AI教育平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neon-green': '#22c55e',
+                        'ai-cyan': '#06b6d4',
+                        'sophisticated-gray': '#64748b',
+                        'space-dark': '#0f172a'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body class="font-body text-gray-900 bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../../index.html" class="text-2xl font-bold text-neon-green">
+                        🚀 Aura school
+                    </a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <span class="text-lg font-semibold text-ai-cyan">🧠 AI元能力课程</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="#home" class="nav-link active">概览</a>
+                        <a href="#modules" class="nav-link">课程模块</a>
+                        <a href="#features" class="nav-link">课程特色</a>
+                        <a href="modules.html" class="nav-link">详细内容</a>
+                        <a href="../../index.html" class="nav-link">返回主站</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-600">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-20 pb-16 bg-gradient-to-br from-neon-green to-ai-cyan text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="inline-flex items-center bg-white/20 rounded-full px-6 py-3 mb-8">
+                    <span class="text-2xl mr-2">🧠</span>
+                    <span class="font-semibold">系统化AI素养培养</span>
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                    AI元能力课程
+                </h1>
+                
+                <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-4xl mx-auto">
+                    系统化培养学生的AI认知能力、应用能力、思维能力和创新能力，
+                    构建全面的AI素养，为未来发展奠定坚实基础
+                </p>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 max-w-2xl mx-auto">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-2">4</div>
+                        <div class="text-sm opacity-80">核心模块</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-2">64</div>
+                        <div class="text-sm opacity-80">学习课时</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-2">12</div>
+                        <div class="text-sm opacity-80">周完成</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-2">5</div>
+                        <div class="text-sm opacity-80">评估维度</div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#modules" class="bg-white text-neon-green px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                        开始学习
+                    </a>
+                    <a href="course-outline.html" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-neon-green transition-all duration-300">
+                        课程大纲
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Modules -->
+    <section id="modules" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-neon-green mb-6">
+                    📚 四大核心模块
+                </h2>
+                <p class="text-xl text-sophisticated-gray max-w-3xl mx-auto">
+                    循序渐进的学习路径设计，全面提升AI素养
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- 模块一 -->
+                <div class="module-card bg-gradient-to-br from-neon-green/10 to-ai-cyan/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-r from-neon-green to-ai-cyan rounded-2xl flex items-center justify-center mr-4">
+                            <span class="text-white text-2xl font-bold">01</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-neon-green">AI认知与基础</h3>
+                            <p class="text-sophisticated-gray">建立AI基础认知体系</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        深入了解人工智能的基本概念、发展历程、核心技术和应用领域，
+                        建立对AI技术的正确认知和科学态度。
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-neon-green rounded-full mr-2"></span>
+                            AI基本概念与发展历史
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-neon-green rounded-full mr-2"></span>
+                            机器学习核心技术原理
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-neon-green rounded-full mr-2"></span>
+                            AI在各领域的应用案例
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-neon-green rounded-full mr-2"></span>
+                            AI道德伦理与社会责任
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 模块二 -->
+                <div class="module-card bg-gradient-to-br from-ai-cyan/10 to-neon-green/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-r from-ai-cyan to-neon-green rounded-2xl flex items-center justify-center mr-4">
+                            <span class="text-white text-2xl font-bold">02</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-ai-cyan">AI工具应用</h3>
+                            <p class="text-sophisticated-gray">掌握AI工具实用技能</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        学习使用各种AI工具提升学习效率和创作能力，
+                        培养在实际场景中应用AI技术解决问题的能力。
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-ai-cyan rounded-full mr-2"></span>
+                            学习辅助AI工具使用
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-ai-cyan rounded-full mr-2"></span>
+                            内容创作AI平台实践
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-ai-cyan rounded-full mr-2"></span>
+                            高效提示词设计技巧
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-ai-cyan rounded-full mr-2"></span>
+                            AI工具综合应用项目
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 模块三 -->
+                <div class="module-card bg-gradient-to-br from-neon-green/10 to-ai-cyan/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-r from-neon-green to-ai-cyan rounded-2xl flex items-center justify-center mr-4">
+                            <span class="text-white text-2xl font-bold">03</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-neon-green">AI思维培养</h3>
+                            <p class="text-sophisticated-gray">构建AI时代思维模式</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        培养算法思维、系统思维和创造性思维，
+                        提升在AI时代的思维能力和问题解决能力。
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-neon-green rounded-full mr-2"></span>
+                            算法思维与逻辑推理
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-neon-green rounded-full mr-2"></span>
+                            系统性思维训练
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-neon-green rounded-full mr-2"></span>
+                            创造性问题解决方法
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-neon-green rounded-full mr-2"></span>
+                            批判性思维与评估能力
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 模块四 -->
+                <div class="module-card bg-gradient-to-br from-ai-cyan/10 to-neon-green/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-r from-ai-cyan to-neon-green rounded-2xl flex items-center justify-center mr-4">
+                            <span class="text-white text-2xl font-bold">04</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-ai-cyan">创新实践</h3>
+                            <p class="text-sophisticated-gray">AI创新项目实战</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        通过实际的AI创新项目，培养团队协作能力和创新实践能力，
+                        创造具有社会价值的AI应用成果。
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-ai-cyan rounded-full mr-2"></span>
+                            创新项目规划与设计
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-ai-cyan rounded-full mr-2"></span>
+                            团队协作与项目管理
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-ai-cyan rounded-full mr-2"></span>
+                            AI技术综合应用实践
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-ai-cyan rounded-full mr-2"></span>
+                            成果展示与社会价值评估
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-neon-green mb-6">
+                    ⭐ 课程特色
+                </h2>
+                <p class="text-xl text-sophisticated-gray max-w-3xl mx-auto">
+                    现代化的AI教育课程体系，助力学生面向未来发展
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-neon-green to-ai-cyan rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-brain text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-neon-green mb-3">体系化AI教育</h3>
+                    <p class="text-gray-600 text-sm">四大模块递进式培养，从AI认知到创新实践的完整学习路径</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-ai-cyan to-neon-green rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-project-diagram text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-ai-cyan mb-3">项目驱动学习</h3>
+                    <p class="text-gray-600 text-sm">通过实际项目培养技能，从基础到挑战层层递进</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-neon-green to-ai-cyan rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-hands-helping text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-neon-green mb-3">师生协作体系</h3>
+                    <p class="text-gray-600 text-sm">完善的教师指导体系，促进师生互动与共同成长</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-ai-cyan to-neon-green rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chart-line text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-ai-cyan mb-3">多维评估机制</h3>
+                    <p class="text-gray-600 text-sm">过程性评价与成果评价相结合，全面衡量学生成长</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaching Resources -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-neon-green mb-6">
+                    📖 教学资源
+                </h2>
+                <p class="text-xl text-sophisticated-gray max-w-3xl mx-auto">
+                    完善的课程支持体系，助力教学实施
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <a href="teacher-guide.html" class="block bg-gradient-to-br from-neon-green/10 to-ai-cyan/10 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-gradient-to-r from-neon-green to-ai-cyan rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-chalkboard-teacher text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-neon-green mb-2">教师指导手册</h3>
+                    <p class="text-gray-600 text-sm">详细的教学策略、案例分析和常见问题解答</p>
+                </a>
+                
+                <a href="assessment.html" class="block bg-gradient-to-br from-ai-cyan/10 to-neon-green/10 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-gradient-to-r from-ai-cyan to-neon-green rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-tasks text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-ai-cyan mb-2">评估体系</h3>
+                    <p class="text-gray-600 text-sm">全面的学习评价标准与评估工具</p>
+                </a>
+                
+                <a href="course-outline.html" class="block bg-gradient-to-br from-neon-green/10 to-ai-cyan/10 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-gradient-to-r from-neon-green to-ai-cyan rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-book-open text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-neon-green mb-2">课程大纲</h3>
+                    <p class="text-gray-600 text-sm">课程详细规划、学习目标和内容框架</p>
+                </a>
+                
+                <a href="implementation.html" class="block bg-gradient-to-br from-ai-cyan/10 to-neon-green/10 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-gradient-to-r from-ai-cyan to-neon-green rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-cogs text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-ai-cyan mb-2">课程实施指南</h3>
+                    <p class="text-gray-600 text-sm">课程规划、组织和管理的完整方案</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-neon-green to-ai-cyan text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-6">
+                🧠 培养面向未来的AI学习力
+            </h2>
+            <p class="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
+                加入AI元能力课程，构建全面的AI素养，为未来发展奠定坚实基础
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="modules.html" class="bg-white text-neon-green px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                    查看详细模块
+                </a>
+                <a href="../../index.html#platforms" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-neon-green transition-all duration-300">
+                    探索其他平台
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold mb-4">🧠 AI元能力课程</h3>
+                <p class="text-gray-300 mb-6">
+                    Aura school AI教育平台 - 培养面向未来的AI素养和创新能力
+                </p>
+                <div class="flex justify-center space-x-6">
+                    <a href="../../index.html" class="text-gray-300 hover:text-white transition-colors">返回主站</a>
+                    <a href="../ai-creation/index.html" class="text-gray-300 hover:text-white transition-colors">AI智造学院</a>
+                    <a href="../ai-coding/index.html" class="text-gray-300 hover:text-white transition-colors">AI代码魔术课堂</a>
+                </div>
+                <div class="border-t border-gray-700 mt-8 pt-8">
+                    <p class="text-gray-400">© 2024 Aura school AI教育平台. 保留所有权利.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html> 

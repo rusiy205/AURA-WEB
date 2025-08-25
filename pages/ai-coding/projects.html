@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生作品展示 - AI代码魔术课堂</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'magic-purple': '#6366f1',
+                        'magic-pink': '#f472b6',
+                        'magic-blue': '#3b82f6',
+                        'magic-green': '#10b981',
+                        'magic-orange': '#f59e0b',
+                        'sophisticated-gray': '#64748b',
+                        'space-dark': '#0f172a'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body class="font-body text-gray-900 bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../../index.html" class="text-2xl font-bold text-magic-purple">
+                        🚀 Aura school
+                    </a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <span class="text-lg font-semibold text-magic-pink">🎩 AI代码魔术课堂</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="index.html" class="nav-link">课程概览</a>
+                        <a href="index.html#curriculum" class="nav-link">课程设置</a>
+                        <a href="index.html#features" class="nav-link">特色功能</a>
+                        <a href="#projects" class="nav-link active">学生作品</a>
+                        <a href="../../index.html" class="nav-link">返回主站</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-600">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-20 pb-12 bg-gradient-to-br from-magic-purple to-magic-pink text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="inline-flex items-center bg-white/20 rounded-full px-6 py-3 mb-6">
+                    <span class="text-2xl mr-2">🎨</span>
+                    <span class="font-semibold">学生作品展示</span>
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                    AI代码魔术作品集
+                </h1>
+                
+                <p class="text-lg md:text-xl mb-6 opacity-90 max-w-3xl mx-auto">
+                    见证学生们用AI工具创造的编程奇迹，从零基础到完整产品的成长之路
+                </p>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold mb-1">89</div>
+                        <div class="text-xs opacity-80">完成项目</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold mb-1">156</div>
+                        <div class="text-xs opacity-80">参与学生</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold mb-1">12</div>
+                        <div class="text-xs opacity-80">技术栈</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold mb-1">95%</div>
+                        <div class="text-xs opacity-80">完成率</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Filter -->
+    <section class="py-8 bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="filter-btn active" data-filter="all">
+                    全部作品
+                </button>
+                <button class="filter-btn" data-filter="web">
+                    <i class="fas fa-globe mr-2"></i>
+                    网页应用
+                </button>
+                <button class="filter-btn" data-filter="game">
+                    <i class="fas fa-gamepad mr-2"></i>
+                    游戏项目
+                </button>
+                <button class="filter-btn" data-filter="tool">
+                    <i class="fas fa-tools mr-2"></i>
+                    实用工具
+                </button>
+                <button class="filter-btn" data-filter="ai">
+                    <i class="fas fa-robot mr-2"></i>
+                    AI应用
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Showcase -->
+    <section id="projects" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+                
+                <!-- Web Application Projects -->
+                <div class="project-card bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300" data-category="web">
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-magic-blue to-magic-green p-6 text-white">
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-semibold">网页应用</span>
+                            </div>
+                            <div class="h-32 bg-white/10 rounded-lg mb-4 flex items-center justify-center">
+                                <i class="fas fa-shopping-cart text-4xl opacity-80"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">AI智能购物助手</h3>
+                            <p class="text-sm opacity-90">基于Vue.js和AI API的智能购物推荐系统</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <img src="https://via.placeholder.com/32x32/6366f1/ffffff?text=李" class="w-8 h-8 rounded-full mr-3" alt="学生头像">
+                            <div>
+                                <div class="font-semibold text-sm">李小明</div>
+                                <div class="text-xs text-gray-500">初二(3)班</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">
+                            使用Cursor AI助手开发的购物网站，具备智能推荐、价格对比、用户评价等功能。
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-magic-blue/10 text-magic-blue px-2 py-1 rounded text-xs">Vue.js</span>
+                            <span class="bg-magic-green/10 text-magic-green px-2 py-1 rounded text-xs">Node.js</span>
+                            <span class="bg-magic-purple/10 text-magic-purple px-2 py-1 rounded text-xs">OpenAI API</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="bg-magic-blue text-white px-4 py-2 rounded-lg text-sm hover:bg-magic-blue/80 transition-colors flex-1 text-center">
+                                <i class="fas fa-external-link-alt mr-1"></i>
+                                查看项目
+                            </a>
+                            <a href="#" class="border border-magic-blue text-magic-blue px-4 py-2 rounded-lg text-sm hover:bg-magic-blue hover:text-white transition-colors">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Project -->
+                <div class="project-card bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300" data-category="game">
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-magic-purple to-magic-pink p-6 text-white">
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-semibold">游戏项目</span>
+                            </div>
+                            <div class="h-32 bg-white/10 rounded-lg mb-4 flex items-center justify-center">
+                                <i class="fas fa-dragon text-4xl opacity-80"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">魔法编程大冒险</h3>
+                            <p class="text-sm opacity-90">结合编程学习的RPG冒险游戏</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <img src="https://via.placeholder.com/32x32/f472b6/ffffff?text=王" class="w-8 h-8 rounded-full mr-3" alt="学生头像">
+                            <div>
+                                <div class="font-semibold text-sm">王小红</div>
+                                <div class="text-xs text-gray-500">初三(1)班</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">
+                            用JavaScript和Canvas API开发的教育游戏，玩家通过解决编程问题来推进游戏进程。
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-magic-orange/10 text-magic-orange px-2 py-1 rounded text-xs">JavaScript</span>
+                            <span class="bg-magic-purple/10 text-magic-purple px-2 py-1 rounded text-xs">Canvas</span>
+                            <span class="bg-magic-pink/10 text-magic-pink px-2 py-1 rounded text-xs">HTML5</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="bg-magic-purple text-white px-4 py-2 rounded-lg text-sm hover:bg-magic-purple/80 transition-colors flex-1 text-center">
+                                <i class="fas fa-play mr-1"></i>
+                                试玩游戏
+                            </a>
+                            <a href="#" class="border border-magic-purple text-magic-purple px-4 py-2 rounded-lg text-sm hover:bg-magic-purple hover:text-white transition-colors">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Application -->
+                <div class="project-card bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300" data-category="ai">
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-magic-green to-magic-blue p-6 text-white">
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-semibold">AI应用</span>
+                            </div>
+                            <div class="h-32 bg-white/10 rounded-lg mb-4 flex items-center justify-center">
+                                <i class="fas fa-brain text-4xl opacity-80"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">AI学习笔记助手</h3>
+                            <p class="text-sm opacity-90">智能整理和总结学习笔记的AI工具</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <img src="https://via.placeholder.com/32x32/10b981/ffffff?text=张" class="w-8 h-8 rounded-full mr-3" alt="学生头像">
+                            <div>
+                                <div class="font-semibold text-sm">张小华</div>
+                                <div class="text-xs text-gray-500">初二(2)班</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">
+                            使用Python和机器学习库开发的笔记助手，能够自动分类、总结和生成知识图谱。
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-magic-green/10 text-magic-green px-2 py-1 rounded text-xs">Python</span>
+                            <span class="bg-magic-blue/10 text-magic-blue px-2 py-1 rounded text-xs">TensorFlow</span>
+                            <span class="bg-magic-purple/10 text-magic-purple px-2 py-1 rounded text-xs">NLP</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="bg-magic-green text-white px-4 py-2 rounded-lg text-sm hover:bg-magic-green/80 transition-colors flex-1 text-center">
+                                <i class="fas fa-rocket mr-1"></i>
+                                体验应用
+                            </a>
+                            <a href="#" class="border border-magic-green text-magic-green px-4 py-2 rounded-lg text-sm hover:bg-magic-green hover:text-white transition-colors">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tool Application -->
+                <div class="project-card bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300" data-category="tool">
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-magic-orange to-magic-pink p-6 text-white">
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-semibold">实用工具</span>
+                            </div>
+                            <div class="h-32 bg-white/10 rounded-lg mb-4 flex items-center justify-center">
+                                <i class="fas fa-calculator text-4xl opacity-80"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">智能作业计算器</h3>
+                            <p class="text-sm opacity-90">支持多种题型的智能解题工具</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <img src="https://via.placeholder.com/32x32/f59e0b/ffffff?text=刘" class="w-8 h-8 rounded-full mr-3" alt="学生头像">
+                            <div>
+                                <div class="font-semibold text-sm">刘小刚</div>
+                                <div class="text-xs text-gray-500">初三(2)班</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">
+                            基于React开发的多功能计算工具，支持数学、物理、化学等多学科题目解析。
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-magic-orange/10 text-magic-orange px-2 py-1 rounded text-xs">React</span>
+                            <span class="bg-magic-pink/10 text-magic-pink px-2 py-1 rounded text-xs">MathJS</span>
+                            <span class="bg-magic-blue/10 text-magic-blue px-2 py-1 rounded text-xs">Chart.js</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="bg-magic-orange text-white px-4 py-2 rounded-lg text-sm hover:bg-magic-orange/80 transition-colors flex-1 text-center">
+                                <i class="fas fa-tools mr-1"></i>
+                                使用工具
+                            </a>
+                            <a href="#" class="border border-magic-orange text-magic-orange px-4 py-2 rounded-lg text-sm hover:bg-magic-orange hover:text-white transition-colors">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- More Web Projects -->
+                <div class="project-card bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300" data-category="web">
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-magic-pink to-magic-purple p-6 text-white">
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-semibold">网页应用</span>
+                            </div>
+                            <div class="h-32 bg-white/10 rounded-lg mb-4 flex items-center justify-center">
+                                <i class="fas fa-music text-4xl opacity-80"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">在线音乐播放器</h3>
+                            <p class="text-sm opacity-90">功能完整的音乐流媒体应用</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <img src="https://via.placeholder.com/32x32/f472b6/ffffff?text=陈" class="w-8 h-8 rounded-full mr-3" alt="学生头像">
+                            <div>
+                                <div class="font-semibold text-sm">陈小美</div>
+                                <div class="text-xs text-gray-500">初二(4)班</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">
+                            使用HTML5 Audio API和现代前端技术开发的音乐播放器，支持播放列表、歌词显示等功能。
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-magic-pink/10 text-magic-pink px-2 py-1 rounded text-xs">HTML5</span>
+                            <span class="bg-magic-purple/10 text-magic-purple px-2 py-1 rounded text-xs">CSS3</span>
+                            <span class="bg-magic-blue/10 text-magic-blue px-2 py-1 rounded text-xs">JavaScript</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="bg-magic-pink text-white px-4 py-2 rounded-lg text-sm hover:bg-magic-pink/80 transition-colors flex-1 text-center">
+                                <i class="fas fa-headphones mr-1"></i>
+                                试听音乐
+                            </a>
+                            <a href="#" class="border border-magic-pink text-magic-pink px-4 py-2 rounded-lg text-sm hover:bg-magic-pink hover:text-white transition-colors">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Project 2 -->
+                <div class="project-card bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300" data-category="game">
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-magic-blue to-magic-purple p-6 text-white">
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-semibold">游戏项目</span>
+                            </div>
+                            <div class="h-32 bg-white/10 rounded-lg mb-4 flex items-center justify-center">
+                                <i class="fas fa-puzzle-piece text-4xl opacity-80"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">AI智能拼图游戏</h3>
+                            <p class="text-sm opacity-90">具备AI提示功能的趣味拼图游戏</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <img src="https://via.placeholder.com/32x32/3b82f6/ffffff?text=赵" class="w-8 h-8 rounded-full mr-3" alt="学生头像">
+                            <div>
+                                <div class="font-semibold text-sm">赵小亮</div>
+                                <div class="text-xs text-gray-500">初一(3)班</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">
+                            结合AI算法的拼图游戏，能够根据玩家水平智能调整难度，提供个性化游戏体验。
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-magic-blue/10 text-magic-blue px-2 py-1 rounded text-xs">Unity</span>
+                            <span class="bg-magic-purple/10 text-magic-purple px-2 py-1 rounded text-xs">C#</span>
+                            <span class="bg-magic-green/10 text-magic-green px-2 py-1 rounded text-xs">ML-Agents</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="bg-magic-blue text-white px-4 py-2 rounded-lg text-sm hover:bg-magic-blue/80 transition-colors flex-1 text-center">
+                                <i class="fas fa-play mr-1"></i>
+                                开始游戏
+                            </a>
+                            <a href="#" class="border border-magic-blue text-magic-blue px-4 py-2 rounded-lg text-sm hover:bg-magic-blue hover:text-white transition-colors">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button class="bg-gradient-to-r from-magic-purple to-magic-pink text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                    加载更多作品
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Stats -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-magic-purple mb-4">学习成果统计</h2>
+                <p class="text-lg text-sophisticated-gray">见证学生们在AI代码魔术课堂的成长轨迹</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-r from-magic-purple to-magic-pink rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-white text-2xl"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-magic-purple mb-2">156</div>
+                    <div class="text-sophisticated-gray">参与学生</div>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-r from-magic-blue to-magic-green rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-code text-white text-2xl"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-magic-blue mb-2">89</div>
+                    <div class="text-sophisticated-gray">完成项目</div>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-r from-magic-green to-magic-orange rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-star text-white text-2xl"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-magic-green mb-2">4.9</div>
+                    <div class="text-sophisticated-gray">平均评分</div>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-r from-magic-orange to-magic-pink rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-trophy text-white text-2xl"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-magic-orange mb-2">23</div>
+                    <div class="text-sophisticated-gray">获奖作品</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-br from-magic-purple to-magic-pink text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-4">
+                🎩 加入AI代码魔术课堂
+            </h2>
+            <p class="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
+                用AI工具学编程，创造属于你的代码魔术！
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="index.html" class="bg-white text-magic-purple px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                    开始学习
+                </a>
+                <a href="../../index.html" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-magic-purple transition-all duration-300">
+                    了解更多
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold mb-4">🎩 AI代码魔术课堂 - 学生作品</h3>
+                <p class="text-gray-300 mb-6">
+                    Aura school AI教育平台 - 用AI工具学编程，创造无限可能
+                </p>
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">课程概览</a>
+                    <a href="../../index.html" class="text-gray-300 hover:text-white transition-colors">返回主站</a>
+                    <a href="../ai-creation/index.html" class="text-gray-300 hover:text-white transition-colors">AI智造学院</a>
+                    <a href="../ai-learning/index.html" class="text-gray-300 hover:text-white transition-colors">AI元能力课程</a>
+                </div>
+                <div class="border-t border-gray-700 pt-8">
+                    <p class="text-gray-400">© 2024 Aura school AI教育平台. 保留所有权利.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script>
+        // 项目筛选功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // 移除所有按钮的active类
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // 添加当前按钮的active类
+                    this.classList.add('active');
+
+                    const filter = this.getAttribute('data-filter');
+
+                    projectCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                            card.style.animation = 'fadeIn 0.5s ease-in-out';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+
+        // 添加淡入动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            .filter-btn {
+                padding: 8px 16px;
+                border: 2px solid #e5e7eb;
+                background: white;
+                color: #6b7280;
+                border-radius: 9999px;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                cursor: pointer;
+            }
+            
+            .filter-btn:hover {
+                border-color: #6366f1;
+                color: #6366f1;
+            }
+            
+            .filter-btn.active {
+                background: linear-gradient(135deg, #6366f1, #f472b6);
+                border-color: transparent;
+                color: white;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

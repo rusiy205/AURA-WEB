@@ -1,0 +1,38 @@
+{
+  "name": "unified-ai-education-platform",
+  "version": "1.0.0",
+  "description": "AI教育平台 - 整合AI智造学院、AI元能力课程、AI代码魔术课堂的综合教育平台",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve . -s -l 8000",
+    "dev": "npx serve . -s -l 3000",
+    "build": "echo 'This is a static site, no build process needed'",
+    "preview": "npx serve . -s -l 4173"
+  },
+  "keywords": [
+    "ai-education",
+    "artificial-intelligence",
+    "education-platform",
+    "aigc",
+    "coding-education",
+    "ai-literacy"
+  ],
+  "author": "Aura school AI教育团队",
+  "license": "MIT",
+  "homepage": "https://ai-education-platform.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/future-ark-ai/unified-ai-education-platform.git"
+  },
+  "devDependencies": {
+    "serve": "^14.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+} 

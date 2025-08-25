@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI代码魔术课堂 - Aura school AI教育平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'magic-purple': '#6366f1',
+                        'magic-pink': '#f472b6',
+                        'magic-blue': '#3b82f6',
+                        'magic-green': '#10b981',
+                        'magic-orange': '#f59e0b',
+                        'sophisticated-gray': '#64748b'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body class="font-body text-gray-900 bg-gradient-to-br from-magic-purple/5 via-magic-pink/5 to-magic-blue/5">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../../index.html" class="text-2xl font-bold text-magic-purple">
+                        🚀 Aura school
+                    </a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <span class="text-lg font-semibold text-magic-pink">🎩 AI代码魔术课堂</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="#home" class="nav-link active">概览</a>
+                        <a href="#features" class="nav-link">课程特色</a>
+                        <a href="#modules" class="nav-link">学习模块</a>
+                        <a href="projects.html" class="nav-link">学生作品</a>
+                        <a href="../../index.html" class="nav-link">返回主站</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-600">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-20 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-flex items-center bg-gradient-to-r from-magic-purple/20 to-magic-pink/20 rounded-full px-6 py-3 mb-8">
+                        <i class="fas fa-robot text-magic-purple mr-2"></i>
+                        <span class="text-magic-purple font-semibold">AI时代编程教育</span>
+                    </div>
+                    
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                        <span class="bg-gradient-to-r from-magic-purple via-magic-pink to-magic-blue bg-clip-text text-transparent">
+                            用AI工具<br>学编程
+                        </span>
+                    </h1>
+                    
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        专为初中生设计的AI代码工具学习课程。通过Cursor、TRAE等先进AI工具，
+                        让编程学习变得简单有趣，直接上手实战项目。
+                    </p>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-magic-purple mb-2">16</div>
+                            <div class="text-sm text-gray-600">节课</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-magic-blue mb-2">32</div>
+                            <div class="text-sm text-gray-600">课时</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-magic-green mb-2">4</div>
+                            <div class="text-sm text-gray-600">完整产品</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-magic-orange mb-2">0</div>
+                            <div class="text-sm text-gray-600">编程基础</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#modules" class="bg-gradient-to-r from-magic-purple to-magic-pink text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 text-center">
+                            立即开始学习
+                        </a>
+                        <a href="projects.html" class="border-2 border-magic-purple text-magic-purple px-8 py-4 rounded-full text-lg font-semibold hover:bg-magic-purple hover:text-white transition-all duration-300 text-center">
+                            查看学生作品
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="bg-gradient-to-br from-magic-purple/20 to-magic-blue/20 rounded-3xl p-8 backdrop-blur-sm">
+                        <div class="bg-gray-900 rounded-2xl p-6 text-green-400 font-mono text-sm">
+                            <div class="flex items-center mb-4">
+                                <div class="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
+                                <div class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
+                                <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                                <span class="text-gray-400 ml-2">Cursor AI Editor</span>
+                            </div>
+                            
+                            <div class="space-y-2">
+                                <div class="text-gray-400">// 与AI对话编程</div>
+                                <div class="text-blue-400">prompt: "创建一个响应式导航栏"</div>
+                                <div class="text-gray-400">// AI自动生成代码...</div>
+                                <div>&lt;<span class="text-red-400">nav</span> <span class="text-yellow-400">class</span>=<span class="text-green-400">"navbar"</span>&gt;</div>
+                                <div class="ml-4">&lt;<span class="text-red-400">div</span> <span class="text-yellow-400">class</span>=<span class="text-green-400">"container"</span>&gt;</div>
+                                <div class="ml-8">...</div>
+                                <div class="text-gray-400">// 学生只需描述需求</div>
+                                <div class="text-gray-400">// AI完成复杂编码工作</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 grid grid-cols-2 gap-4">
+                            <div class="bg-white/70 backdrop-blur-sm rounded-xl p-4 text-center">
+                                <i class="fas fa-magic text-magic-purple text-2xl mb-2"></i>
+                                <p class="font-semibold text-gray-800">AI代码生成</p>
+                            </div>
+                            <div class="bg-white/70 backdrop-blur-sm rounded-xl p-4 text-center">
+                                <i class="fas fa-rocket text-magic-blue text-2xl mb-2"></i>
+                                <p class="font-semibold text-gray-800">快速部署</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 浮动元素 -->
+                    <div class="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-magic-pink to-magic-orange rounded-full opacity-20 animate-pulse"></div>
+                    <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-magic-green to-magic-blue rounded-full opacity-20 animate-pulse"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-white/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-6">
+                    <span class="bg-gradient-to-r from-magic-purple to-magic-blue bg-clip-text text-transparent">
+                        为什么选择AI代码工具学习？
+                    </span>
+                </h2>
+                <p class="text-xl text-gray-600">拥抱AI时代，掌握未来编程技能</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-magic-purple/10 to-magic-pink/10 rounded-3xl p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="w-20 h-20 bg-gradient-to-r from-magic-purple to-magic-pink rounded-3xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-brain text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">AI优先学习</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        从第一节课就使用AI工具，让人工智能成为编程学习的最佳助手，
+                        快速理解编程概念和代码逻辑。
+                    </p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-magic-blue/10 to-magic-green/10 rounded-3xl p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="w-20 h-20 bg-gradient-to-r from-magic-blue to-magic-green rounded-3xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-rocket text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">快速上手</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        跳过枯燥的语法学习，直接通过实际项目掌握编程技能，
+                        第一节课就能创作出令人惊艳的网页作品。
+                    </p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-magic-green/10 to-magic-orange/10 rounded-3xl p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="w-20 h-20 bg-gradient-to-r from-magic-green to-magic-orange rounded-3xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-trophy text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">产品导向</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        每个学习阶段都产出一个完整的产品应用，
+                        从开发到部署的全流程体验，培养实战能力。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Modules -->
+    <section id="modules" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-6">
+                    <span class="bg-gradient-to-r from-magic-purple to-magic-pink bg-clip-text text-transparent">
+                        🎭 魔术般的学习体验
+                    </span>
+                </h2>
+                <p class="text-xl text-gray-600">四个阶段，从AI新手到编程魔术师</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- 阶段一 -->
+                <div class="bg-gradient-to-br from-magic-purple/10 to-magic-blue/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-r from-magic-purple to-magic-blue rounded-2xl flex items-center justify-center mr-4">
+                            <span class="text-white text-2xl">🎯</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-magic-purple">阶段一：魔术入门</h3>
+                            <p class="text-sophisticated-gray">AI工具初体验</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        学习使用Cursor AI编辑器，掌握基本的AI对话编程技巧，
+                        创建第一个网页项目。
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-magic-purple rounded-full mr-2"></span>
+                            Cursor AI编辑器使用
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-magic-purple rounded-full mr-2"></span>
+                            AI对话编程基础
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-magic-purple rounded-full mr-2"></span>
+                            HTML/CSS基础概念
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-magic-purple rounded-full mr-2"></span>
+                            个人主页制作
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 阶段二 -->
+                <div class="bg-gradient-to-br from-magic-pink/10 to-magic-green/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-r from-magic-pink to-magic-green rounded-2xl flex items-center justify-center mr-4">
+                            <span class="text-white text-2xl">⚡</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-magic-pink">阶段二：交互魔法</h3>
+                            <p class="text-sophisticated-gray">JavaScript与动态效果</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        学习JavaScript基础，使用AI工具创建交互式网页，
+                        制作动画效果和用户交互功能。
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-magic-pink rounded-full mr-2"></span>
+                            JavaScript基础语法
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-magic-pink rounded-full mr-2"></span>
+                            DOM操作与事件处理
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-magic-pink rounded-full mr-2"></span>
+                            CSS动画与过渡效果
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-magic-pink rounded-full mr-2"></span>
+                            交互式小游戏开发
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 阶段三 -->
+                <div class="bg-gradient-to-br from-magic-blue/10 to-magic-orange/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-r from-magic-blue to-magic-orange rounded-2xl flex items-center justify-center mr-4">
+                            <span class="text-white text-2xl">🌐</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-magic-blue">阶段三：应用魔术</h3>
+                            <p class="text-sophisticated-gray">完整Web应用开发</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        使用现代前端框架，结合AI工具创建功能完整的Web应用，
+                        学习数据处理和API调用。
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-magic-blue rounded-full mr-2"></span>
+                            前端框架入门（React/Vue）
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-magic-blue rounded-full mr-2"></span>
+                            API调用与数据处理
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-magic-blue rounded-full mr-2"></span>
+                            状态管理基础
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-magic-blue rounded-full mr-2"></span>
+                            Todo应用或计算器开发
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 阶段四 -->
+                <div class="bg-gradient-to-br from-magic-green/10 to-magic-purple/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-r from-magic-green to-magic-purple rounded-2xl flex items-center justify-center mr-4">
+                            <span class="text-white text-2xl">🚀</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-magic-green">阶段四：大师级魔术</h3>
+                            <p class="text-sophisticated-gray">项目部署与分享</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        学习项目部署，将作品发布到互联网，
+                        掌握版本控制和团队协作工具。
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-magic-green rounded-full mr-2"></span>
+                            Git版本控制基础
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-magic-green rounded-full mr-2"></span>
+                            Vercel/Netlify部署
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-magic-green rounded-full mr-2"></span>
+                            项目优化与调试
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-magic-green rounded-full mr-2"></span>
+                            作品展示与分享
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-6">
+                    <span class="bg-gradient-to-r from-magic-purple to-magic-orange bg-clip-text text-transparent">
+                        🛠️ 魔术工具箱
+                    </span>
+                </h2>
+                <p class="text-xl text-gray-600">我们使用的AI编程工具</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-magic-purple to-magic-blue rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-code text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-magic-purple mb-2">Cursor AI</h3>
+                    <p class="text-gray-600 text-sm">AI代码编辑器，智能代码生成和补全</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-magic-pink to-magic-green rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-robot text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-magic-pink mb-2">ChatGPT</h3>
+                    <p class="text-gray-600 text-sm">编程问题解答，代码解释和优化建议</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-magic-blue to-magic-orange rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fab fa-github text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-magic-blue mb-2">GitHub Copilot</h3>
+                    <p class="text-gray-600 text-sm">智能代码建议，提高编程效率</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-magic-green to-magic-purple rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-cloud text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-magic-green mb-2">Vercel</h3>
+                    <p class="text-gray-600 text-sm">一键部署，让作品在线展示</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-magic-purple via-magic-pink to-magic-blue text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-6">
+                🎩 开始你的编程魔术之旅
+            </h2>
+            <p class="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
+                加入AI代码魔术课堂，用AI工具学编程，创造属于你的数字魔法
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="course-outline.html" class="bg-white text-magic-purple px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                    查看课程大纲
+                </a>
+                <a href="../../index.html#platforms" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-magic-purple transition-all duration-300">
+                    探索其他平台
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold mb-4">🎩 AI代码魔术课堂</h3>
+                <p class="text-gray-300 mb-6">
+                    Aura school AI教育平台 - 用AI工具学编程，人人都是编程魔术师
+                </p>
+                <div class="flex justify-center space-x-6">
+                    <a href="../../index.html" class="text-gray-300 hover:text-white transition-colors">返回主站</a>
+                    <a href="../ai-creation/index.html" class="text-gray-300 hover:text-white transition-colors">AI智造学院</a>
+                    <a href="../ai-learning/index.html" class="text-gray-300 hover:text-white transition-colors">AI元能力课程</a>
+                </div>
+                <div class="border-t border-gray-700 mt-8 pt-8">
+                    <p class="text-gray-400">© 2024 Aura school AI教育平台. 保留所有权利.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html> 

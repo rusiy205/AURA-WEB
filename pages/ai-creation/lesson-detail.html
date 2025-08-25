@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">教案详情 - AI智造学院 | AI教育平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-blue': '#1e3a8a',
+                        'cosmic-purple': '#4c1d95',
+                        'neon-green': '#22c55e',
+                        'electric-blue': '#3b82f6',
+                        'sophisticated-gray': '#64748b'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="text-2xl font-bold text-purple-700">
+                    AI智造学院
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-purple-700">概览</a>
+                    <a href="courses.html" class="text-gray-600 hover:text-purple-700">详细课程</a>
+                    <a href="lesson-plans.html" class="text-purple-700 font-semibold">课程教案</a>
+                    <a href="../../index.html" class="text-gray-600 hover:text-purple-700">主站</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Lesson Detail Content -->
+    <div id="lesson-content" class="pt-20">
+        <!-- Content will be loaded dynamically -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">AI智造学院</h3>
+                    <p class="text-gray-400">培养面向未来的AI创造者</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">快速链接</h4>
+                    <div class="space-y-2">
+                        <a href="index.html" class="block text-gray-400 hover:text-white">课程概览</a>
+                        <a href="courses.html" class="block text-gray-400 hover:text-white">详细课程</a>
+                        <a href="lesson-plans.html" class="block text-gray-400 hover:text-white">课程教案</a>
+                        <a href="../../index.html" class="block text-gray-400 hover:text-white">主站首页</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">其他平台</h4>
+                    <div class="space-y-2">
+                        <a href="../ai-learning/index.html" class="block text-gray-400 hover:text-white">AI元能力课程</a>
+                        <a href="../ai-coding/index.html" class="block text-gray-400 hover:text-white">AI代码魔术课堂</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 AI教育平台 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const lessonId = parseInt(urlParams.get('id'));
+            
+            if (lessonId) {
+                loadLessonDetail(lessonId);
+            } else {
+                displayNotFound();
+            }
+        });
+
+        function loadLessonDetail(lessonId) {
+            const lessonData = getLessonData(lessonId);
+            if (lessonData) {
+                displayLessonDetail(lessonData);
+                document.getElementById('page-title').textContent = `${lessonData.title} - AI智造学院 | AI教育平台`;
+            } else {
+                displayNotFound();
+            }
+        }
+
+        function getLessonData(lessonId) {
+            const lessons = {
+                1: {
+                    id: 1,
+                    title: '人工智能发展概述',
+                    module: '模块一：AI通识与AIGC入门',
+                    moduleNumber: 1,
+                    duration: '2课时',
+                    targetGrade: '初一至初三',
+                    objectives: {
+                        knowledge: '了解AI发展历程的重要里程碑，掌握AI基础概念和基本分类，熟悉生成式AI的主要特点',
+                        ability: '能够识别日常生活中的AI应用场景，初步使用基本AI工具完成简单任务',
+                        emotion: '培养对AI科技的兴趣与好奇心，建立AI学习的信心'
+                    },
+                    teachingContent: {
+                        part1: {
+                            title: '人工智能历史与现状',
+                            content: '介绍AI从图灵测试到大型语言模型的发展历程，展示AI技术的重要突破和应用变迁'
+                        },
+                        part2: {
+                            title: 'AI基础概念与分类',
+                            content: '讲解AI的定义、工作原理，介绍机器学习、深度学习、生成式AI等不同类型的技术及其特点'
+                        },
+                        part3: {
+                            title: 'AIGC概念与应用',
+                            content: '介绍生成式AI的基本原理，展示文本、图像、音频等多模态生成AI的实际应用案例'
+                        }
+                    },
+                    teachingActivities: [
+                        'AI发展历程互动问答',
+                        '身边的AI应用探索讨论',
+                        '简单AI工具初体验实践',
+                        '学习成果分享与总结'
+                    ],
+                    resources: [
+                        'AI发展历程演示PPT',
+                        '常见AI应用案例视频集',
+                        '基础AI交互工具演示',
+                        '学习任务卡与评价表'
+                    ],
+                    evaluationMethods: [
+                        '学生课堂参与度评价（30%）',
+                        'AI应用案例识别练习（30%）',
+                        '小组讨论贡献度（20%）',
+                        'AI工具体验报告（20%）'
+                    ]
+                },
+                2: {
+                    id: 2,
+                    title: 'AIGC平台与工具初识',
+                    module: '模块一：AI通识与AIGC入门',
+                    moduleNumber: 1,
+                    duration: '2课时',
+                    targetGrade: '初一至初三',
+                    objectives: {
+                        knowledge: '认识主流AIGC平台的功能特点，了解账号注册和安全使用规范，掌握基础操作界面',
+                        ability: '能够独立完成AIGC平台账号注册，熟练操作基本界面功能，进行简单的AI对话',
+                        emotion: '增强数字素养意识，培养负责任使用AI工具的习惯'
+                    },
+                    teachingContent: {
+                        part1: {
+                            title: '主流AIGC平台介绍',
+                            content: '对比介绍ChatGPT、文心一言、通义千问等主流平台的特点和适用场景'
+                        },
+                        part2: {
+                            title: '账号注册与安全指南',
+                            content: '演示账号注册流程，讲解隐私保护和安全使用注意事项'
+                        },
+                        part3: {
+                            title: '基础界面操作实践',
+                            content: '引导学生熟悉平台界面，学习基本对话功能和设置选项'
+                        }
+                    },
+                    teachingActivities: [
+                        '平台功能对比分析',
+                        '账号注册实践操作',
+                        '基础对话尝试练习',
+                        '安全使用规范讨论'
+                    ],
+                    resources: [
+                        '主流AIGC平台功能对比表',
+                        '账号注册操作演示视频',
+                        '平台界面使用指南',
+                        '安全使用规范手册'
+                    ],
+                    evaluationMethods: [
+                        '平台操作熟练度评估（40%）',
+                        '安全使用规范测试（30%）',
+                        '基础对话完成质量（20%）',
+                        '课堂参与积极性（10%）'
+                    ]
+                },
+                3: {
+                    id: 3,
+                    title: 'AI文本创作基础',
+                    module: '模块二：AIGC文本与图像创作',
+                    moduleNumber: 2,
+                    duration: '2课时',
+                    targetGrade: '初一至初三',
+                    objectives: {
+                        knowledge: '理解AI文本创作的基本原理，掌握提示词编写的基础方法和技巧',
+                        ability: '能够编写清晰有效的提示词，使用AI工具完成简单的文本创作任务',
+                        emotion: '激发创作兴趣，体验AI辅助创作的乐趣，培养批判性思维'
+                    },
+                    teachingContent: {
+                        part1: {
+                            title: 'AI文本创作原理简介',
+                            content: '介绍语言模型的基本工作原理，讲解AI如何理解和生成文本'
+                        },
+                        part2: {
+                            title: '提示词编写基础',
+                            content: '学习提示词的基本结构，掌握清晰、具体、有条理的表达方法'
+                        },
+                        part3: {
+                            title: '创意写作实践',
+                            content: '指导学生进行故事、诗歌、对话等不同形式的AI辅助创作'
+                        }
+                    },
+                    teachingActivities: [
+                        '提示词编写技巧练习',
+                        '创意故事创作实践',
+                        '诗歌生成与改写',
+                        '作品分享与点评'
+                    ],
+                    resources: [
+                        'AI文本创作原理讲解PPT',
+                        '提示词编写示例库',
+                        '创意写作任务卡片',
+                        '优秀作品展示案例'
+                    ],
+                    evaluationMethods: [
+                        '提示词编写质量（35%）',
+                        '创作作品完成度（30%）',
+                        '创意表达能力（20%）',
+                        '同伴互评反馈（15%）'
+                    ]
+                },
+                // 继续添加其他课程...
+                4: {
+                    id: 4,
+                    title: 'AI文本提示词高级应用',
+                    module: '模块二：AIGC文本与图像创作',
+                    moduleNumber: 2,
+                    duration: '2课时',
+                    targetGrade: '初一至初三',
+                    objectives: {
+                        knowledge: '掌握角色扮演、格式控制等高级提示技巧，理解上下文连贯性的重要性',
+                        ability: '能够设计复杂的提示词，进行连续性对话创作，控制输出格式和风格',
+                        emotion: '增强创作自信心，培养细致耐心的工作态度'
+                    },
+                    teachingContent: {
+                        part1: {
+                            title: '角色扮演提示技术',
+                            content: '学习如何设定AI角色，掌握角色背景、性格、说话风格的描述方法'
+                        },
+                        part2: {
+                            title: '格式控制与风格调整',
+                            content: '练习控制输出格式，学习调整文本风格、语气和表达方式'
+                        },
+                        part3: {
+                            title: '连续对话与上下文维护',
+                            content: '掌握多轮对话技巧，学习保持话题连贯性和逻辑一致性'
+                        }
+                    },
+                    teachingActivities: [
+                        '角色创作与扮演练习',
+                        '格式化输出实践',
+                        '连续对话创作',
+                        '风格转换实验'
+                    ],
+                    resources: [
+                        '角色设定模板库',
+                        '格式控制示例集',
+                        '连续对话技巧指南',
+                        '风格转换练习题'
+                    ],
+                    evaluationMethods: [
+                        '高级提示词设计（40%）',
+                        '角色扮演效果（25%）',
+                        '格式控制准确性（20%）',
+                        '创新思维表现（15%）'
+                    ]
+                },
+                5: {
+                    id: 5,
+                    title: 'AI图像生成入门',
+                    module: '模块二：AIGC文本与图像创作',
+                    moduleNumber: 2,
+                    duration: '2课时',
+                    targetGrade: '初一至初三',
+                    objectives: {
+                        knowledge: '了解AI图像生成的基本原理，掌握图像提示词的编写方法',
+                        ability: '能够使用AI工具创建简单图像，调整基本参数和风格',
+                        emotion: '激发视觉创作兴趣，培养美学鉴赏能力'
+                    },
+                    teachingContent: {
+                        part1: {
+                            title: '图像生成模型介绍',
+                            content: '介绍Stable Diffusion、DALL-E等图像生成模型的基本原理'
+                        },
+                        part2: {
+                            title: '图像提示词编写',
+                            content: '学习描述主体、风格、构图、色彩等要素的方法'
+                        },
+                        part3: {
+                            title: '参数调整与优化',
+                            content: '了解基本参数设置，学习通过调整提示词优化生成效果'
+                        }
+                    },
+                    teachingActivities: [
+                        '图像生成原理演示',
+                        '提示词编写练习',
+                        '创意图像生成实践',
+                        '作品展示与鉴赏'
+                    ],
+                    resources: [
+                        '图像生成模型介绍视频',
+                        '提示词关键词词库',
+                        '风格参考图片集',
+                        '参数设置指导手册'
+                    ],
+                    evaluationMethods: [
+                        '图像生成质量（35%）',
+                        '提示词描述准确性（30%）',
+                        '创意表现力（20%）',
+                        '技术操作熟练度（15%）'
+                    ]
+                }
+            };
+            
+            return lessons[lessonId] || null;
+        }
+
+        function displayLessonDetail(lesson) {
+            const content = `
+                <!-- Breadcrumb -->
+                <section class="py-8 bg-white border-b">
+                    <div class="max-w-6xl mx-auto px-4">
+                        <nav class="flex items-center space-x-2 text-sm text-gray-600">
+                            <a href="lesson-plans.html" class="hover:text-purple-700">课程教案</a>
+                            <i class="fas fa-chevron-right text-xs"></i>
+                            <span class="text-purple-700">${lesson.title}</span>
+                        </nav>
+                    </div>
+                </section>
+
+                <!-- Lesson Header -->
+                <section class="py-12 bg-gradient-to-br from-cosmic-purple to-electric-blue text-white">
+                    <div class="max-w-6xl mx-auto px-4">
+                        <div class="grid lg:grid-cols-3 gap-8 items-center">
+                            <div class="lg:col-span-2">
+                                <div class="mb-4">
+                                    <span class="inline-block px-3 py-1 bg-white/20 rounded-full text-sm font-semibold">
+                                        ${lesson.module}
+                                    </span>
+                                </div>
+                                <h1 class="text-4xl font-bold mb-4">${lesson.title}</h1>
+                                <div class="flex flex-wrap gap-4 text-sm opacity-90">
+                                    <span><i class="fas fa-clock mr-2"></i>${lesson.duration}</span>
+                                    <span><i class="fas fa-users mr-2"></i>${lesson.targetGrade}</span>
+                                    <span><i class="fas fa-layer-group mr-2"></i>模块${lesson.moduleNumber}</span>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-32 h-32 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-book-open text-5xl"></i>
+                                </div>
+                                <p class="text-sm opacity-90">第${lesson.id}课教案</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Lesson Content -->
+                <section class="py-16 bg-white">
+                    <div class="max-w-6xl mx-auto px-4">
+                        <div class="grid lg:grid-cols-3 gap-12">
+                            <!-- Main Content -->
+                            <div class="lg:col-span-2 space-y-12">
+                                <!-- Teaching Objectives -->
+                                <div class="bg-white rounded-2xl shadow-lg p-8">
+                                    <h2 class="text-2xl font-bold text-cosmic-purple mb-6 flex items-center">
+                                        <i class="fas fa-target mr-3"></i>
+                                        教学目标
+                                    </h2>
+                                    <div class="space-y-6">
+                                        <div class="p-4 bg-blue-50 rounded-xl">
+                                            <h3 class="font-semibold text-blue-700 mb-2">知识目标</h3>
+                                            <p class="text-gray-700">${lesson.objectives.knowledge}</p>
+                                        </div>
+                                        <div class="p-4 bg-green-50 rounded-xl">
+                                            <h3 class="font-semibold text-green-700 mb-2">能力目标</h3>
+                                            <p class="text-gray-700">${lesson.objectives.ability}</p>
+                                        </div>
+                                        <div class="p-4 bg-purple-50 rounded-xl">
+                                            <h3 class="font-semibold text-purple-700 mb-2">情感目标</h3>
+                                            <p class="text-gray-700">${lesson.objectives.emotion}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Teaching Content -->
+                                <div class="bg-white rounded-2xl shadow-lg p-8">
+                                    <h2 class="text-2xl font-bold text-cosmic-purple mb-6 flex items-center">
+                                        <i class="fas fa-book mr-3"></i>
+                                        教学内容
+                                    </h2>
+                                    <div class="space-y-6">
+                                        ${Object.entries(lesson.teachingContent).map(([key, part], index) => `
+                                            <div class="border-l-4 border-electric-blue pl-6">
+                                                <h3 class="font-semibold text-lg text-gray-800 mb-2">
+                                                    ${index + 1}. ${part.title}
+                                                </h3>
+                                                <p class="text-gray-600">${part.content}</p>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+
+                                <!-- Teaching Activities -->
+                                <div class="bg-white rounded-2xl shadow-lg p-8">
+                                    <h2 class="text-2xl font-bold text-cosmic-purple mb-6 flex items-center">
+                                        <i class="fas fa-play-circle mr-3"></i>
+                                        教学活动
+                                    </h2>
+                                    <div class="grid md:grid-cols-2 gap-4">
+                                        ${lesson.teachingActivities.map((activity, index) => `
+                                            <div class="p-4 bg-gradient-to-r from-neon-green/10 to-electric-blue/10 rounded-xl">
+                                                <div class="flex items-center">
+                                                    <div class="w-8 h-8 bg-gradient-to-r from-neon-green to-electric-blue rounded-full flex items-center justify-center text-white text-sm font-bold mr-3">
+                                                        ${index + 1}
+                                                    </div>
+                                                    <span class="font-medium text-gray-800">${activity}</span>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sidebar -->
+                            <div class="space-y-8">
+                                <!-- Teaching Resources -->
+                                <div class="bg-white rounded-2xl shadow-lg p-6">
+                                    <h3 class="text-xl font-bold text-cosmic-purple mb-4 flex items-center">
+                                        <i class="fas fa-folder-open mr-2"></i>
+                                        教学资源
+                                    </h3>
+                                    <ul class="space-y-3">
+                                        ${lesson.resources.map(resource => `
+                                            <li class="flex items-center text-gray-700">
+                                                <i class="fas fa-file-alt text-electric-blue mr-3"></i>
+                                                ${resource}
+                                            </li>
+                                        `).join('')}
+                                    </ul>
+                                </div>
+
+                                <!-- Evaluation Methods -->
+                                <div class="bg-white rounded-2xl shadow-lg p-6">
+                                    <h3 class="text-xl font-bold text-cosmic-purple mb-4 flex items-center">
+                                        <i class="fas fa-chart-bar mr-2"></i>
+                                        评价方式
+                                    </h3>
+                                    <ul class="space-y-3">
+                                        ${lesson.evaluationMethods.map(method => `
+                                            <li class="flex items-center text-gray-700">
+                                                <i class="fas fa-check-circle text-neon-green mr-3"></i>
+                                                ${method}
+                                            </li>
+                                        `).join('')}
+                                    </ul>
+                                </div>
+
+                                <!-- Navigation -->
+                                <div class="bg-white rounded-2xl shadow-lg p-6">
+                                    <h3 class="text-xl font-bold text-cosmic-purple mb-4">课程导航</h3>
+                                    <div class="space-y-2">
+                                        ${lesson.id > 1 ? `
+                                            <a href="lesson-detail.html?id=${lesson.id - 1}" 
+                                               class="block p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                                <i class="fas fa-arrow-left mr-2"></i>
+                                                上一课
+                                            </a>
+                                        ` : ''}
+                                        ${lesson.id < 12 ? `
+                                            <a href="lesson-detail.html?id=${lesson.id + 1}" 
+                                               class="block p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                                下一课
+                                                <i class="fas fa-arrow-right ml-2"></i>
+                                            </a>
+                                        ` : ''}
+                                        <a href="lesson-plans.html" 
+                                           class="block p-3 bg-gradient-to-r from-cosmic-purple to-electric-blue text-white rounded-lg hover:shadow-lg transition-all">
+                                            <i class="fas fa-list mr-2"></i>
+                                            返回教案列表
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+            
+            document.getElementById('lesson-content').innerHTML = content;
+        }
+
+        function displayNotFound() {
+            const content = `
+                <section class="py-20">
+                    <div class="max-w-4xl mx-auto px-4 text-center">
+                        <div class="mb-8">
+                            <i class="fas fa-exclamation-triangle text-6xl text-yellow-500 mb-4"></i>
+                            <h1 class="text-4xl font-bold text-gray-800 mb-4">教案未找到</h1>
+                            <p class="text-xl text-gray-600 mb-8">抱歉，您访问的教案不存在或已被移除。</p>
+                            <a href="lesson-plans.html" 
+                               class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-cosmic-purple to-electric-blue text-white rounded-full font-semibold hover:shadow-lg transition-all">
+                                <i class="fas fa-arrow-left mr-2"></i>
+                                返回教案列表
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            `;
+            
+            document.getElementById('lesson-content').innerHTML = content;
+        }
+    </script>
+</body>
+</html> 
