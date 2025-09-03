@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>详细课程安排 - AI智造学院 | Aura school AI教育平台</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-blue': '#1e3a8a',
+                        'cosmic-purple': '#4c1d95',
+                        'neon-green': '#22c55e',
+                        'electric-blue': '#3b82f6',
+                        'sophisticated-gray': '#64748b',
+                        'space-dark': '#0f172a',
+                        'space-purple': '#6366f1',
+                        'ai-cyan': '#06b6d4',
+                        'magic-purple': '#6366f1',
+                        'magic-pink': '#f472b6',
+                        'magic-blue': '#3b82f6',
+                        'magic-green': '#10b981',
+                        'magic-orange': '#f59e0b'
+                    },
+                    fontFamily: {
+                        'display': ['"Noto Sans SC"', 'sans-serif'],
+                        'body': ['"Noto Sans SC"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body class="font-body text-gray-900 bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../../index.html" class="text-2xl font-bold font-display text-cosmic-purple">
+                        🚀 Aura school
+                    </a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <a href="index.html" class="text-lg font-semibold text-electric-blue">🏭 AI智造学院</a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <span class="text-sophisticated-gray">详细课程安排</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="index.html" class="nav-link">概览</a>
+                        <a href="courses.html" class="nav-link">详细课程</a>
+                        <a href="course-schedule.html" class="nav-link active">课程安排</a>
+                        <a href="lesson-plans.html" class="nav-link">教案设计</a>
+                        <a href="../../index.html" class="nav-link">返回主站</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-16 bg-gradient-to-br from-cosmic-purple via-electric-blue to-neon-green">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <div class="inline-flex items-center bg-white/20 rounded-full px-6 py-3 mb-8">
+                <span class="text-2xl mr-2">📅</span>
+                <span class="font-semibold">AI智造学院详细课程安排</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-6xl font-bold font-display mb-6">
+                📚 课程安排总览
+            </h1>
+            
+            <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-4xl mx-auto">
+                12节课程 × 4大模块 × 实践项目驱动，带领中小学生踏上AI创新之旅
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 max-w-3xl mx-auto">
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">12</div>
+                    <div class="text-sm opacity-80">总课程数</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">24</div>
+                    <div class="text-sm opacity-80">总课时</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">4</div>
+                    <div class="text-sm opacity-80">核心模块</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">36</div>
+                    <div class="text-sm opacity-80">实践项目</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 课程时间轴 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-cosmic-purple mb-6">
+                    🗓️ 课程时间轴
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    循序渐进的学习路径，从AI基础到创新实践
+                </p>
+            </div>
+
+            <div class="relative">
+                <!-- 时间轴线 -->
+                <div class="absolute left-1/2 transform -translate-x-0.5 w-1 h-full bg-gradient-to-b from-cosmic-purple via-electric-blue to-neon-green"></div>
+                
+                <!-- 模块一：AI通识与基础 (第1-3周) -->
+                <div class="relative mb-16">
+                    <div class="flex items-center">
+                        <div class="w-1/2 pr-8 text-right">
+                            <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
+                                <div class="flex justify-end items-center mb-4">
+                                    <h3 class="text-2xl font-bold text-cosmic-purple mr-4">模块一：AI通识与基础</h3>
+                                    <div class="w-12 h-12 bg-gradient-to-r from-cosmic-purple to-electric-blue rounded-2xl flex items-center justify-center">
+                                        <span class="text-white text-xl">🧠</span>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-sm text-gray-500 mb-2">📅 第1-3周 (6课时)</div>
+                                    <p class="text-gray-700 mb-4">建立AI基础认知，了解人工智能发展历程与核心概念</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-cosmic-purple rounded-full flex items-center justify-center text-white font-bold">
+                            1
+                        </div>
+                        
+                        <div class="w-1/2 pl-8">
+                            <div class="space-y-3">
+                                <a href="lesson-01.html" class="block bg-cosmic-purple/10 rounded-xl p-4 hover:bg-cosmic-purple/20 hover:shadow-lg transition-all duration-300">
+                                    <div class="flex items-center mb-2">
+                                        <i class="fas fa-book text-cosmic-purple mr-2"></i>
+                                        <span class="font-semibold text-cosmic-purple">第1课：AI是什么？</span>
+                                        <i class="fas fa-arrow-right text-cosmic-purple ml-auto opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                    </div>
+                                    <p class="text-sm text-gray-600">🎭 时光穿越之旅，探索人工智能的神奇世界</p>
+                                    <div class="mt-2 flex items-center text-xs text-cosmic-purple">
+                                        <i class="fas fa-clock mr-1"></i>
+                                        <span>2课时 • 互动游戏 • 寓教于乐</span>
+                                    </div>
+                                </a>
+                                <a href="lesson-02.html" class="block bg-cosmic-purple/10 rounded-xl p-4 hover:bg-cosmic-purple/20 hover:shadow-lg transition-all duration-300">
+                                    <div class="flex items-center mb-2">
+                                        <i class="fas fa-paw text-cosmic-purple mr-2"></i>
+                                        <span class="font-semibold text-cosmic-purple">第2课：机器学习基础</span>
+                                        <i class="fas fa-arrow-right text-cosmic-purple ml-auto opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                    </div>
+                                    <p class="text-sm text-gray-600">🐕 训练AI宠物，理解机器学习的奥秘</p>
+                                    <div class="mt-2 flex items-center text-xs text-cosmic-purple">
+                                        <i class="fas fa-clock mr-1"></i>
+                                        <span>2课时 • 虚拟宠物 • 趣味实验</span>
+                                    </div>
+                                </a>
+                                <a href="lesson-03.html" class="block bg-cosmic-purple/10 rounded-xl p-4 hover:bg-cosmic-purple/20 hover:shadow-lg transition-all duration-300">
+                                    <div class="flex items-center mb-2">
+                                        <i class="fas fa-magic text-cosmic-purple mr-2"></i>
+                                        <span class="font-semibold text-cosmic-purple">第3课：AIGC技术概述</span>
+                                        <i class="fas fa-arrow-right text-cosmic-purple ml-auto opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                    </div>
+                                    <p class="text-sm text-gray-600">🧙‍♂️ 探索AI魔法学院，掌握四大生成魔法</p>
+                                    <div class="mt-2 flex items-center text-xs text-cosmic-purple">
+                                        <i class="fas fa-clock mr-1"></i>
+                                        <span>2课时 • 魔法实验 • 创意对战</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 模块二：文本与图像创作 (第4-6周) -->
+                <div class="relative mb-16">
+                    <div class="flex items-center">
+                        <div class="w-1/2 pr-8">
+                            <div class="space-y-3">
+                                <a href="lesson-04.html" class="block bg-neon-green/10 rounded-xl p-4 hover:bg-neon-green/20 hover:shadow-lg transition-all duration-300">
+                                    <div class="flex items-center mb-2">
+                                        <i class="fas fa-pen-fancy text-neon-green mr-2"></i>
+                                        <span class="font-semibold text-neon-green">第4课：AI文本创作工具</span>
+                                        <i class="fas fa-arrow-right text-neon-green ml-auto opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                    </div>
+                                    <p class="text-sm text-gray-600">✍️ 进入AI作家工坊，用ChatGPT创作奇幻故事</p>
+                                    <div class="mt-2 flex items-center text-xs text-neon-green">
+                                        <i class="fas fa-clock mr-1"></i>
+                                        <span>2课时 • 创作实战 • 作品展示</span>
+                                    </div>
+                                </a>
+                                <a href="lesson-05.html" class="block bg-neon-green/10 rounded-xl p-4 hover:bg-neon-green/20 hover:shadow-lg transition-all duration-300">
+                                    <div class="flex items-center mb-2">
+                                        <i class="fas fa-palette text-neon-green mr-2"></i>
+                                        <span class="font-semibold text-neon-green">第5课：AI图像生成</span>
+                                        <i class="fas fa-arrow-right text-neon-green ml-auto opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                    </div>
+                                    <p class="text-sm text-gray-600">🎨 探索AI画师工作室，掌握五种神奇画笔</p>
+                                    <div class="mt-2 flex items-center text-xs text-neon-green">
+                                        <i class="fas fa-clock mr-1"></i>
+                                        <span>2课时 • 艺术创作 • 作品展览</span>
+                                    </div>
+                                </a>
+                                <a href="lesson-06.html" class="block bg-neon-green/10 rounded-xl p-4 hover:bg-neon-green/20 hover:shadow-lg transition-all duration-300">
+                                    <div class="flex items-center mb-2">
+                                        <i class="fas fa-magic text-neon-green mr-2"></i>
+                                        <span class="font-semibold text-neon-green">第6课：提示词工程</span>
+                                        <i class="fas fa-arrow-right text-neon-green ml-auto opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                    </div>
+                                    <p class="text-sm text-gray-600">🎼 成为AI指挥家，掌握五大指挥技法</p>
+                                    <div class="mt-2 flex items-center text-xs text-neon-green">
+                                        <i class="fas fa-clock mr-1"></i>
+                                        <span>2课时 • 指挥训练 • 大师赛</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-neon-green rounded-full flex items-center justify-center text-white font-bold">
+                            2
+                        </div>
+                        
+                        <div class="w-1/2 pl-8 text-left">
+                            <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-neon-green to-electric-blue rounded-2xl flex items-center justify-center mr-4">
+                                        <span class="text-white text-xl">✍️</span>
+                                    </div>
+                                    <h3 class="text-2xl font-bold text-neon-green">模块二：文本与图像创作</h3>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-gray-500 mb-2">📅 第4-6周 (6课时)</div>
+                                    <p class="text-gray-700 mb-4">掌握AI文本生成和图像创作工具，学习提示词工程技巧</p>
+                                    <div class="flex items-center text-sm text-electric-blue">
+                                        <i class="fas fa-project-diagram mr-2"></i>
+                                        <span>项目实战：创意故事插画集</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 模块三：音频视频制作 (第7-9周) -->
+                <div class="relative mb-16">
+                    <div class="flex items-center">
+                        <div class="w-1/2 pr-8 text-right">
+                            <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
+                                <div class="flex justify-end items-center mb-4">
+                                    <h3 class="text-2xl font-bold text-electric-blue mr-4">模块三：音频视频制作</h3>
+                                    <div class="w-12 h-12 bg-gradient-to-r from-electric-blue to-cosmic-purple rounded-2xl flex items-center justify-center">
+                                        <span class="text-white text-xl">🎵</span>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-sm text-gray-500 mb-2">📅 第7-9周 (6课时)</div>
+                                    <p class="text-gray-700 mb-4">探索AI音频生成与视频制作的神奇世界</p>
+                                    <div class="flex justify-end items-center text-sm text-electric-blue">
+                                        <span>项目实战：AI原创音乐MV</span>
+                                        <i class="fas fa-video ml-2"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-electric-blue rounded-full flex items-center justify-center text-white font-bold">
+                            3
+                        </div>
+                        
+                        <div class="w-1/2 pl-8">
+                            <div class="space-y-3">
+                                <a href="lesson-07.html" class="block bg-electric-blue/10 rounded-xl p-4 hover:bg-electric-blue/20 hover:shadow-lg transition-all duration-300">
+                                    <div class="flex items-center mb-2">
+                                        <i class="fas fa-music text-electric-blue mr-2"></i>
+                                        <span class="font-semibold text-electric-blue">第7课：AI音乐创作</span>
+                                        <i class="fas fa-arrow-right text-electric-blue ml-auto opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                    </div>
+                                    <p class="text-sm text-gray-600">🎼 探索AI音乐学院，掌握六大音乐神器</p>
+                                    <div class="mt-2 flex items-center text-xs text-electric-blue">
+                                        <i class="fas fa-clock mr-1"></i>
+                                        <span>2课时 • 音乐创作 • 作品展示</span>
+                                    </div>
+                                </a>
+                                <a href="lesson-08.html" class="block bg-electric-blue/10 rounded-xl p-4 hover:bg-electric-blue/20 hover:shadow-lg transition-all duration-300">
+                                    <div class="flex items-center mb-2">
+                                        <i class="fas fa-microphone text-electric-blue mr-2"></i>
+                                        <span class="font-semibold text-electric-blue">第8课：语音合成技术</span>
+                                        <i class="fas fa-arrow-right text-electric-blue ml-auto opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                    </div>
+                                    <p class="text-sm text-gray-600">🎙️ 体验AI配音工作室，成为专业配音师</p>
+                                    <div class="mt-2 flex items-center text-xs text-electric-blue">
+                                        <i class="fas fa-clock mr-1"></i>
+                                        <span>2课时 • 配音实战 • 多语言体验</span>
+                                    </div>
+                                </a>
+                                <a href="lesson-09.html" class="block bg-electric-blue/10 rounded-xl p-4 hover:bg-electric-blue/20 hover:shadow-lg transition-all duration-300">
+                                    <div class="flex items-center mb-2">
+                                        <i class="fas fa-film text-electric-blue mr-2"></i>
+                                        <span class="font-semibold text-electric-blue">第9课：AI视频制作</span>
+                                        <i class="fas fa-arrow-right text-electric-blue ml-auto opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                    </div>
+                                    <p class="text-sm text-gray-600">🎬 探索AI导演学院，掌握视频制作神器</p>
+                                    <div class="mt-2 flex items-center text-xs text-electric-blue">
+                                        <i class="fas fa-clock mr-1"></i>
+                                        <span>2课时 • 视频制作 • 导演挑战</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 模块四：综合创新项目 (第10-12周) -->
+                <div class="relative">
+                    <div class="flex items-center">
+                        <div class="w-1/2 pr-8">
+                            <div class="space-y-3">
+                                <a href="lesson-10.html" class="block bg-magic-green/10 rounded-xl p-4 hover:bg-magic-green/20 hover:shadow-lg transition-all duration-300">
+                                    <div class="flex items-center mb-2">
+                                        <i class="fas fa-rocket text-magic-green mr-2"></i>
+                                        <span class="font-semibold text-magic-green">第10课：综合项目实战</span>
+                                        <i class="fas fa-arrow-right text-magic-green ml-auto opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                    </div>
+                                    <p class="text-sm text-gray-600">🧪 进入AI创新实验室，融合所有技能创作杰作</p>
+                                    <div class="mt-2 flex items-center text-xs text-magic-green">
+                                        <i class="fas fa-clock mr-1"></i>
+                                        <span>3课时 • 综合项目 • 技能融合</span>
+                                    </div>
+                                </a>
+                                <a href="lesson-11.html" class="block bg-magic-green/10 rounded-xl p-4 hover:bg-magic-green/20 hover:shadow-lg transition-all duration-300">
+                                    <div class="flex items-center mb-2">
+                                        <i class="fas fa-users-cog text-magic-green mr-2"></i>
+                                        <span class="font-semibold text-magic-green">第11课：团队协作实践</span>
+                                        <i class="fas fa-arrow-right text-magic-green ml-auto opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                    </div>
+                                    <p class="text-sm text-gray-600">🤝 进入AI协作工坊，掌握现代团队协作技能</p>
+                                    <div class="mt-2 flex items-center text-xs text-magic-green">
+                                        <i class="fas fa-clock mr-1"></i>
+                                        <span>2课时 • 团队协作 • 敏捷开发</span>
+                                    </div>
+                                </a>
+                                <a href="lesson-12.html" class="block bg-magic-green/10 rounded-xl p-4 hover:bg-magic-green/20 hover:shadow-lg transition-all duration-300">
+                                    <div class="flex items-center mb-2">
+                                        <i class="fas fa-trophy text-magic-green mr-2"></i>
+                                        <span class="font-semibold text-magic-green">第12课：作品展示与毕业</span>
+                                        <i class="fas fa-arrow-right text-magic-green ml-auto opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                    </div>
+                                    <p class="text-sm text-gray-600">🎊 参与AI创作节盛典，获得毕业证书认证</p>
+                                    <div class="mt-2 flex items-center text-xs text-magic-green">
+                                        <i class="fas fa-clock mr-1"></i>
+                                        <span>2课时 • 作品展示 • 毕业典礼</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-magic-green rounded-full flex items-center justify-center text-white font-bold">
+                            4
+                        </div>
+                        
+                        <div class="w-1/2 pl-8 text-left">
+                            <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-magic-green to-cosmic-purple rounded-2xl flex items-center justify-center mr-4">
+                                        <span class="text-white text-xl">🚀</span>
+                                    </div>
+                                    <h3 class="text-2xl font-bold text-magic-green">模块四：综合创新项目</h3>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-gray-500 mb-2">📅 第10-12周 (6课时)</div>
+                                    <p class="text-gray-700 mb-4">整合所学知识，完成综合性AI创新项目</p>
+                                    <div class="flex items-center text-sm text-magic-green">
+                                        <i class="fas fa-star mr-2"></i>
+                                        <span>综合项目：个人AI创作作品集</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 学习成果与技能树 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-cosmic-purple mb-6">
+                    🎯 学习成果
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    完成课程后学生将掌握的核心技能与能力
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- 技术技能 -->
+                <div class="bg-gradient-to-br from-cosmic-purple/10 to-electric-blue/10 rounded-2xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-r from-cosmic-purple to-electric-blue rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-laptop-code text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-cosmic-purple">技术技能</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center bg-white/50 rounded-lg p-3">
+                            <i class="fas fa-check-circle text-neon-green mr-3"></i>
+                            <span class="text-gray-700">熟练使用ChatGPT进行对话与创作</span>
+                        </div>
+                        <div class="flex items-center bg-white/50 rounded-lg p-3">
+                            <i class="fas fa-check-circle text-neon-green mr-3"></i>
+                            <span class="text-gray-700">掌握Midjourney/DALL-E图像生成</span>
+                        </div>
+                        <div class="flex items-center bg-white/50 rounded-lg p-3">
+                            <i class="fas fa-check-circle text-neon-green mr-3"></i>
+                            <span class="text-gray-700">了解AI音频视频制作工具</span>
+                        </div>
+                        <div class="flex items-center bg-white/50 rounded-lg p-3">
+                            <i class="fas fa-check-circle text-neon-green mr-3"></i>
+                            <span class="text-gray-700">具备基础的提示词工程能力</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 创新能力 -->
+                <div class="bg-gradient-to-br from-neon-green/10 to-electric-blue/10 rounded-2xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-r from-neon-green to-electric-blue rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-lightbulb text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-neon-green">创新能力</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center bg-white/50 rounded-lg p-3">
+                            <i class="fas fa-star text-magic-orange mr-3"></i>
+                            <span class="text-gray-700">具备创意思维和想象力</span>
+                        </div>
+                        <div class="flex items-center bg-white/50 rounded-lg p-3">
+                            <i class="fas fa-star text-magic-orange mr-3"></i>
+                            <span class="text-gray-700">能够独立完成创新项目</span>
+                        </div>
+                        <div class="flex items-center bg-white/50 rounded-lg p-3">
+                            <i class="fas fa-star text-magic-orange mr-3"></i>
+                            <span class="text-gray-700">擅长跨领域知识整合</span>
+                        </div>
+                        <div class="flex items-center bg-white/50 rounded-lg p-3">
+                            <i class="fas fa-star text-magic-orange mr-3"></i>
+                            <span class="text-gray-700">培养批判性思维能力</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 综合素养 -->
+                <div class="bg-gradient-to-br from-electric-blue/10 to-magic-purple/10 rounded-2xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-r from-electric-blue to-magic-purple rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-users text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-electric-blue">综合素养</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center bg-white/50 rounded-lg p-3">
+                            <i class="fas fa-heart text-magic-pink mr-3"></i>
+                            <span class="text-gray-700">增强团队协作精神</span>
+                        </div>
+                        <div class="flex items-center bg-white/50 rounded-lg p-3">
+                            <i class="fas fa-heart text-magic-pink mr-3"></i>
+                            <span class="text-gray-700">提升沟通表达能力</span>
+                        </div>
+                        <div class="flex items-center bg-white/50 rounded-lg p-3">
+                            <i class="fas fa-heart text-magic-pink mr-3"></i>
+                            <span class="text-gray-700">具备AI伦理意识</span>
+                        </div>
+                        <div class="flex items-center bg-white/50 rounded-lg p-3">
+                            <i class="fas fa-heart text-magic-pink mr-3"></i>
+                            <span class="text-gray-700">培养终身学习习惯</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 课程亮点 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-cosmic-purple mb-6">
+                    ✨ 课程亮点
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    独特的教学设计让学习更有趣、更有效
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-cosmic-purple to-electric-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-hands-helping text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-cosmic-purple mb-2">实践导向</h3>
+                    <p class="text-sm text-gray-600">每节课都包含动手实践环节，学以致用</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-neon-green to-electric-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-layer-group text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-neon-green mb-2">分层教学</h3>
+                    <p class="text-sm text-gray-600">根据学生基础差异，提供个性化学习路径</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-electric-blue to-magic-purple rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-gamepad text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-electric-blue mb-2">游戏化学习</h3>
+                    <p class="text-sm text-gray-600">任务闯关、积分奖励，让学习充满乐趣</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-magic-green to-magic-orange rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-certificate text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-magic-green mb-2">成果认证</h3>
+                    <p class="text-sm text-gray-600">完成项目可获得AI创作能力认证证书</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-cosmic-purple to-electric-blue text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold font-display mb-6">
+                🚀 准备好开始AI创新之旅了吗？
+            </h2>
+            <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-4xl mx-auto">
+                加入AI智造学院，让每个孩子都能成为AI时代的创造者
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="lesson-plans.html" class="bg-white text-cosmic-purple px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                    📖 查看详细教案
+                </a>
+                <a href="courses.html" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-cosmic-purple transition-all duration-300">
+                    🔙 返回课程总览
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4">🏭 AI智造学院</h3>
+                    <p class="text-gray-300 mb-4">
+                        Aura school AI教育平台 - 培养面向未来的AI创新人才
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-qq text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">课程导航</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">课程概览</a></li>
+                        <li><a href="courses.html" class="text-gray-300 hover:text-white transition-colors">详细课程</a></li>
+                        <li><a href="course-schedule.html" class="text-gray-300 hover:text-white transition-colors">课程安排</a></li>
+                        <li><a href="lesson-plans.html" class="text-gray-300 hover:text-white transition-colors">教案设计</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">其他平台</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../ai-learning/index.html" class="text-gray-300 hover:text-white transition-colors">AI元能力课程</a></li>
+                        <li><a href="../ai-coding/index.html" class="text-gray-300 hover:text-white transition-colors">AI代码魔术课堂</a></li>
+                        <li><a href="../../index.html" class="text-gray-300 hover:text-white transition-colors">返回主站</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2024 Aura school AI教育平台. 保留所有权利.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>

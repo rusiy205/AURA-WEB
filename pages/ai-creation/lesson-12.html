@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第12课：作品展示与毕业 - AI智造学院 | Aura school AI教育平台</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-blue': '#1e3a8a',
+                        'cosmic-purple': '#4c1d95',
+                        'neon-green': '#22c55e',
+                        'electric-blue': '#3b82f6',
+                        'sophisticated-gray': '#64748b',
+                        'space-dark': '#0f172a',
+                        'space-purple': '#6366f1',
+                        'ai-cyan': '#06b6d4',
+                        'magic-purple': '#6366f1',
+                        'magic-pink': '#f472b6',
+                        'magic-blue': '#3b82f6',
+                        'magic-green': '#10b981',
+                        'magic-orange': '#f59e0b',
+                        'festival-gold': '#f59e0b',
+                        'festival-amber': '#d97706',
+                        'festival-orange': '#ea580c',
+                        'festival-red': '#dc2626',
+                        'festival-pink': '#ec4899',
+                        'festival-purple': '#8b5cf6',
+                        'celebration-blue': '#3b82f6',
+                        'celebration-indigo': '#6366f1',
+                        'celebration-emerald': '#10b981'
+                    },
+                    fontFamily: {
+                        'display': ['"Noto Sans SC"', 'sans-serif'],
+                        'body': ['"Noto Sans SC"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        .celebration-firework {
+            animation: celebrationFirework 4s ease-out infinite;
+        }
+        .celebration-firework:nth-child(2) { animation-delay: 0.8s; }
+        .celebration-firework:nth-child(3) { animation-delay: 1.6s; }
+        .celebration-firework:nth-child(4) { animation-delay: 2.4s; }
+        @keyframes celebrationFirework {
+            0% { 
+                opacity: 0; 
+                transform: scale(0.3) translateY(100px);
+            }
+            20% { 
+                opacity: 1; 
+                transform: scale(0.8) translateY(20px);
+            }
+            40% { 
+                opacity: 1; 
+                transform: scale(1.2) translateY(-20px);
+            }
+            60% { 
+                opacity: 0.8; 
+                transform: scale(1.5) translateY(-40px);
+            }
+            100% { 
+                opacity: 0; 
+                transform: scale(2) translateY(-80px);
+            }
+        }
+        .graduation-cap {
+            animation: graduationCap 6s ease-in-out infinite;
+        }
+        @keyframes graduationCap {
+            0%, 100% { 
+                transform: rotate(-5deg) translateY(0px);
+            }
+            25% { 
+                transform: rotate(3deg) translateY(-8px);
+            }
+            50% { 
+                transform: rotate(-8deg) translateY(-15px);
+            }
+            75% { 
+                transform: rotate(5deg) translateY(-5px);
+            }
+        }
+        .spotlight-shine {
+            animation: spotlightShine 5s ease-in-out infinite;
+        }
+        @keyframes spotlightShine {
+            0%, 100% { 
+                opacity: 0.7;
+                transform: scale(1);
+                box-shadow: 0 0 30px rgba(245, 158, 11, 0.4);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.1);
+                box-shadow: 0 0 50px rgba(245, 158, 11, 0.7);
+            }
+        }
+        .award-float {
+            animation: awardFloat 4s ease-in-out infinite;
+        }
+        .award-float:nth-child(2) { animation-delay: 1s; }
+        .award-float:nth-child(3) { animation-delay: 2s; }
+        @keyframes awardFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% { 
+                transform: translateY(-15px) rotate(5deg);
+            }
+        }
+        .confetti-rain {
+            animation: confettiRain 3s linear infinite;
+        }
+        .confetti-rain:nth-child(2) { animation-delay: 0.5s; }
+        .confetti-rain:nth-child(3) { animation-delay: 1s; }
+        .confetti-rain:nth-child(4) { animation-delay: 1.5s; }
+        .confetti-rain:nth-child(5) { animation-delay: 2s; }
+        @keyframes confettiRain {
+            0% { 
+                opacity: 0; 
+                transform: translateY(-100px) rotate(0deg);
+            }
+            10% { 
+                opacity: 1; 
+            }
+            90% { 
+                opacity: 1; 
+            }
+            100% { 
+                opacity: 0; 
+                transform: translateY(100px) rotate(360deg);
+            }
+        }
+        .gallery-showcase {
+            animation: galleryShowcase 8s ease-in-out infinite;
+        }
+        @keyframes galleryShowcase {
+            0%, 100% { 
+                transform: rotateY(0deg) scale(1);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+            25% { 
+                transform: rotateY(5deg) scale(1.02);
+                box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            }
+            50% { 
+                transform: rotateY(0deg) scale(1.05);
+                box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            }
+            75% { 
+                transform: rotateY(-5deg) scale(1.02);
+                box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            }
+        }
+    </style>
+</head>
+<body class="font-body text-gray-900 bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../../index.html" class="text-2xl font-bold font-display text-cosmic-purple">
+                        🚀 Aura school
+                    </a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <a href="index.html" class="text-lg font-semibold text-electric-blue">🏭 AI智造学院</a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <span class="text-sophisticated-gray">第12课</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="lesson-11.html" class="nav-link">上一课</a>
+                        <a href="course-schedule.html" class="nav-link">课程安排</a>
+                        <a href="courses.html" class="nav-link">课程总览</a>
+                        <a href="../../index.html" class="nav-link">返回主站</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-16 bg-gradient-to-br from-festival-gold via-festival-orange via-festival-red via-festival-pink via-festival-purple to-celebration-emerald overflow-hidden">
+        <!-- 庆祝装饰元素 -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="celebration-firework absolute top-1/4 left-1/6 text-6xl text-white/90">🎊</div>
+            <div class="celebration-firework absolute top-1/3 right-1/4 text-5xl text-white/90">🎉</div>
+            <div class="celebration-firework absolute bottom-1/4 left-1/3 text-7xl text-white/90">🏆</div>
+            <div class="celebration-firework absolute top-1/5 right-1/3 text-4xl text-white/90">✨</div>
+            <div class="graduation-cap absolute bottom-1/6 right-1/6 text-6xl text-white/90">🎓</div>
+            
+            <!-- 彩纸雨效果 -->
+            <div class="confetti-rain absolute top-0 left-1/4 text-2xl text-yellow-300">🎉</div>
+            <div class="confetti-rain absolute top-0 left-1/2 text-2xl text-red-400">🎊</div>
+            <div class="confetti-rain absolute top-0 left-3/4 text-2xl text-blue-400">✨</div>
+            <div class="confetti-rain absolute top-0 right-1/4 text-2xl text-pink-400">🎈</div>
+            <div class="confetti-rain absolute top-0 right-1/6 text-2xl text-green-400">🌟</div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <!-- 课程标识 -->
+            <div class="inline-flex items-center bg-white/20 rounded-full px-6 py-3 mb-8">
+                <span class="text-2xl mr-3">🎓</span>
+                <span class="font-semibold">第12课 · 模块四：综合创新项目</span>
+                <span class="ml-3 bg-white/30 rounded-full px-3 py-1 text-sm">第12周</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold font-display mb-6">
+                🎊 作品展示与毕业
+            </h1>
+            
+            <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-4xl mx-auto">
+                欢迎来到AI创作节！展示你的杰作，庆祝学习成就，踏上AI创新之路
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 max-w-3xl mx-auto">
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">2</div>
+                    <div class="text-sm opacity-80">课时</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">12</div>
+                    <div class="text-sm opacity-80">课程回顾</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">∞</div>
+                    <div class="text-sm opacity-80">创作作品</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">🎓</div>
+                    <div class="text-sm opacity-80">毕业典礼</div>
+                </div>
+            </div>
+
+            <!-- 课程目标卡片 -->
+            <div class="bg-white/10 rounded-2xl p-6 max-w-4xl mx-auto backdrop-blur-sm">
+                <h2 class="text-2xl font-bold mb-4">🎯 本课学习目标</h2>
+                <div class="grid md:grid-cols-2 gap-4 text-left">
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-festival-gold rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">1</span>
+                        <span>展示12课学习成果和作品</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-festival-red rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">2</span>
+                        <span>完成AI创新专家认证</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-festival-purple rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">3</span>
+                        <span>制定个人AI学习发展规划</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-celebration-emerald rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">4</span>
+                        <span>获得AI智造学院毕业证书</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI创作节介绍 -->
+    <section class="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-festival-gold mb-6">
+                    🎪 欢迎来到AI创作节！
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    这是属于每一位AI创新者的盛大庆典，展示才华，分享成就，畅想未来
+                </p>
+            </div>
+
+            <!-- 创作节介绍 -->
+            <div class="bg-gradient-to-br from-festival-gold/10 to-celebration-emerald/10 rounded-3xl p-8 mb-12">
+                <div class="text-center mb-8">
+                    <div class="text-6xl mb-4">🎪</div>
+                    <h3 class="text-2xl font-bold text-festival-gold mb-4">AI创作节的盛大舞台</h3>
+                </div>
+                
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🌟</div>
+                        <h4 class="font-bold text-festival-gold mb-2">你（AI创新专家）</h4>
+                        <p class="text-sm text-gray-600">完成12课学习的AI创作大师</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3 spotlight-shine">🏛️</div>
+                        <h4 class="font-bold text-festival-red mb-2">作品展览馆</h4>
+                        <p class="text-sm text-gray-600">展示你的AI创作杰作</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">👥</div>
+                        <h4 class="font-bold text-festival-purple mb-2">创作者社区</h4>
+                        <p class="text-sm text-gray-600">与同窗好友分享学习心得</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🚀</div>
+                        <h4 class="font-bold text-celebration-emerald mb-2">未来规划</h4>
+                        <p class="text-sm text-gray-600">制定AI创新发展蓝图</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-white/50 rounded-2xl p-6 text-center">
+                    <p class="text-gray-700 text-lg">
+                        在AI创作节上，<strong class="text-festival-gold">每个人都是主角，每件作品都是珍宝</strong>。
+                        让我们一起庆祝这段美好的AI学习旅程，展望更加精彩的创新未来！
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12课学习历程回顾 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-festival-gold mb-6">
+                    📚 12课学习历程回顾
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    从AI小白到创新专家，回顾这段精彩的学习旅程
+                </p>
+            </div>
+
+            <!-- 学习旅程时间轴 -->
+            <div class="relative">
+                <!-- 中央时间轴线 -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-festival-gold via-festival-red via-festival-purple to-celebration-emerald"></div>
+
+                <div class="space-y-16">
+                    <!-- 模块一：认知基础 -->
+                    <div class="relative flex items-center">
+                        <div class="w-1/2 pr-8 text-right">
+                            <div class="bg-gradient-to-br from-space-purple/10 to-cosmic-purple/10 rounded-3xl p-6 gallery-showcase">
+                                <div class="text-center mb-4">
+                                    <div class="text-4xl mb-2">🧠</div>
+                                    <h3 class="text-xl font-bold text-space-purple">模块一：认知基础</h3>
+                                    <p class="text-sm text-gray-600">第1-3课 · 理论建构</p>
+                                </div>
+                                
+                                <div class="space-y-2 text-sm">
+                                    <div class="bg-white rounded-lg p-3 flex items-center">
+                                        <span class="text-xl mr-2">🕰️</span>
+                                        <span class="text-space-purple font-semibold">第1课：AI基础认知</span>
+                                    </div>
+                                    <div class="bg-white rounded-lg p-3 flex items-center">
+                                        <span class="text-xl mr-2">🐕</span>
+                                        <span class="text-space-purple font-semibold">第2课：机器学习原理</span>
+                                    </div>
+                                    <div class="bg-white rounded-lg p-3 flex items-center">
+                                        <span class="text-xl mr-2">🧙‍♂️</span>
+                                        <span class="text-space-purple font-semibold">第3课：AIGC技术概述</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-space-purple rounded-full flex items-center justify-center text-white font-bold">
+                            1
+                        </div>
+                        
+                        <div class="w-1/2 pl-8">
+                            <div class="bg-space-purple/20 rounded-2xl p-4">
+                                <h4 class="font-bold text-space-purple mb-2">🎯 学习成就</h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• 建立了完整的AI知识体系</li>
+                                    <li>• 理解机器学习的核心原理</li>
+                                    <li>• 掌握AIGC四大技术领域</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 模块二：创作技能 -->
+                    <div class="relative flex items-center">
+                        <div class="w-1/2 pr-8">
+                            <div class="bg-neon-green/20 rounded-2xl p-4">
+                                <h4 class="font-bold text-neon-green mb-2">🎯 学习成就</h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• 掌握AI文本和图像创作</li>
+                                    <li>• 学会高级提示词工程</li>
+                                    <li>• 成为AI创作指挥家</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-neon-green rounded-full flex items-center justify-center text-white font-bold">
+                            2
+                        </div>
+
+                        <div class="w-1/2 pl-8 text-left">
+                            <div class="bg-gradient-to-br from-neon-green/10 to-electric-blue/10 rounded-3xl p-6 gallery-showcase">
+                                <div class="text-center mb-4">
+                                    <div class="text-4xl mb-2">✍️</div>
+                                    <h3 class="text-xl font-bold text-neon-green">模块二：创作技能</h3>
+                                    <p class="text-sm text-gray-600">第4-6课 · 应用实践</p>
+                                </div>
+                                
+                                <div class="space-y-2 text-sm">
+                                    <div class="bg-white rounded-lg p-3 flex items-center">
+                                        <span class="text-xl mr-2">✍️</span>
+                                        <span class="text-neon-green font-semibold">第4课：AI文本创作</span>
+                                    </div>
+                                    <div class="bg-white rounded-lg p-3 flex items-center">
+                                        <span class="text-xl mr-2">🎨</span>
+                                        <span class="text-neon-green font-semibold">第5课：AI图像生成</span>
+                                    </div>
+                                    <div class="bg-white rounded-lg p-3 flex items-center">
+                                        <span class="text-xl mr-2">🎼</span>
+                                        <span class="text-neon-green font-semibold">第6课：提示词工程</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 模块三：多媒体技能 -->
+                    <div class="relative flex items-center">
+                        <div class="w-1/2 pr-8 text-right">
+                            <div class="bg-gradient-to-br from-electric-blue/10 to-cosmic-purple/10 rounded-3xl p-6 gallery-showcase">
+                                <div class="text-center mb-4">
+                                    <div class="text-4xl mb-2">🎵</div>
+                                    <h3 class="text-xl font-bold text-electric-blue">模块三：多媒体技能</h3>
+                                    <p class="text-sm text-gray-600">第7-9课 · 音视频创作</p>
+                                </div>
+                                
+                                <div class="space-y-2 text-sm">
+                                    <div class="bg-white rounded-lg p-3 flex items-center">
+                                        <span class="text-xl mr-2">🎼</span>
+                                        <span class="text-electric-blue font-semibold">第7课：AI音乐创作</span>
+                                    </div>
+                                    <div class="bg-white rounded-lg p-3 flex items-center">
+                                        <span class="text-xl mr-2">🎙️</span>
+                                        <span class="text-electric-blue font-semibold">第8课：语音合成技术</span>
+                                    </div>
+                                    <div class="bg-white rounded-lg p-3 flex items-center">
+                                        <span class="text-xl mr-2">🎬</span>
+                                        <span class="text-electric-blue font-semibold">第9课：AI视频制作</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-electric-blue rounded-full flex items-center justify-center text-white font-bold">
+                            3
+                        </div>
+                        
+                        <div class="w-1/2 pl-8">
+                            <div class="bg-electric-blue/20 rounded-2xl p-4">
+                                <h4 class="font-bold text-electric-blue mb-2">🎯 学习成就</h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• 具备完整多媒体创作能力</li>
+                                    <li>• 掌握音频视频制作技能</li>
+                                    <li>• 成为AI导演和音乐家</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 模块四：综合创新 -->
+                    <div class="relative flex items-center">
+                        <div class="w-1/2 pr-8">
+                            <div class="bg-celebration-emerald/20 rounded-2xl p-4">
+                                <h4 class="font-bold text-celebration-emerald mb-2">🎯 学习成就</h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• 完成大型综合项目实战</li>
+                                    <li>• 掌握团队协作和管理</li>
+                                    <li>• 成为AI创新专家</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-celebration-emerald rounded-full flex items-center justify-center text-white font-bold">
+                            4
+                        </div>
+
+                        <div class="w-1/2 pl-8 text-left">
+                            <div class="bg-gradient-to-br from-celebration-emerald/10 to-festival-gold/10 rounded-3xl p-6 gallery-showcase">
+                                <div class="text-center mb-4">
+                                    <div class="text-4xl mb-2">🚀</div>
+                                    <h3 class="text-xl font-bold text-celebration-emerald">模块四：综合创新</h3>
+                                    <p class="text-sm text-gray-600">第10-12课 · 项目实战</p>
+                                </div>
+                                
+                                <div class="space-y-2 text-sm">
+                                    <div class="bg-white rounded-lg p-3 flex items-center">
+                                        <span class="text-xl mr-2">🧪</span>
+                                        <span class="text-celebration-emerald font-semibold">第10课：综合项目实战</span>
+                                    </div>
+                                    <div class="bg-white rounded-lg p-3 flex items-center">
+                                        <span class="text-xl mr-2">🤝</span>
+                                        <span class="text-celebration-emerald font-semibold">第11课：团队协作实践</span>
+                                    </div>
+                                    <div class="bg-white rounded-lg p-3 flex items-center">
+                                        <span class="text-xl mr-2">🎊</span>
+                                        <span class="text-celebration-emerald font-semibold">第12课：作品展示与毕业</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI作品展览馆 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-festival-gold mb-6">
+                    🏛️ AI作品展览馆
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    展示你的AI创作杰作，分享学习成果
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 展区1：文本创作作品 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4 award-float">📝</div>
+                        <h3 class="text-xl font-bold text-festival-gold">文本创作展区</h3>
+                        <p class="text-sm text-gray-600">AI文学与写作作品</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-festival-gold/10 rounded-lg p-3">
+                            <h4 class="font-semibold text-festival-gold text-sm mb-1">🏆 优秀作品</h4>
+                            <div class="space-y-2 text-xs">
+                                <div class="bg-white rounded p-2">《AI与人类的对话》- 科幻短篇</div>
+                                <div class="bg-white rounded p-2">《智能时代的教育》- 议论文</div>
+                                <div class="bg-white rounded p-2">《机器人的梦》- 儿童故事</div>
+                                <div class="bg-white rounded p-2">《代码诗人》- 创意诗歌集</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-festival-gold/20 rounded-lg p-3 text-center">
+                            <div class="text-xs text-festival-gold font-semibold">
+                                💫 作品特色：想象丰富，语言优美，主题深刻
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 展区2：图像设计作品 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4 award-float">🎨</div>
+                        <h3 class="text-xl font-bold text-festival-red">图像设计展区</h3>
+                        <p class="text-sm text-gray-600">AI艺术与视觉作品</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-festival-red/10 rounded-lg p-3">
+                            <h4 class="font-semibold text-festival-red text-sm mb-1">🎭 创作类型</h4>
+                            <div class="space-y-2 text-xs">
+                                <div class="bg-white rounded p-2">未来城市概念设计</div>
+                                <div class="bg-white rounded p-2">童话世界插画集</div>
+                                <div class="bg-white rounded p-2">抽象艺术作品系列</div>
+                                <div class="bg-white rounded p-2">品牌视觉形象设计</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-festival-red/20 rounded-lg p-3 text-center">
+                            <div class="text-xs text-festival-red font-semibold">
+                                🌈 作品特色：风格多样，色彩丰富，创意独特
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 展区3：音乐创作作品 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4 award-float">🎼</div>
+                        <h3 class="text-xl font-bold text-festival-purple">音乐创作展区</h3>
+                        <p class="text-sm text-gray-600">AI音乐与声音作品</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-festival-purple/10 rounded-lg p-3">
+                            <h4 class="font-semibold text-festival-purple text-sm mb-1">🎵 音乐风格</h4>
+                            <div class="space-y-2 text-xs">
+                                <div class="bg-white rounded p-2">《数字交响曲》- 电子古典</div>
+                                <div class="bg-white rounded p-2">《友谊进行曲》- 温馨流行</div>
+                                <div class="bg-white rounded p-2">《太空漫步》- 环境音乐</div>
+                                <div class="bg-white rounded p-2">《学习之歌》- 教育儿歌</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-festival-purple/20 rounded-lg p-3 text-center">
+                            <div class="text-xs text-festival-purple font-semibold">
+                                🎶 作品特色：旋律动听，情感丰富，制作精良
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 展区4：视频制作作品 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4 award-float">🎬</div>
+                        <h3 class="text-xl font-bold text-celebration-blue">视频制作展区</h3>
+                        <p class="text-sm text-gray-600">AI影像与动画作品</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-celebration-blue/10 rounded-lg p-3">
+                            <h4 class="font-semibold text-celebration-blue text-sm mb-1">🎭 视频类型</h4>
+                            <div class="space-y-2 text-xs">
+                                <div class="bg-white rounded p-2">《时光倒流》- 科幻短片</div>
+                                <div class="bg-white rounded p-2">《植物成长》- 教育动画</div>
+                                <div class="bg-white rounded p-2">《梦想MV》- 音乐视频</div>
+                                <div class="bg-white rounded p-2">《AI的一天》- 纪录短片</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-celebration-blue/20 rounded-lg p-3 text-center">
+                            <div class="text-xs text-celebration-blue font-semibold">
+                                🎯 作品特色：剧情完整，视效精美，内容有趣
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 展区5：综合项目作品 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4 award-float">🏆</div>
+                        <h3 class="text-xl font-bold text-celebration-emerald">综合项目展区</h3>
+                        <p class="text-sm text-gray-600">多媒体综合作品</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-celebration-emerald/10 rounded-lg p-3">
+                            <h4 class="font-semibold text-celebration-emerald text-sm mb-1">🚀 项目成果</h4>
+                            <div class="space-y-2 text-xs">
+                                <div class="bg-white rounded p-2">AI学习互动绘本</div>
+                                <div class="bg-white rounded p-2">环保主题品牌设计</div>
+                                <div class="bg-white rounded p-2">在线教育平台原型</div>
+                                <div class="bg-white rounded p-2">AI创作工具应用</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-celebration-emerald/20 rounded-lg p-3 text-center">
+                            <div class="text-xs text-celebration-emerald font-semibold">
+                                💎 作品特色：技能融合，创新实用，团队协作
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 展区6：未来规划展区 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4 award-float">🔮</div>
+                        <h3 class="text-xl font-bold text-festival-pink">未来规划展区</h3>
+                        <p class="text-sm text-gray-600">AI学习发展计划</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-festival-pink/10 rounded-lg p-3">
+                            <h4 class="font-semibold text-festival-pink text-sm mb-1">🎯 发展方向</h4>
+                            <div class="space-y-2 text-xs">
+                                <div class="bg-white rounded p-2">AI产品设计师</div>
+                                <div class="bg-white rounded p-2">多媒体内容创作者</div>
+                                <div class="bg-white rounded p-2">AI教育工作者</div>
+                                <div class="bg-white rounded p-2">科技创业者</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-festival-pink/20 rounded-lg p-3 text-center">
+                            <div class="text-xs text-festival-pink font-semibold">
+                                ✨ 未来愿景：持续学习，不断创新，改变世界
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 毕业典礼 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-festival-gold mb-6">
+                    🎓 AI智造学院毕业典礼
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    隆重的毕业典礼，见证你的成长与蜕变
+                </p>
+            </div>
+
+            <!-- 毕业证书展示 -->
+            <div class="bg-gradient-to-br from-festival-gold/10 via-festival-red/10 to-festival-purple/10 rounded-3xl p-8 mb-12">
+                <div class="text-center mb-8">
+                    <div class="text-8xl mb-6 graduation-cap">🏆</div>
+                    <h3 class="text-3xl font-bold text-festival-gold mb-4">🎊 恭喜获得AI创新专家认证！</h3>
+                    <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+                        经过12周的系统学习和实践，你已经掌握了完整的AI创作技能体系，
+                        正式成为具备综合创新能力的AI专家！
+                    </p>
+                </div>
+
+                <!-- 证书内容 -->
+                <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-4xl mx-auto border-4 border-festival-gold/20">
+                    <div class="text-center mb-6">
+                        <div class="text-4xl mb-4">🎓</div>
+                        <h4 class="text-2xl font-bold text-festival-gold mb-2">AI智造学院毕业证书</h4>
+                        <div class="w-32 h-1 bg-gradient-to-r from-festival-gold to-festival-red mx-auto mb-4"></div>
+                    </div>
+
+                    <div class="text-center mb-6">
+                        <p class="text-lg text-gray-700 mb-4">兹证明</p>
+                        <div class="bg-festival-gold/10 rounded-lg p-4 mb-4">
+                            <p class="text-xl font-bold text-festival-gold">[你的名字]</p>
+                        </div>
+                        <p class="text-gray-700 mb-4">同学已完成AI智造学院全部课程学习，成绩优秀</p>
+                    </div>
+
+                    <!-- 学习成果认证 -->
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <h5 class="font-bold text-festival-gold mb-3">📚 完成课程</h5>
+                            <div class="space-y-2 text-sm">
+                                <div class="bg-gray-50 rounded p-2">✅ AI认知基础模块（3课）</div>
+                                <div class="bg-gray-50 rounded p-2">✅ 文本图像创作模块（3课）</div>
+                                <div class="bg-gray-50 rounded p-2">✅ 音频视频制作模块（3课）</div>
+                                <div class="bg-gray-50 rounded p-2">✅ 综合创新项目模块（3课）</div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h5 class="font-bold text-festival-red mb-3">🏆 掌握技能</h5>
+                            <div class="space-y-2 text-sm">
+                                <div class="bg-gray-50 rounded p-2">💡 AI技术原理与应用</div>
+                                <div class="bg-gray-50 rounded p-2">✍️ 智能内容创作能力</div>
+                                <div class="bg-gray-50 rounded p-2">🎨 多媒体制作技能</div>
+                                <div class="bg-gray-50 rounded p-2">🤝 项目管理与团队协作</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <p class="text-gray-600 mb-4">特此证明</p>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <div class="text-festival-gold font-bold">Aura school AI智造学院</div>
+                                <div class="text-sm text-gray-500">院长：AI教育专家团队</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-gray-600">颁发时间</div>
+                                <div class="text-festival-gold font-bold" id="graduationDate"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 成就徽章系统 -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-white rounded-3xl shadow-xl p-6 text-center hover:shadow-2xl transition-all duration-300">
+                    <div class="text-5xl mb-4">🥇</div>
+                    <h4 class="text-lg font-bold text-festival-gold mb-2">AI理论专家</h4>
+                    <p class="text-sm text-gray-600">完成AI认知基础模块，深度理解AI原理</p>
+                    <div class="mt-3 bg-festival-gold text-white rounded-full px-4 py-1 text-xs font-bold">
+                        已获得
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl shadow-xl p-6 text-center hover:shadow-2xl transition-all duration-300">
+                    <div class="text-5xl mb-4">🎨</div>
+                    <h4 class="text-lg font-bold text-festival-red mb-2">创作大师</h4>
+                    <p class="text-sm text-gray-600">精通文本和图像AI创作，掌握提示词工程</p>
+                    <div class="mt-3 bg-festival-red text-white rounded-full px-4 py-1 text-xs font-bold">
+                        已获得
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl shadow-xl p-6 text-center hover:shadow-2xl transition-all duration-300">
+                    <div class="text-5xl mb-4">🎵</div>
+                    <h4 class="text-lg font-bold text-festival-purple mb-2">多媒体专家</h4>
+                    <p class="text-sm text-gray-600">掌握音频视频制作，成为全能AI导演</p>
+                    <div class="mt-3 bg-festival-purple text-white rounded-full px-4 py-1 text-xs font-bold">
+                        已获得
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl shadow-xl p-6 text-center hover:shadow-2xl transition-all duration-300">
+                    <div class="text-5xl mb-4">💎</div>
+                    <h4 class="text-lg font-bold text-celebration-emerald mb-2">创新领袖</h4>
+                    <p class="text-sm text-gray-600">具备综合项目能力和团队协作精神</p>
+                    <div class="mt-3 bg-celebration-emerald text-white rounded-full px-4 py-1 text-xs font-bold">
+                        已获得
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 未来发展规划 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-celebration-emerald mb-6">
+                    🚀 AI创新之路：未来发展规划
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    毕业只是开始，让我们一起规划AI创新的美好未来
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- 职业发展路径 -->
+                <div>
+                    <h3 class="text-2xl font-bold text-celebration-emerald mb-8 text-center">🎯 职业发展路径</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-3xl shadow-xl p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-festival-gold rounded-2xl flex items-center justify-center text-white text-xl mr-4">🎨</div>
+                                <h4 class="text-lg font-bold text-festival-gold">AI内容创作师</h4>
+                            </div>
+                            <p class="text-gray-700 text-sm mb-3">
+                                运用AI工具进行文本、图像、音频、视频等多媒体内容创作，为企业和个人提供创意服务。
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-festival-gold/20 text-festival-gold rounded-full px-3 py-1 text-xs">内容策划</span>
+                                <span class="bg-festival-gold/20 text-festival-gold rounded-full px-3 py-1 text-xs">品牌设计</span>
+                                <span class="bg-festival-gold/20 text-festival-gold rounded-full px-3 py-1 text-xs">多媒体制作</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-3xl shadow-xl p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-festival-red rounded-2xl flex items-center justify-center text-white text-xl mr-4">💻</div>
+                                <h4 class="text-lg font-bold text-festival-red">AI产品经理</h4>
+                            </div>
+                            <p class="text-gray-700 text-sm mb-3">
+                                负责AI产品的规划、设计和管理，连接技术团队和市场需求，推动AI产品商业化。
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-festival-red/20 text-festival-red rounded-full px-3 py-1 text-xs">产品规划</span>
+                                <span class="bg-festival-red/20 text-festival-red rounded-full px-3 py-1 text-xs">需求分析</span>
+                                <span class="bg-festival-red/20 text-festival-red rounded-full px-3 py-1 text-xs">项目管理</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-3xl shadow-xl p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-festival-purple rounded-2xl flex items-center justify-center text-white text-xl mr-4">🎓</div>
+                                <h4 class="text-lg font-bold text-festival-purple">AI教育专家</h4>
+                            </div>
+                            <p class="text-gray-700 text-sm mb-3">
+                                设计和开发AI教育课程，培训企业员工和学生掌握AI技能，推动AI教育普及。
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-festival-purple/20 text-festival-purple rounded-full px-3 py-1 text-xs">课程设计</span>
+                                <span class="bg-festival-purple/20 text-festival-purple rounded-full px-3 py-1 text-xs">培训师资</span>
+                                <span class="bg-festival-purple/20 text-festival-purple rounded-full px-3 py-1 text-xs">教学创新</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-3xl shadow-xl p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-celebration-emerald rounded-2xl flex items-center justify-center text-white text-xl mr-4">🚀</div>
+                                <h4 class="text-lg font-bold text-celebration-emerald">AI创业者</h4>
+                            </div>
+                            <p class="text-gray-700 text-sm mb-3">
+                                利用AI技术创建自己的产品和服务，解决实际问题，开创AI应用的新领域。
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-celebration-emerald/20 text-celebration-emerald rounded-full px-3 py-1 text-xs">创新思维</span>
+                                <span class="bg-celebration-emerald/20 text-celebration-emerald rounded-full px-3 py-1 text-xs">商业模式</span>
+                                <span class="bg-celebration-emerald/20 text-celebration-emerald rounded-full px-3 py-1 text-xs">团队领导</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 持续学习计划 -->
+                <div>
+                    <h3 class="text-2xl font-bold text-celebration-emerald mb-8 text-center">📚 持续学习计划</h3>
+                    
+                    <!-- 学习路径图 -->
+                    <div class="bg-white rounded-3xl shadow-xl p-6">
+                        <h4 class="font-bold text-celebration-emerald mb-6 text-center">🎯 个人成长路线图</h4>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-celebration-emerald/10 rounded-2xl p-4">
+                                <h5 class="font-bold text-celebration-emerald mb-2">🌱 近期目标（3个月）</h5>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• 深度学习一个专业AI工具</li>
+                                    <li>• 完成3个个人创作项目</li>
+                                    <li>• 参加AI相关竞赛或活动</li>
+                                    <li>• 建立个人作品集网站</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-festival-gold/10 rounded-2xl p-4">
+                                <h5 class="font-bold text-festival-gold mb-2">🚀 中期目标（6个月）</h5>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• 掌握最新AI技术发展</li>
+                                    <li>• 参与开源AI项目贡献</li>
+                                    <li>• 组建学习小组或社区</li>
+                                    <li>• 获得行业认证或奖项</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-festival-purple/10 rounded-2xl p-4">
+                                <h5 class="font-bold text-festival-purple mb-2">🏆 长期愿景（1年+）</h5>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• 成为特定领域AI专家</li>
+                                    <li>• 发表研究成果或文章</li>
+                                    <li>• 指导新手学习AI技能</li>
+                                    <li>• 推动AI技术普及应用</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 p-4 bg-gradient-to-r from-festival-gold/20 to-celebration-emerald/20 rounded-2xl text-center">
+                            <p class="text-gray-700 font-semibold">
+                                🌟 记住：AI技术日新月异，持续学习是保持竞争力的关键！
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 推荐资源 -->
+                    <div class="mt-6 bg-white rounded-3xl shadow-xl p-6">
+                        <h4 class="font-bold text-celebration-emerald mb-4 text-center">📖 推荐学习资源</h4>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-gray-50 rounded-lg p-3 text-center">
+                                <div class="text-2xl mb-1">📚</div>
+                                <div class="text-sm font-semibold">技术博客</div>
+                                <div class="text-xs text-gray-600">关注AI前沿动态</div>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3 text-center">
+                                <div class="text-2xl mb-1">💻</div>
+                                <div class="text-sm font-semibold">在线课程</div>
+                                <div class="text-xs text-gray-600">深入学习专业技能</div>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3 text-center">
+                                <div class="text-2xl mb-1">👥</div>
+                                <div class="text-sm font-semibold">技术社区</div>
+                                <div class="text-xs text-gray-600">交流学习经验</div>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3 text-center">
+                                <div class="text-2xl mb-1">🏆</div>
+                                <div class="text-sm font-semibold">项目实战</div>
+                                <div class="text-xs text-gray-600">参与实际项目</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 感谢与祝福 -->
+    <section class="py-20 bg-gradient-to-br from-festival-gold via-festival-orange via-festival-red via-festival-pink via-festival-purple to-celebration-emerald text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold font-display mb-8">
+                🎊 感谢与祝福
+            </h2>
+            
+            <div class="max-w-4xl mx-auto mb-12">
+                <p class="text-xl md:text-2xl mb-6 opacity-90">
+                    亲爱的AI创新专家们：
+                </p>
+                <p class="text-lg mb-4 opacity-90">
+                    经过12周的共同学习，你们从AI小白成长为能够独立创作的AI专家。
+                    这段旅程不仅仅是技能的提升，更是思维的转变和视野的拓展。
+                </p>
+                <p class="text-lg mb-4 opacity-90">
+                    在人工智能快速发展的时代，你们已经站在了技术前沿。
+                    希望你们能够运用所学知识，创造出更多精彩的作品，
+                    为这个世界带来更多的创新和美好。
+                </p>
+                <p class="text-lg mb-8 opacity-90">
+                    记住：<strong>学习永无止境，创新永不停歇！</strong>
+                    愿你们在AI创新的道路上越走越远，越飞越高！
+                </p>
+            </div>
+
+            <!-- 毕业寄语 -->
+            <div class="bg-white/10 rounded-3xl p-8 backdrop-blur-sm mb-12 max-w-4xl mx-auto">
+                <h3 class="text-2xl font-bold mb-6">📜 AI智造学院院长寄语</h3>
+                
+                <div class="text-left space-y-4 opacity-90">
+                    <p>🌟 <strong>关于学习</strong>：技术在变，学习的心不变。保持好奇心，拥抱新变化。</p>
+                    <p>🚀 <strong>关于创新</strong>：真正的创新不在于使用最新的工具，而在于解决实际的问题。</p>
+                    <p>🤝 <strong>关于协作</strong>：在AI时代，人与人的协作比以往任何时候都更加重要。</p>
+                    <p>💡 <strong>关于未来</strong>：未来属于那些能够与AI协作，运用AI创造价值的人。</p>
+                    <p>❤️ <strong>关于初心</strong>：无论技术如何发展，都要记住用科技让世界更美好的初心。</p>
+                </div>
+            </div>
+
+            <!-- 联系方式 -->
+            <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm mb-12 max-w-2xl mx-auto">
+                <h4 class="text-xl font-bold mb-4">📞 保持联系</h4>
+                <p class="text-sm opacity-90 mb-4">
+                    毕业不是结束，而是新的开始。欢迎随时与我们交流学习心得，分享创作成果！
+                </p>
+                <div class="flex justify-center space-x-6">
+                    <a href="#" class="text-white/80 hover:text-white transition-colors">
+                        <i class="fab fa-weixin text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-white/80 hover:text-white transition-colors">
+                        <i class="fab fa-qq text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-white/80 hover:text-white transition-colors">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-white/80 hover:text-white transition-colors">
+                        <i class="fas fa-envelope text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="course-schedule.html" class="bg-white text-festival-gold px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                    📚 回顾完整课程
+                </a>
+                <a href="../../index.html" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-festival-gold transition-all duration-300">
+                    🏠 返回主站
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4">🏭 AI智造学院</h3>
+                    <p class="text-gray-300 mb-4">
+                        Aura school AI教育平台 - 培养面向未来的AI创新人才
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-qq text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">课程导航</h4>
+                    <ul class="space-y-2">
+                        <li><a href="lesson-11.html" class="text-gray-300 hover:text-white transition-colors">第11课</a></li>
+                        <li><a href="course-schedule.html" class="text-gray-300 hover:text-white transition-colors">课程安排</a></li>
+                        <li><a href="courses.html" class="text-gray-300 hover:text-white transition-colors">课程总览</a></li>
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">学院首页</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">其他平台</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../ai-learning/index.html" class="text-gray-300 hover:text-white transition-colors">AI元能力课程</a></li>
+                        <li><a href="../ai-coding/index.html" class="text-gray-300 hover:text-white transition-colors">AI代码魔术课堂</a></li>
+                        <li><a href="../../index.html" class="text-gray-300 hover:text-white transition-colors">返回主站</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2024 Aura school AI教育平台. 保留所有权利.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script>
+        // 设置毕业日期
+        document.getElementById('graduationDate').textContent = new Date().toLocaleDateString('zh-CN');
+    </script>
+</body>
+</html>

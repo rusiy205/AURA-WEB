@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第9课：AI视频制作 - AI智造学院 | Aura school AI教育平台</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-blue': '#1e3a8a',
+                        'cosmic-purple': '#4c1d95',
+                        'neon-green': '#22c55e',
+                        'electric-blue': '#3b82f6',
+                        'sophisticated-gray': '#64748b',
+                        'space-dark': '#0f172a',
+                        'space-purple': '#6366f1',
+                        'ai-cyan': '#06b6d4',
+                        'magic-purple': '#6366f1',
+                        'magic-pink': '#f472b6',
+                        'magic-blue': '#3b82f6',
+                        'magic-green': '#10b981',
+                        'magic-orange': '#f59e0b',
+                        'cinema-red': '#dc2626',
+                        'cinema-gold': '#d97706',
+                        'cinema-purple': '#7c3aed',
+                        'cinema-blue': '#1d4ed8',
+                        'cinema-emerald': '#047857'
+                    },
+                    fontFamily: {
+                        'display': ['"Noto Sans SC"', 'sans-serif'],
+                        'body': ['"Noto Sans SC"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        .film-roll {
+            animation: filmRoll 8s linear infinite;
+        }
+        @keyframes filmRoll {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-100%); }
+        }
+        .camera-zoom {
+            animation: cameraZoom 5s ease-in-out infinite;
+        }
+        @keyframes cameraZoom {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+                opacity: 0.8;
+            }
+            50% { 
+                transform: scale(1.1) rotate(2deg);
+                opacity: 1;
+            }
+        }
+        .spotlight-sweep {
+            animation: spotlightSweep 6s ease-in-out infinite;
+        }
+        @keyframes spotlightSweep {
+            0%, 100% { transform: translateX(-20px) scaleX(0.8); opacity: 0.6; }
+            50% { transform: translateX(20px) scaleX(1.2); opacity: 1; }
+        }
+        .director-action {
+            animation: directorAction 4s ease-in-out infinite;
+        }
+        @keyframes directorAction {
+            0%, 100% { transform: rotate(-5deg) translateY(0px); }
+            25% { transform: rotate(5deg) translateY(-3px); }
+            50% { transform: rotate(-8deg) translateY(-5px); }
+            75% { transform: rotate(3deg) translateY(-2px); }
+        }
+        .video-render {
+            animation: videoRender 3s ease-in-out;
+        }
+        @keyframes videoRender {
+            0% { width: 0%; opacity: 0; }
+            70% { width: 90%; opacity: 0.8; }
+            100% { width: 100%; opacity: 1; }
+        }
+        .scene-transition {
+            animation: sceneTransition 4s ease-in-out infinite;
+        }
+        @keyframes sceneTransition {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            25% { opacity: 0.3; transform: scale(0.95); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+            75% { opacity: 0.9; transform: scale(0.98); }
+        }
+    </style>
+</head>
+<body class="font-body text-gray-900 bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../../index.html" class="text-2xl font-bold font-display text-cosmic-purple">
+                        🚀 Aura school
+                    </a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <a href="index.html" class="text-lg font-semibold text-electric-blue">🏭 AI智造学院</a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <span class="text-sophisticated-gray">第9课</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="lesson-08.html" class="nav-link">上一课</a>
+                        <a href="lesson-10.html" class="nav-link">下一课</a>
+                        <a href="course-schedule.html" class="nav-link">课程安排</a>
+                        <a href="../../index.html" class="nav-link">返回主站</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-16 bg-gradient-to-br from-cinema-red via-cinema-gold to-cinema-purple overflow-hidden">
+        <!-- 电影装饰元素 -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="spotlight-sweep absolute top-1/4 left-1/6 text-5xl text-white/80">🎬</div>
+            <div class="camera-zoom absolute top-1/3 right-1/4 text-4xl text-white/80">📹</div>
+            <div class="scene-transition absolute bottom-1/4 left-1/3 text-6xl text-white/80">🎭</div>
+            <div class="director-action absolute top-1/5 right-1/3 text-4xl text-white/80">🎯</div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <!-- 课程标识 -->
+            <div class="inline-flex items-center bg-white/20 rounded-full px-6 py-3 mb-8">
+                <span class="text-2xl mr-3">🎬</span>
+                <span class="font-semibold">第9课 · 模块三：音频与视频创作</span>
+                <span class="ml-3 bg-white/30 rounded-full px-3 py-1 text-sm">第9周</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold font-display mb-6">
+                🎬 AI视频制作
+            </h1>
+            
+            <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-4xl mx-auto">
+                欢迎来到AI导演学院！用AI创造精彩纷呈的影像世界
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 max-w-3xl mx-auto">
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">2</div>
+                    <div class="text-sm opacity-80">课时</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">5</div>
+                    <div class="text-sm opacity-80">制作工具</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">8+</div>
+                    <div class="text-sm opacity-80">视频类型</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">高级</div>
+                    <div class="text-sm opacity-80">难度等级</div>
+                </div>
+            </div>
+
+            <!-- 课程目标卡片 -->
+            <div class="bg-white/10 rounded-2xl p-6 max-w-4xl mx-auto backdrop-blur-sm">
+                <h2 class="text-2xl font-bold mb-4">🎯 本课学习目标</h2>
+                <div class="grid md:grid-cols-2 gap-4 text-left">
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-cinema-red rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">1</span>
+                        <span>掌握Runway、Pika等视频生成工具</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-cinema-gold rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">2</span>
+                        <span>学会AI视频制作的完整流程</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-cinema-purple rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">3</span>
+                        <span>掌握视频剪辑和特效技巧</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-cinema-blue rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">4</span>
+                        <span>完成个人AI短片作品</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI导演学院介绍 -->
+    <section class="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-cinema-purple mb-6">
+                    🎬 欢迎来到AI导演学院！
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    在这座影像艺术殿堂里，AI将成为你最得力的制片团队
+                </p>
+            </div>
+
+            <!-- 导演学院介绍 -->
+            <div class="bg-gradient-to-br from-cinema-purple/10 to-cinema-blue/10 rounded-3xl p-8 mb-12">
+                <div class="text-center mb-8">
+                    <div class="text-6xl mb-4">🎬</div>
+                    <h3 class="text-2xl font-bold text-cinema-purple mb-4">AI导演学院的电影王国</h3>
+                </div>
+                
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🎭</div>
+                        <h4 class="font-bold text-cinema-red mb-2">你（见习导演）</h4>
+                        <p class="text-sm text-gray-600">刚进入电影世界的新手导演，满怀创作激情</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3 camera-zoom">🤖</div>
+                        <h4 class="font-bold text-cinema-gold mb-2">AI制片团队</h4>
+                        <p class="text-sm text-gray-600">包含摄像、剪辑、特效的全能AI助手团队</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">📹</div>
+                        <h4 class="font-bold text-cinema-purple mb-2">AI摄影设备</h4>
+                        <p class="text-sm text-gray-600">从分镜到特效的专业AI视频工具</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🎞️</div>
+                        <h4 class="font-bold text-cinema-blue mb-2">后期制作室</h4>
+                        <p class="text-sm text-gray-600">专业的剪辑和特效制作空间</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-white/50 rounded-2xl p-6 text-center">
+                    <p class="text-gray-700 text-lg">
+                        在AI导演学院里，<strong class="text-cinema-purple">你是创意总监，AI是你的制片团队</strong>。
+                        从脚本到成片，AI帮你实现每一个创作梦想！
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 五大AI视频制作神器 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-cinema-purple mb-6">
+                    🎥 五大AI视频制作神器
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    每种工具都有独特的视频创作特色和专业用途
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Runway ML -->
+                <div class="bg-gradient-to-br from-cinema-red/10 to-cinema-gold/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 lg:col-span-2">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">🛤️</div>
+                        <h3 class="text-2xl font-bold text-cinema-red mb-2">Runway ML 全能导演</h3>
+                        <p class="text-gray-600 text-sm">最强大的AI视频生成和编辑工具</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <div class="bg-white/80 rounded-2xl p-4">
+                                <h4 class="font-bold text-cinema-red mb-2">🌟 核心功能</h4>
+                                <div class="text-sm text-gray-700 space-y-1">
+                                    <div>• Text-to-Video 文本生视频</div>
+                                    <div>• Image-to-Video 图片动画化</div>
+                                    <div>• Video-to-Video 视频风格转换</div>
+                                    <div>• AI视频编辑和特效</div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white/80 rounded-2xl p-4">
+                                <h4 class="font-bold text-cinema-red mb-2">🎯 应用领域</h4>
+                                <div class="text-sm text-gray-700 space-y-1">
+                                    <div>• 创意短片制作</div>
+                                    <div>• 广告视频创作</div>
+                                    <div>• 社交媒体内容</div>
+                                    <div>• 教育视频制作</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-cinema-red/20 to-cinema-gold/20 rounded-2xl p-4">
+                            <h4 class="font-bold text-cinema-red mb-4 text-center">🎬 制作流程</h4>
+                            <div class="space-y-3">
+                                <div class="bg-white/50 rounded-lg p-3 text-center">
+                                    <div class="text-2xl mb-1">1️⃣</div>
+                                    <div class="text-xs">输入文本描述</div>
+                                </div>
+                                <div class="bg-white/50 rounded-lg p-3 text-center">
+                                    <div class="text-2xl mb-1">2️⃣</div>
+                                    <div class="text-xs">AI生成视频</div>
+                                </div>
+                                <div class="bg-white/50 rounded-lg p-3 text-center">
+                                    <div class="text-2xl mb-1">3️⃣</div>
+                                    <div class="text-xs">智能编辑</div>
+                                </div>
+                                <div class="bg-white/50 rounded-lg p-3 text-center">
+                                    <div class="text-2xl mb-1">4️⃣</div>
+                                    <div class="text-xs">导出成片</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pika Labs -->
+                <div class="bg-gradient-to-br from-cinema-purple/10 to-magic-purple/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">⚡</div>
+                        <h3 class="text-xl font-bold text-cinema-purple mb-2">Pika Labs 快手导演</h3>
+                        <p class="text-gray-600 text-sm">快速AI视频生成专家</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-cinema-purple mb-2">⚡ 优势</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 生成速度快</div>
+                                <div>• 操作简单易学</div>
+                                <div>• 效果自然流畅</div>
+                                <div>• 社区资源丰富</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-cinema-purple mb-2">🎪 特色</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 3D动画生成</div>
+                                <div>• 角色动作捕捉</div>
+                                <div>• 场景转换效果</div>
+                                <div>• 物理运动模拟</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stable Video Diffusion -->
+                <div class="bg-gradient-to-br from-cinema-blue/10 to-electric-blue/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">🎨</div>
+                        <h3 class="text-xl font-bold text-cinema-blue mb-2">Stable Video</h3>
+                        <p class="text-gray-600 text-sm">开源视频生成模型</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-cinema-blue mb-2">🔓 开源特点</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 免费使用</div>
+                                <div>• 可本地运行</div>
+                                <div>• 社区驱动</div>
+                                <div>• 高度可定制</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-cinema-blue mb-2">🛠️ 技术特色</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 扩散模型</div>
+                                <div>• 时序一致性</div>
+                                <div>• 高质量输出</div>
+                                <div>• 批量处理</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gen-2 -->
+                <div class="bg-gradient-to-br from-cinema-emerald/10 to-neon-green/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">🎯</div>
+                        <h3 class="text-xl font-bold text-cinema-emerald mb-2">Gen-2</h3>
+                        <p class="text-gray-600 text-sm">Runway的新一代视频模型</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-cinema-emerald mb-2">🎭 能力</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 文本转视频</div>
+                                <div>• 风格化转换</div>
+                                <div>• 结构控制</div>
+                                <div>• 运动引导</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-cinema-emerald mb-2">🌟 效果</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 真实感强</div>
+                                <div>• 动作自然</div>
+                                <div>• 细节丰富</div>
+                                <div>• 风格统一</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Synthesia -->
+                <div class="bg-gradient-to-br from-magic-orange/10 to-cinema-gold/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">👤</div>
+                        <h3 class="text-xl font-bold text-magic-orange mb-2">Synthesia</h3>
+                        <p class="text-gray-600 text-sm">AI虚拟主播视频平台</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-magic-orange mb-2">👨‍🎓 主播类型</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 教育讲师</div>
+                                <div>• 新闻主播</div>
+                                <div>• 企业发言人</div>
+                                <div>• 多元化角色</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-magic-orange mb-2">💼 应用</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 在线教育</div>
+                                <div>• 企业培训</div>
+                                <div>• 多语言视频</div>
+                                <div>• 个性化内容</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 电影类型工作室 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-cinema-purple mb-6">
+                    🎭 八大电影类型工作室
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    探索不同类型电影的AI制作技法
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 科幻片 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">🚀</div>
+                        <h3 class="text-lg font-bold text-cinema-blue">科幻片工作室</h3>
+                        <p class="text-sm text-gray-600">未来感十足，特效炫酷</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-cinema-blue/10 rounded-lg p-2 text-center text-sm">太空场景</div>
+                        <div class="bg-cinema-blue/10 rounded-lg p-2 text-center text-sm">机器人角色</div>
+                        <div class="bg-cinema-blue/10 rounded-lg p-2 text-center text-sm">光效特技</div>
+                        <div class="bg-cinema-blue/20 rounded-lg p-2 text-center text-xs">
+                            "飞船在星海中穿行..."
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 动画片 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">🎨</div>
+                        <h3 class="text-lg font-bold text-magic-purple">动画片工作室</h3>
+                        <p class="text-sm text-gray-600">色彩丰富，充满想象</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-magic-purple/10 rounded-lg p-2 text-center text-sm">卡通角色</div>
+                        <div class="bg-magic-purple/10 rounded-lg p-2 text-center text-sm">夸张动作</div>
+                        <div class="bg-magic-purple/10 rounded-lg p-2 text-center text-sm">魔法效果</div>
+                        <div class="bg-magic-purple/20 rounded-lg p-2 text-center text-xs">
+                            "小动物们在森林里冒险..."
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 纪录片 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">📚</div>
+                        <h3 class="text-lg font-bold text-sophisticated-gray">纪录片工作室</h3>
+                        <p class="text-sm text-gray-600">真实记录，深度思考</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-gray-200 rounded-lg p-2 text-center text-sm">真实场景</div>
+                        <div class="bg-gray-200 rounded-lg p-2 text-center text-sm">客观叙述</div>
+                        <div class="bg-gray-200 rounded-lg p-2 text-center text-sm">深度访谈</div>
+                        <div class="bg-gray-300 rounded-lg p-2 text-center text-xs">
+                            "探索海洋深处的奥秘..."
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 实验片 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">🌀</div>
+                        <h3 class="text-lg font-bold text-cinema-emerald">实验片工作室</h3>
+                        <p class="text-sm text-gray-600">艺术先锋，概念创新</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-cinema-emerald/10 rounded-lg p-2 text-center text-sm">抽象视觉</div>
+                        <div class="bg-cinema-emerald/10 rounded-lg p-2 text-center text-sm">非线性叙事</div>
+                        <div class="bg-cinema-emerald/10 rounded-lg p-2 text-center text-sm">艺术表达</div>
+                        <div class="bg-cinema-emerald/20 rounded-lg p-2 text-center text-xs">
+                            "色彩与形状的诗意舞蹈..."
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 教育片 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">📖</div>
+                        <h3 class="text-lg font-bold text-electric-blue">教育片工作室</h3>
+                        <p class="text-sm text-gray-600">寓教于乐，知识传播</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-electric-blue/10 rounded-lg p-2 text-center text-sm">知识可视化</div>
+                        <div class="bg-electric-blue/10 rounded-lg p-2 text-center text-sm">互动演示</div>
+                        <div class="bg-electric-blue/10 rounded-lg p-2 text-center text-sm">步骤分解</div>
+                        <div class="bg-electric-blue/20 rounded-lg p-2 text-center text-xs">
+                            "数学公式的生动展示..."
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 广告片 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">💡</div>
+                        <h3 class="text-lg font-bold text-cinema-gold">广告片工作室</h3>
+                        <p class="text-sm text-gray-600">创意营销，品牌传播</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-cinema-gold/10 rounded-lg p-2 text-center text-sm">品牌展示</div>
+                        <div class="bg-cinema-gold/10 rounded-lg p-2 text-center text-sm">情感共鸣</div>
+                        <div class="bg-cinema-gold/10 rounded-lg p-2 text-center text-sm">记忆点强</div>
+                        <div class="bg-cinema-gold/20 rounded-lg p-2 text-center text-xs">
+                            "一杯咖啡的温暖时光..."
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 短视频 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">📱</div>
+                        <h3 class="text-lg font-bold text-magic-pink">短视频工作室</h3>
+                        <p class="text-sm text-gray-600">快节奏，强吸引</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-magic-pink/10 rounded-lg p-2 text-center text-sm">快速剪切</div>
+                        <div class="bg-magic-pink/10 rounded-lg p-2 text-center text-sm">音乐同步</div>
+                        <div class="bg-magic-pink/10 rounded-lg p-2 text-center text-sm">视觉冲击</div>
+                        <div class="bg-magic-pink/20 rounded-lg p-2 text-center text-xs">
+                            "15秒抓住观众注意力..."
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MV音乐视频 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">🎵</div>
+                        <h3 class="text-lg font-bold text-music-red">MV工作室</h3>
+                        <p class="text-sm text-gray-600">音画结合，艺术表达</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-music-red/10 rounded-lg p-2 text-center text-sm">节拍同步</div>
+                        <div class="bg-music-red/10 rounded-lg p-2 text-center text-sm">视觉律动</div>
+                        <div class="bg-music-red/10 rounded-lg p-2 text-center text-sm">情感表达</div>
+                        <div class="bg-music-red/20 rounded-lg p-2 text-center text-xs">
+                            "用画面诠释音乐的灵魂..."
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI导演实战挑战 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-cinema-purple mb-6">
+                    🏆 AI导演实战挑战
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    通过制作挑战，成为真正的AI视频导演
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- 挑战1：30秒科幻短片 -->
+                <div class="bg-gradient-to-br from-cinema-blue/10 to-electric-blue/10 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">🚀</div>
+                        <h3 class="text-xl font-bold text-cinema-blue">挑战1：科幻微电影</h3>
+                        <p class="text-gray-600 mt-2">30秒未来世界短片</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-cinema-blue/10 rounded-2xl p-4">
+                            <h4 class="font-bold text-cinema-blue mb-2">🛸 故事设定</h4>
+                            <div class="space-y-2">
+                                <div class="bg-white rounded-lg p-2 text-center text-sm">主题：2050年的一天</div>
+                                <div class="bg-white rounded-lg p-2 text-center text-sm">场景：未来城市</div>
+                                <div class="bg-white rounded-lg p-2 text-center text-sm">角色：AI和人类</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border-2 border-cinema-blue/20 rounded-2xl p-4">
+                            <h4 class="font-bold text-cinema-blue mb-2">🎯 技术要求</h4>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>• 使用Runway ML制作</li>
+                                <li>• 包含3个不同场景</li>
+                                <li>• 至少2种特效</li>
+                                <li>• 配有背景音乐</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 挑战2：教育动画 -->
+                <div class="bg-gradient-to-br from-magic-purple/10 to-magic-pink/10 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">📚</div>
+                        <h3 class="text-xl font-bold text-magic-purple">挑战2：知识动画片</h3>
+                        <p class="text-gray-600 mt-2">1分钟知识科普动画</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-magic-purple/10 rounded-2xl p-4">
+                            <h4 class="font-bold text-magic-purple mb-2">📖 主题选择</h4>
+                            <div class="space-y-2">
+                                <div class="bg-white rounded-lg p-2 text-center text-sm">🌱 植物生长</div>
+                                <div class="bg-white rounded-lg p-2 text-center text-sm">⚗️ 化学反应</div>
+                                <div class="bg-white rounded-lg p-2 text-center text-sm">🌍 地球运转</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border-2 border-magic-purple/20 rounded-2xl p-4">
+                            <h4 class="font-bold text-magic-purple mb-2">🎨 制作要求</h4>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>• 知识点清晰准确</li>
+                                <li>• 动画生动有趣</li>
+                                <li>• 适合儿童理解</li>
+                                <li>• 有教育意义</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 挑战3：音乐MV -->
+                <div class="bg-gradient-to-br from-cinema-gold/10 to-music-red/10 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">🎵</div>
+                        <h3 class="text-xl font-bold text-cinema-gold">挑战3：原创音乐MV</h3>
+                        <p class="text-gray-600 mt-2">结合第7课音乐作品</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-cinema-gold/10 rounded-2xl p-4">
+                            <h4 class="font-bold text-cinema-gold mb-2">🎼 音画结合</h4>
+                            <div class="space-y-2">
+                                <div class="bg-white rounded-lg p-2 text-center text-sm">使用第7课音乐</div>
+                                <div class="bg-white rounded-lg p-2 text-center text-sm">视觉跟随节拍</div>
+                                <div class="bg-white rounded-lg p-2 text-center text-sm">情感氛围匹配</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border-2 border-cinema-gold/20 rounded-2xl p-4">
+                            <h4 class="font-bold text-cinema-gold mb-2">🌟 创作要点</h4>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>• 画面与音乐同步</li>
+                                <li>• 表达歌曲主题</li>
+                                <li>• 视觉效果丰富</li>
+                                <li>• 故事性强</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Runway ML 实战工作台 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-cinema-red mb-6">
+                    🎬 Runway ML 实战工作台
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    学会用最先进的AI工具制作专业视频
+                </p>
+            </div>
+
+            <!-- 制作界面演示 -->
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden mb-12">
+                <div class="bg-gradient-to-r from-cinema-red to-cinema-gold text-white p-6">
+                    <div class="flex items-center">
+                        <div class="text-4xl mr-4">🎥</div>
+                        <div>
+                            <h3 class="text-2xl font-bold">AI视频制作实战</h3>
+                            <p class="opacity-90">从创意到成片的完整制作流程</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-8">
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <!-- 左侧：制作步骤 -->
+                        <div>
+                            <h4 class="text-xl font-bold text-cinema-red mb-6">🎯 视频制作五步法</h4>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-cinema-red/10 rounded-2xl p-4">
+                                    <h5 class="font-bold text-cinema-red mb-2">步骤1：故事构思</h5>
+                                    <div class="bg-white rounded-lg p-3 text-sm">
+                                        <div class="font-mono mb-2">"A little girl discovers a magical garden where flowers dance"</div>
+                                        <div class="text-xs text-gray-600">确定视频的核心故事和主题</div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-cinema-gold/10 rounded-2xl p-4">
+                                    <h5 class="font-bold text-cinema-gold mb-2">步骤2：视觉风格</h5>
+                                    <div class="bg-white rounded-lg p-3 text-sm">
+                                        <div class="font-mono mb-2">"Watercolor animation style, soft lighting, dreamy atmosphere"</div>
+                                        <div class="text-xs text-gray-600">设定画面风格、色调和视觉效果</div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-cinema-purple/10 rounded-2xl p-4">
+                                    <h5 class="font-bold text-cinema-purple mb-2">步骤3：运动设计</h5>
+                                    <div class="bg-white rounded-lg p-3 text-sm">
+                                        <div class="font-mono mb-2">"Gentle camera movement, flowers swaying, girl walking slowly"</div>
+                                        <div class="text-xs text-gray-600">设计镜头运动和物体动作</div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-cinema-blue/10 rounded-2xl p-4">
+                                    <h5 class="font-bold text-cinema-blue mb-2">步骤4：时长节奏</h5>
+                                    <div class="bg-white rounded-lg p-3 text-sm">
+                                        <div class="font-mono mb-2">"15 seconds, slow pace, 3 scene transitions"</div>
+                                        <div class="text-xs text-gray-600">确定视频时长和节奏变化</div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-cinema-emerald/10 rounded-2xl p-4">
+                                    <h5 class="font-bold text-cinema-emerald mb-2">步骤5：后期优化</h5>
+                                    <div class="bg-white rounded-lg p-3 text-sm">
+                                        <div class="font-mono mb-2">"Add background music, color grading, smooth transitions"</div>
+                                        <div class="text-xs text-gray-600">添加音效、调色和过渡效果</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 右侧：生成演示 -->
+                        <div>
+                            <h4 class="text-xl font-bold text-cinema-gold mb-6">🎬 实时制作演示</h4>
+                            
+                            <!-- 模拟Runway界面 -->
+                            <div class="bg-gray-900 rounded-2xl p-4 space-y-4">
+                                <!-- 项目信息 -->
+                                <div class="text-center text-white mb-4">
+                                    <div class="text-cinema-red text-sm mb-2">🎬 项目：魔法花园</div>
+                                    <div class="flex items-center justify-center space-x-2">
+                                        <span class="w-2 h-6 bg-cinema-red rounded frequency-bounce"></span>
+                                        <span class="w-2 h-8 bg-cinema-gold rounded frequency-bounce"></span>
+                                        <span class="w-2 h-6 bg-cinema-purple rounded frequency-bounce"></span>
+                                        <span class="w-2 h-10 bg-cinema-blue rounded frequency-bounce"></span>
+                                        <span class="w-2 h-7 bg-cinema-emerald rounded frequency-bounce"></span>
+                                    </div>
+                                    <div class="text-xs text-gray-400 mt-2">正在渲染中... 73%</div>
+                                </div>
+
+                                <!-- 时间轴 -->
+                                <div class="bg-gray-800 rounded-lg p-3">
+                                    <div class="text-white text-xs mb-2">时间轴</div>
+                                    <div class="space-y-2">
+                                        <div class="bg-cinema-red/30 rounded h-4 relative">
+                                            <div class="absolute left-2 top-1 text-white text-xs">场景1：发现花园</div>
+                                        </div>
+                                        <div class="bg-cinema-gold/30 rounded h-4 relative">
+                                            <div class="absolute left-2 top-1 text-white text-xs">场景2：花朵舞蹈</div>
+                                        </div>
+                                        <div class="bg-cinema-purple/30 rounded h-4 relative">
+                                            <div class="absolute left-2 top-1 text-white text-xs">场景3：魔法绽放</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 渲染进度 -->
+                                <div class="bg-gray-800 rounded-lg p-3">
+                                    <div class="text-white text-xs mb-2">渲染进度</div>
+                                    <div class="w-full bg-gray-600 rounded-full h-2">
+                                        <div class="bg-gradient-to-r from-cinema-red to-cinema-gold h-2 rounded-full video-render" style="width: 73%;"></div>
+                                    </div>
+                                    <div class="text-xs text-gray-400 mt-1">预计还需要 2分钟</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 学生视频作品影院 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-cinema-purple mb-6">
+                    🎭 学生作品影院
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    欣赏同学们创作的精彩AI视频作品
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 作品1：时光倒流 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">⏰</div>
+                        <h3 class="text-xl font-bold text-cinema-red">《时光倒流》</h3>
+                        <p class="text-sm text-gray-500">小宇 × Runway ML</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-cinema-red/10 rounded-lg p-3">
+                            <div class="text-sm text-gray-700 mb-2">
+                                一个关于时间旅行的奇幻短片，AI生成的特效让时间倒流的场景非常震撼...
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between items-center text-xs">
+                            <div class="text-cinema-red">🚀 科幻类型</div>
+                            <div class="text-amber-600">⭐ 创意指数：★★★★★</div>
+                        </div>
+
+                        <div class="bg-cinema-red/20 rounded-lg p-3 text-center">
+                            <div class="text-xs text-cinema-red font-semibold">
+                                时间特效 + 未来场景 + 震撼音效
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作品2：小动物历险记 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">🐰</div>
+                        <h3 class="text-xl font-bold text-magic-purple">《小兔历险记》</h3>
+                        <p class="text-sm text-gray-500">小萱 × Pika Labs</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-magic-purple/10 rounded-lg p-3">
+                            <div class="text-sm text-gray-700 mb-2">
+                                可爱的动画风格，讲述小兔子探险的故事，AI生成的动物动作非常自然生动...
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between items-center text-xs">
+                            <div class="text-magic-purple">🎨 动画类型</div>
+                            <div class="text-amber-600">⭐ 可爱指数：★★★★★</div>
+                        </div>
+
+                        <div class="bg-magic-purple/20 rounded-lg p-3 text-center">
+                            <div class="text-xs text-magic-purple font-semibold">
+                                流畅动画 + 萌趣角色 + 冒险情节
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作品3：科学实验 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">⚗️</div>
+                        <h3 class="text-xl font-bold text-cinema-emerald">《神奇实验室》</h3>
+                        <p class="text-sm text-gray-500">小杰 × Synthesia</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-cinema-emerald/10 rounded-lg p-3">
+                            <div class="text-sm text-gray-700 mb-2">
+                                教育性强的科学实验视频，AI虚拟老师讲解实验过程，寓教于乐效果很好...
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between items-center text-xs">
+                            <div class="text-cinema-emerald">📚 教育类型</div>
+                            <div class="text-amber-600">⭐ 教学性：★★★★★</div>
+                        </div>
+
+                        <div class="bg-cinema-emerald/20 rounded-lg p-3 text-center">
+                            <div class="text-xs text-cinema-emerald font-semibold">
+                                AI主播 + 实验演示 + 知识讲解
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 课程总结 -->
+    <section class="py-20 bg-gradient-to-br from-cinema-red via-cinema-gold to-cinema-purple text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold font-display mb-8">
+                🎓 恭喜成为AI导演！
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">🎬</div>
+                    <h3 class="font-bold mb-2">制作工具</h3>
+                    <p class="text-sm opacity-90">Runway、Pika等专业工具</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">🎭</div>
+                    <h3 class="font-bold mb-2">视频类型</h3>
+                    <p class="text-sm opacity-90">8种不同风格视频</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">🎵</div>
+                    <h3 class="font-bold mb-2">音画结合</h3>
+                    <p class="text-sm opacity-90">完整多媒体创作技能</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">🏆</div>
+                    <h3 class="font-bold mb-2">导演能力</h3>
+                    <p class="text-sm opacity-90">独立完成视频制作</p>
+                </div>
+            </div>
+
+            <div class="bg-white/10 rounded-3xl p-8 backdrop-blur-sm mb-12">
+                <h3 class="text-2xl font-bold mb-4">📝 导演任务</h3>
+                <div class="grid md:grid-cols-3 gap-4 text-left">
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">🎬 短片制作</h4>
+                        <p class="text-sm opacity-90">选择一个主题，制作30秒的AI短片作品</p>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">🎵 MV创作</h4>
+                        <p class="text-sm opacity-90">为第7课创作的音乐制作配套音乐视频</p>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">📚 预习任务</h4>
+                        <p class="text-sm opacity-90">整理前9课学到的技能，为综合项目实战做准备</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="lesson-10.html" class="bg-white text-cinema-red px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                    🚀 下一课：综合项目实战
+                </a>
+                <a href="lesson-08.html" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-cinema-red transition-all duration-300">
+                    🔙 上一课：语音合成技术
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4">🏭 AI智造学院</h3>
+                    <p class="text-gray-300 mb-4">
+                        Aura school AI教育平台 - 培养面向未来的AI创新人才
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-qq text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">课程导航</h4>
+                    <ul class="space-y-2">
+                        <li><a href="lesson-08.html" class="text-gray-300 hover:text-white transition-colors">第8课</a></li>
+                        <li><a href="lesson-10.html" class="text-gray-300 hover:text-white transition-colors">第10课</a></li>
+                        <li><a href="course-schedule.html" class="text-gray-300 hover:text-white transition-colors">课程安排</a></li>
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">学院首页</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">其他平台</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../ai-learning/index.html" class="text-gray-300 hover:text-white transition-colors">AI元能力课程</a></li>
+                        <li><a href="../ai-coding/index.html" class="text-gray-300 hover:text-white transition-colors">AI代码魔术课堂</a></li>
+                        <li><a href="../../index.html" class="text-gray-300 hover:text-white transition-colors">返回主站</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2024 Aura school AI教育平台. 保留所有权利.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>

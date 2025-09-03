@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第6课：提示词工程 - AI智造学院 | Aura school AI教育平台</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-blue': '#1e3a8a',
+                        'cosmic-purple': '#4c1d95',
+                        'neon-green': '#22c55e',
+                        'electric-blue': '#3b82f6',
+                        'sophisticated-gray': '#64748b',
+                        'space-dark': '#0f172a',
+                        'space-purple': '#6366f1',
+                        'ai-cyan': '#06b6d4',
+                        'magic-purple': '#6366f1',
+                        'magic-pink': '#f472b6',
+                        'magic-blue': '#3b82f6',
+                        'magic-green': '#10b981',
+                        'magic-orange': '#f59e0b',
+                        'conductor-gold': '#f59e0b',
+                        'conductor-royal': '#7c3aed',
+                        'conductor-silver': '#64748b'
+                    },
+                    fontFamily: {
+                        'display': ['"Noto Sans SC"', 'sans-serif'],
+                        'body': ['"Noto Sans SC"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        .conductor-wave {
+            animation: conductorWave 4s ease-in-out infinite;
+        }
+        @keyframes conductorWave {
+            0%, 100% { transform: rotate(-10deg) translateY(0px); }
+            25% { transform: rotate(5deg) translateY(-5px); }
+            50% { transform: rotate(-15deg) translateY(-8px); }
+            75% { transform: rotate(8deg) translateY(-3px); }
+        }
+        .music-note {
+            animation: musicNote 3s ease-in-out infinite;
+        }
+        .music-note:nth-child(2) { animation-delay: 0.5s; }
+        .music-note:nth-child(3) { animation-delay: 1s; }
+        .music-note:nth-child(4) { animation-delay: 1.5s; }
+        @keyframes musicNote {
+            0%, 100% { 
+                opacity: 0.6; 
+                transform: translateY(0px) scale(1); 
+            }
+            50% { 
+                opacity: 1; 
+                transform: translateY(-20px) scale(1.1); 
+            }
+        }
+        .symphony-glow {
+            animation: symphonyGlow 5s ease-in-out infinite;
+        }
+        @keyframes symphonyGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(124, 58, 237, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(124, 58, 237, 0.6); }
+        }
+        .prompt-build {
+            animation: promptBuild 2s ease-in-out;
+        }
+        @keyframes promptBuild {
+            0% { width: 0%; opacity: 0; }
+            100% { width: 100%; opacity: 1; }
+        }
+    </style>
+</head>
+<body class="font-body text-gray-900 bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../../index.html" class="text-2xl font-bold font-display text-cosmic-purple">
+                        🚀 Aura school
+                    </a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <a href="index.html" class="text-lg font-semibold text-electric-blue">🏭 AI智造学院</a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <span class="text-sophisticated-gray">第6课</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="lesson-05.html" class="nav-link">上一课</a>
+                        <a href="course-schedule.html" class="nav-link">课程安排</a>
+                        <a href="courses.html" class="nav-link">课程总览</a>
+                        <a href="../../index.html" class="nav-link">返回主站</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-16 bg-gradient-to-br from-conductor-gold via-conductor-royal to-cosmic-purple overflow-hidden">
+        <!-- 音乐和指挥装饰元素 -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="music-note absolute top-1/4 left-1/6 text-4xl text-white/80">🎵</div>
+            <div class="music-note absolute top-1/3 right-1/4 text-3xl text-white/80">🎶</div>
+            <div class="music-note absolute bottom-1/4 left-1/3 text-5xl text-white/80">🎼</div>
+            <div class="music-note absolute top-1/5 right-1/3 text-4xl text-white/80">♪</div>
+            <div class="conductor-wave absolute bottom-1/6 right-1/6 text-6xl text-white/90">🎭</div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <!-- 课程标识 -->
+            <div class="inline-flex items-center bg-white/20 rounded-full px-6 py-3 mb-8">
+                <span class="text-2xl mr-3">🎭</span>
+                <span class="font-semibold">第6课 · 模块二：文本与图像创作</span>
+                <span class="ml-3 bg-white/30 rounded-full px-3 py-1 text-sm">第6周</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold font-display mb-6">
+                🎼 提示词工程
+            </h1>
+            
+            <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-4xl mx-auto">
+                欢迎来到AI指挥家学院！学会指挥AI演奏出完美的创作交响乐
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 max-w-3xl mx-auto">
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">2</div>
+                    <div class="text-sm opacity-80">课时</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">5</div>
+                    <div class="text-sm opacity-80">指挥技法</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">12+</div>
+                    <div class="text-sm opacity-80">提示词模板</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">中级</div>
+                    <div class="text-sm opacity-80">难度等级</div>
+                </div>
+            </div>
+
+            <!-- 课程目标卡片 -->
+            <div class="bg-white/10 rounded-2xl p-6 max-w-4xl mx-auto backdrop-blur-sm">
+                <h2 class="text-2xl font-bold mb-4">🎯 本课学习目标</h2>
+                <div class="grid md:grid-cols-2 gap-4 text-left">
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-conductor-gold rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">1</span>
+                        <span>掌握提示词工程的核心原理</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-conductor-royal rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">2</span>
+                        <span>学会五大指挥技法</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-electric-blue rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">3</span>
+                        <span>掌握高级提示词构建方法</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-magic-pink rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">4</span>
+                        <span>成为AI创作的优秀指挥家</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI指挥家学院介绍 -->
+    <section class="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-conductor-royal mb-6">
+                    🏛️ 欢迎来到AI指挥家学院！
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    在这座音乐殿堂里，你将学会指挥AI演奏出最完美的创作乐章
+                </p>
+            </div>
+
+            <!-- 学院介绍 -->
+            <div class="bg-gradient-to-br from-conductor-royal/10 to-conductor-gold/10 rounded-3xl p-8 mb-12">
+                <div class="text-center mb-8">
+                    <div class="text-6xl mb-4">🎼</div>
+                    <h3 class="text-2xl font-bold text-conductor-royal mb-4">AI指挥家学院的使命</h3>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🎭</div>
+                        <h4 class="font-bold text-conductor-royal mb-2">你（见习指挥）</h4>
+                        <p class="text-sm text-gray-600">刚进入学院的指挥新手，渴望掌握AI指挥艺术</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3 symphony-glow">🤖</div>
+                        <h4 class="font-bold text-conductor-gold mb-2">AI乐团</h4>
+                        <p class="text-sm text-gray-600">才华横溢的虚拟乐团，等待你的精准指挥</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3 conductor-wave">🎯</div>
+                        <h4 class="font-bold text-electric-blue mb-2">指挥棒</h4>
+                        <p class="text-sm text-gray-600">神奇的提示词，就是你手中的指挥棒</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-white/50 rounded-2xl p-6 text-center">
+                    <p class="text-gray-700 text-lg">
+                        <strong class="text-conductor-royal">提示词工程</strong>就像指挥交响乐一样，
+                        <strong class="text-conductor-gold">你的每一个手势（提示词）都能让AI奏出不同的乐章！</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 五大指挥技法 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-conductor-royal mb-6">
+                    🎼 五大指挥技法
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    掌握这些技法，让你的AI乐团演奏出完美的作品
+                </p>
+            </div>
+
+            <div class="space-y-12">
+                <!-- 技法1：角色扮演法 -->
+                <div class="grid lg:grid-cols-2 gap-8 items-center">
+                    <div class="bg-gradient-to-br from-conductor-royal/10 to-magic-purple/10 rounded-3xl p-8">
+                        <div class="text-center mb-6">
+                            <div class="text-6xl mb-4">🎭</div>
+                            <h3 class="text-2xl font-bold text-conductor-royal">技法一：角色扮演法</h3>
+                            <p class="text-gray-600 mt-2">让AI扮演专业角色，获得专业回答</p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="bg-white rounded-2xl p-4">
+                                <h4 class="font-bold text-conductor-royal mb-2">🎪 角色设定示例</h4>
+                                <div class="text-sm text-gray-700 space-y-2">
+                                    <div class="bg-conductor-royal/10 rounded-lg p-2">"你是一位经验丰富的儿童心理学家"</div>
+                                    <div class="bg-conductor-royal/10 rounded-lg p-2">"你是一位创意写作导师"</div>
+                                    <div class="bg-conductor-royal/10 rounded-lg p-2">"你是一位专业的艺术评论家"</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-3xl shadow-xl p-6">
+                        <h4 class="font-bold text-conductor-royal mb-4 text-center">🎯 实战对比</h4>
+                        
+                        <div class="space-y-4">
+                            <!-- 普通提示 -->
+                            <div>
+                                <div class="bg-gray-100 rounded-lg p-3 mb-2">
+                                    <div class="text-xs text-gray-500 mb-1">❌ 普通指挥：</div>
+                                    <div class="text-sm">"写一个关于友谊的故事"</div>
+                                </div>
+                                <div class="bg-gray-50 rounded-lg p-3">
+                                    <div class="text-xs text-gray-600">结果：平淡的故事，缺乏深度</div>
+                                </div>
+                            </div>
+
+                            <!-- 角色扮演提示 -->
+                            <div>
+                                <div class="bg-conductor-royal/10 rounded-lg p-3 mb-2">
+                                    <div class="text-xs text-conductor-royal mb-1">✅ 专业指挥：</div>
+                                    <div class="text-sm">"你是一位儿童文学作家。请创作一个温馨的友谊故事，要符合8-10岁儿童的阅读习惯..."</div>
+                                </div>
+                                <div class="bg-conductor-royal/5 rounded-lg p-3">
+                                    <div class="text-xs text-conductor-royal">结果：专业性强，细节丰富，更符合需求</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 技法2：分步引导法 -->
+                <div class="grid lg:grid-cols-2 gap-8 items-center">
+                    <div class="bg-white rounded-3xl shadow-xl p-6 order-2 lg:order-1">
+                        <h4 class="font-bold text-conductor-gold mb-4 text-center">📋 分步骤演示</h4>
+                        
+                        <div class="space-y-3">
+                            <div class="bg-conductor-gold/10 rounded-lg p-3">
+                                <div class="text-xs text-conductor-gold mb-1">第1步：</div>
+                                <div class="text-sm">"首先，帮我分析这个主题的核心要素"</div>
+                            </div>
+                            <div class="bg-conductor-gold/10 rounded-lg p-3">
+                                <div class="text-xs text-conductor-gold mb-1">第2步：</div>
+                                <div class="text-sm">"基于分析，设计故事的基本框架"</div>
+                            </div>
+                            <div class="bg-conductor-gold/10 rounded-lg p-3">
+                                <div class="text-xs text-conductor-gold mb-1">第3步：</div>
+                                <div class="text-sm">"现在请详细展开第一部分的内容"</div>
+                            </div>
+                            <div class="bg-conductor-gold/10 rounded-lg p-3">
+                                <div class="text-xs text-conductor-gold mb-1">第4步：</div>
+                                <div class="text-sm">"最后，请优化语言表达和细节描写"</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-conductor-gold/10 to-magic-orange/10 rounded-3xl p-8 order-1 lg:order-2">
+                        <div class="text-center mb-6">
+                            <div class="text-6xl mb-4">🎯</div>
+                            <h3 class="text-2xl font-bold text-conductor-gold">技法二：分步引导法</h3>
+                            <p class="text-gray-600 mt-2">把复杂任务分解成简单步骤</p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="bg-white rounded-2xl p-4">
+                                <h4 class="font-bold text-conductor-gold mb-2">🧩 分解原理</h4>
+                                <div class="text-sm text-gray-700 space-y-1">
+                                    <div>• 复杂任务→简单步骤</div>
+                                    <div>• 每步都有明确目标</div>
+                                    <div>• 逐步完善和优化</div>
+                                    <div>• 确保逻辑清晰连贯</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 技法3：示例演示法 -->
+                <div class="grid lg:grid-cols-2 gap-8 items-center">
+                    <div class="bg-gradient-to-br from-electric-blue/10 to-ai-cyan/10 rounded-3xl p-8">
+                        <div class="text-center mb-6">
+                            <div class="text-6xl mb-4">📝</div>
+                            <h3 class="text-2xl font-bold text-electric-blue">技法三：示例演示法</h3>
+                            <p class="text-gray-600 mt-2">用具体示例引导AI理解你的需求</p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="bg-white rounded-2xl p-4">
+                                <h4 class="font-bold text-electric-blue mb-2">💡 示例原理</h4>
+                                <div class="text-sm text-gray-700 space-y-1">
+                                    <div>• 提供具体范例</div>
+                                    <div>• 展示期望格式</div>
+                                    <div>• 明确质量标准</div>
+                                    <div>• 让AI模仿学习</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-3xl shadow-xl p-6">
+                        <h4 class="font-bold text-electric-blue mb-4 text-center">🌟 示例对比</h4>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-gray-100 rounded-lg p-3">
+                                <div class="text-xs text-gray-500 mb-1">❌ 模糊指挥：</div>
+                                <div class="text-sm">"帮我写诗"</div>
+                            </div>
+
+                            <div class="bg-electric-blue/10 rounded-lg p-3">
+                                <div class="text-xs text-electric-blue mb-1">✅ 示例指挥：</div>
+                                <div class="text-sm">"请模仿下面的格式写一首儿童诗：<br>
+                                示例：小鸟飞（第一行）<br>
+                                　　　树上栖（第二行，缩进）<br>
+                                　　　唱歌声声脆（第三行，缩进）"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 技法4：约束条件法 -->
+                <div class="grid lg:grid-cols-2 gap-8 items-center">
+                    <div class="bg-white rounded-3xl shadow-xl p-6 order-2 lg:order-1">
+                        <h4 class="font-bold text-magic-green mb-4 text-center">⚖️ 约束示例</h4>
+                        
+                        <div class="space-y-3">
+                            <div class="bg-magic-green/10 rounded-lg p-3">
+                                <div class="font-semibold text-magic-green text-sm mb-1">字数约束：</div>
+                                <div class="text-xs">"请控制在200字以内"</div>
+                            </div>
+                            <div class="bg-magic-green/10 rounded-lg p-3">
+                                <div class="font-semibold text-magic-green text-sm mb-1">风格约束：</div>
+                                <div class="text-xs">"语言要活泼生动，适合儿童"</div>
+                            </div>
+                            <div class="bg-magic-green/10 rounded-lg p-3">
+                                <div class="font-semibold text-magic-green text-sm mb-1">格式约束：</div>
+                                <div class="text-xs">"分为三段，每段一个要点"</div>
+                            </div>
+                            <div class="bg-magic-green/10 rounded-lg p-3">
+                                <div class="font-semibold text-magic-green text-sm mb-1">内容约束：</div>
+                                <div class="text-xs">"必须包含友谊、勇气、成长三个主题"</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-magic-green/10 to-neon-green/10 rounded-3xl p-8 order-1 lg:order-2">
+                        <div class="text-center mb-6">
+                            <div class="text-6xl mb-4">⚖️</div>
+                            <h3 class="text-2xl font-bold text-magic-green">技法四：约束条件法</h3>
+                            <p class="text-gray-600 mt-2">设定明确边界，让创作更精准</p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="bg-white rounded-2xl p-4">
+                                <h4 class="font-bold text-magic-green mb-2">🎯 约束类型</h4>
+                                <div class="text-sm text-gray-700 space-y-1">
+                                    <div>• 字数和篇幅限制</div>
+                                    <div>• 格式和结构要求</div>
+                                    <div>• 语言风格规范</div>
+                                    <div>• 内容主题限定</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 技法5：迭代优化法 -->
+                <div class="grid lg:grid-cols-2 gap-8 items-center">
+                    <div class="bg-gradient-to-br from-magic-pink/10 to-magic-orange/10 rounded-3xl p-8">
+                        <div class="text-center mb-6">
+                            <div class="text-6xl mb-4">🔄</div>
+                            <h3 class="text-2xl font-bold text-magic-pink">技法五：迭代优化法</h3>
+                            <p class="text-gray-600 mt-2">不断调整指挥，让乐曲更加完美</p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="bg-white rounded-2xl p-4">
+                                <h4 class="font-bold text-magic-pink mb-2">🔄 优化流程</h4>
+                                <div class="text-sm text-gray-700 space-y-1">
+                                    <div>• 初版创作→分析不足</div>
+                                    <div>• 调整提示→重新生成</div>
+                                    <div>• 局部修改→细节完善</div>
+                                    <div>• 最终确认→作品完成</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-3xl shadow-xl p-6">
+                        <h4 class="font-bold text-magic-pink mb-4 text-center">🎵 优化过程演示</h4>
+                        
+                        <div class="space-y-3">
+                            <div class="bg-gray-100 rounded-lg p-3">
+                                <div class="text-xs text-gray-500 mb-1">第1轮：</div>
+                                <div class="text-sm">"写一个关于小猫的故事" → 太简单</div>
+                            </div>
+                            <div class="bg-yellow-100 rounded-lg p-3">
+                                <div class="text-xs text-yellow-600 mb-1">第2轮：</div>
+                                <div class="text-sm">"写一个小猫克服困难的励志故事" → 方向更明确</div>
+                            </div>
+                            <div class="bg-magic-pink/20 rounded-lg p-3">
+                                <div class="text-xs text-magic-pink mb-1">第3轮：</div>
+                                <div class="text-sm">"创作一个小猫学游泳的故事，要展现勇气和坚持，适合8岁儿童，300字" → 完美！</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 指挥家训练营 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-conductor-royal mb-6">
+                    🏟️ 指挥家训练营
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    通过实战训练，成为优秀的AI指挥家！
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- 训练项目1：文字创作指挥 -->
+                <div class="bg-white rounded-3xl shadow-xl p-8">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">📚</div>
+                        <h3 class="text-xl font-bold text-conductor-royal">训练1：文字创作指挥</h3>
+                        <p class="text-gray-600 mt-2">指挥AI写出完美的作文</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- 任务设定 -->
+                        <div class="bg-conductor-royal/10 rounded-2xl p-4">
+                            <h4 class="font-bold text-conductor-royal mb-3">🎯 挑战任务</h4>
+                            <div class="bg-white rounded-lg p-3">
+                                <div class="text-sm font-semibold text-conductor-royal mb-2">题目：《我的AI朋友》</div>
+                                <div class="text-xs text-gray-600">
+                                    要求：记叙文，500字，要有具体事例，表达真挚情感
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 提示词构建 -->
+                        <div class="bg-white border-2 border-conductor-royal/20 rounded-2xl p-4">
+                            <h4 class="font-bold text-conductor-royal mb-3">🛠️ 你的指挥棒</h4>
+                            <textarea class="w-full h-24 border rounded-lg p-2 text-sm resize-none" placeholder="在这里写下你的提示词，指挥AI创作...
+
+示例开头：
+你是一位经验丰富的语文老师。请帮我写一篇题目为《我的AI朋友》的记叙文..."></textarea>
+                            <div class="mt-2 text-xs text-gray-500">
+                                💡 记住使用角色扮演、约束条件等技法哦！
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 训练项目2：图像创作指挥 -->
+                <div class="bg-white rounded-3xl shadow-xl p-8">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">🎨</div>
+                        <h3 class="text-xl font-bold text-conductor-gold">训练2：图像创作指挥</h3>
+                        <p class="text-gray-600 mt-2">指挥AI画出梦想中的画面</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- 图像任务 -->
+                        <div class="bg-conductor-gold/10 rounded-2xl p-4">
+                            <h4 class="font-bold text-conductor-gold mb-3">🎨 绘画任务</h4>
+                            <div class="bg-white rounded-lg p-3">
+                                <div class="text-sm font-semibold text-conductor-gold mb-2">主题：未来教室</div>
+                                <div class="text-xs text-gray-600">
+                                    要求：科幻风格，包含学生和AI老师，色彩明亮温馨
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 提示词模板 -->
+                        <div class="bg-white border-2 border-conductor-gold/20 rounded-2xl p-4">
+                            <h4 class="font-bold text-conductor-gold mb-3">🎭 提示词构建器</h4>
+                            
+                            <div class="space-y-3">
+                                <div>
+                                    <label class="text-xs text-gray-500">主体描述：</label>
+                                    <input type="text" class="w-full border rounded p-2 text-sm" placeholder="a futuristic classroom...">
+                                </div>
+                                <div>
+                                    <label class="text-xs text-gray-500">风格指定：</label>
+                                    <input type="text" class="w-full border rounded p-2 text-sm" placeholder="sci-fi style, bright colors...">
+                                </div>
+                                <div>
+                                    <label class="text-xs text-gray-500">环境背景：</label>
+                                    <input type="text" class="w-full border rounded p-2 text-sm" placeholder="modern school setting...">
+                                </div>
+                                <div>
+                                    <label class="text-xs text-gray-500">技术参数：</label>
+                                    <input type="text" class="w-full border rounded p-2 text-sm" placeholder="--ar 16:9 --stylize 100">
+                                </div>
+                            </div>
+
+                            <div class="mt-3 bg-conductor-gold/20 rounded-lg p-2">
+                                <div class="text-xs text-conductor-gold">
+                                    🎯 完整提示词将自动生成显示
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 高级指挥技巧 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-conductor-royal mb-6">
+                    🎭 高级指挥技巧大师班
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    掌握这些高级技巧，让你的AI指挥水平更上一层楼
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 技巧1：情感调色 -->
+                <div class="bg-gradient-to-br from-art-pink/10 to-magic-pink/10 rounded-3xl p-6 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-4xl mb-3">💝</div>
+                        <h3 class="text-lg font-bold text-art-pink">情感调色</h3>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-white rounded-lg p-3">
+                            <h4 class="font-semibold text-art-pink text-sm mb-1">温馨感</h4>
+                            <p class="text-xs text-gray-600">"warm, cozy, heartwarming"</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-3">
+                            <h4 class="font-semibold text-art-pink text-sm mb-1">神秘感</h4>
+                            <p class="text-xs text-gray-600">"mysterious, enigmatic"</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-3">
+                            <h4 class="font-semibold text-art-pink text-sm mb-1">激动感</h4>
+                            <p class="text-xs text-gray-600">"exciting, dynamic"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 技巧2：细节雕琢 -->
+                <div class="bg-gradient-to-br from-electric-blue/10 to-ai-cyan/10 rounded-3xl p-6 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-4xl mb-3">🔍</div>
+                        <h3 class="text-lg font-bold text-electric-blue">细节雕琢</h3>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-white rounded-lg p-3">
+                            <h4 class="font-semibold text-electric-blue text-sm mb-1">材质描述</h4>
+                            <p class="text-xs text-gray-600">"crystal clear, velvet soft"</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-3">
+                            <h4 class="font-semibold text-electric-blue text-sm mb-1">光影效果</h4>
+                            <p class="text-xs text-gray-600">"golden hour lighting"</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-3">
+                            <h4 class="font-semibold text-electric-blue text-sm mb-1">动作状态</h4>
+                            <p class="text-xs text-gray-600">"gently floating, peacefully"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 技巧3：风格融合 -->
+                <div class="bg-gradient-to-br from-magic-green/10 to-neon-green/10 rounded-3xl p-6 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-4xl mb-3">🎭</div>
+                        <h3 class="text-lg font-bold text-magic-green">风格融合</h3>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-white rounded-lg p-3">
+                            <h4 class="font-semibold text-magic-green text-sm mb-1">经典+现代</h4>
+                            <p class="text-xs text-gray-600">"classical art meets cyberpunk"</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-3">
+                            <h4 class="font-semibold text-magic-green text-sm mb-1">东方+西方</h4>
+                            <p class="text-xs text-gray-600">"traditional Chinese + anime"</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-3">
+                            <h4 class="font-semibold text-magic-green text-sm mb-1">多重风格</h4>
+                            <p class="text-xs text-gray-600">"watercolor + digital art"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 技巧4：创意突破 -->
+                <div class="bg-gradient-to-br from-magic-orange/10 to-conductor-gold/10 rounded-3xl p-6 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-4xl mb-3">💡</div>
+                        <h3 class="text-lg font-bold text-magic-orange">创意突破</h3>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-white rounded-lg p-3">
+                            <h4 class="font-semibold text-magic-orange text-sm mb-1">反常规组合</h4>
+                            <p class="text-xs text-gray-600">"古代武士使用电脑"</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-3">
+                            <h4 class="font-semibold text-magic-orange text-sm mb-1">视角切换</h4>
+                            <p class="text-xs text-gray-600">"从蚂蚁的视角看世界"</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-3">
+                            <h4 class="font-semibold text-magic-orange text-sm mb-1">时空穿越</h4>
+                            <p class="text-xs text-gray-600">"现代学校在古代"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 指挥家大师赛 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-conductor-royal mb-6">
+                    🏆 指挥家大师赛
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    用你学到的所有技法，参加终极指挥挑战！
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- 挑战1：完美复刻 -->
+                <div class="bg-gradient-to-br from-conductor-royal/10 to-electric-blue/10 rounded-3xl p-8 text-center">
+                    <div class="text-6xl mb-6">🎯</div>
+                    <h3 class="text-xl font-bold text-conductor-royal mb-4">挑战1：完美复刻</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-2xl p-4 text-left">
+                            <h4 class="font-bold text-conductor-royal mb-2">🎪 比赛规则</h4>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>1. 给出一幅参考图片</li>
+                                <li>2. 用提示词让AI复刻</li>
+                                <li>3. 看谁的结果最相似</li>
+                                <li>4. 限时15分钟完成</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-conductor-royal/20 rounded-2xl p-3">
+                            <div class="text-sm font-bold text-conductor-royal">⭐ 评分标准</div>
+                            <div class="text-xs text-gray-600 mt-1">相似度60% + 提示词质量40%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 挑战2：创意指挥 -->
+                <div class="bg-gradient-to-br from-conductor-gold/10 to-magic-orange/10 rounded-3xl p-8 text-center">
+                    <div class="text-6xl mb-6">💡</div>
+                    <h3 class="text-xl font-bold text-conductor-gold mb-4">挑战2：创意指挥</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-2xl p-4 text-left">
+                            <h4 class="font-bold text-conductor-gold mb-2">🚀 创新要求</h4>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>1. 主题：《2050年的学校》</li>
+                                <li>2. 必须包含3个创新元素</li>
+                                <li>3. 融合至少2种艺术风格</li>
+                                <li>4. 展示并解释创意思路</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-conductor-gold/20 rounded-2xl p-3">
+                            <div class="text-sm font-bold text-conductor-gold">🌟 获胜秘诀</div>
+                            <div class="text-xs text-gray-600 mt-1">独特创意 + 技术实现 + 表达清晰</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 挑战3：协作指挥 -->
+                <div class="bg-gradient-to-br from-magic-pink/10 to-art-pink/10 rounded-3xl p-8 text-center">
+                    <div class="text-6xl mb-6">🤝</div>
+                    <h3 class="text-xl font-bold text-magic-pink mb-4">挑战3：协作指挥</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-2xl p-4 text-left">
+                            <h4 class="font-bold text-magic-pink mb-2">👥 团队任务</h4>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>1. 3人一组协作创作</li>
+                                <li>2. 分别负责文字、图像、整合</li>
+                                <li>3. 制作完整的故事绘本</li>
+                                <li>4. 展示创作过程和成果</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-magic-pink/20 rounded-2xl p-3">
+                            <div class="text-sm font-bold text-magic-pink">🎯 协作要点</div>
+                            <div class="text-xs text-gray-600 mt-1">统一风格 + 清晰分工 + 有效沟通</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 课程总结 -->
+    <section class="py-20 bg-gradient-to-br from-conductor-gold via-conductor-royal to-cosmic-purple text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold font-display mb-8">
+                🎓 恭喜成为AI指挥家！
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">🎭</div>
+                    <h3 class="font-bold mb-2">角色扮演</h3>
+                    <p class="text-sm opacity-90">让AI扮演专业角色</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="font-bold mb-2">分步引导</h3>
+                    <p class="text-sm opacity-90">复杂任务分解执行</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">📝</div>
+                    <h3 class="font-bold mb-2">示例演示</h3>
+                    <p class="text-sm opacity-90">用具体案例引导AI</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">⚖️</div>
+                    <h3 class="font-bold mb-2">约束条件</h3>
+                    <p class="text-sm opacity-90">设定明确创作边界</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">🔄</div>
+                    <h3 class="font-bold mb-2">迭代优化</h3>
+                    <p class="text-sm opacity-90">不断改进达到完美</p>
+                </div>
+            </div>
+
+            <div class="bg-white/10 rounded-3xl p-8 backdrop-blur-sm mb-12">
+                <h3 class="text-2xl font-bold mb-4">📝 指挥家任务</h3>
+                <div class="grid md:grid-cols-3 gap-4 text-left">
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">🎼 技能练习</h4>
+                        <p class="text-sm opacity-90">每天练习一种指挥技法，记录使用效果和心得</p>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">🏆 挑战完成</h4>
+                        <p class="text-sm opacity-90">完成三个指挥家挑战，展示你的指挥技艺</p>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">📚 预习任务</h4>
+                        <p class="text-sm opacity-90">思考：AI能创作音乐吗？为下节课"AI音乐创作"做准备</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="course-schedule.html" class="bg-white text-conductor-royal px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                    📅 返回课程安排
+                </a>
+                <a href="lesson-05.html" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-conductor-royal transition-all duration-300">
+                    🔙 上一课：AI图像生成
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4">🏭 AI智造学院</h3>
+                    <p class="text-gray-300 mb-4">
+                        Aura school AI教育平台 - 培养面向未来的AI创新人才
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-qq text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">课程导航</h4>
+                    <ul class="space-y-2">
+                        <li><a href="lesson-05.html" class="text-gray-300 hover:text-white transition-colors">第5课</a></li>
+                        <li><a href="course-schedule.html" class="text-gray-300 hover:text-white transition-colors">课程安排</a></li>
+                        <li><a href="courses.html" class="text-gray-300 hover:text-white transition-colors">课程总览</a></li>
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">学院首页</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">其他平台</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../ai-learning/index.html" class="text-gray-300 hover:text-white transition-colors">AI元能力课程</a></li>
+                        <li><a href="../ai-coding/index.html" class="text-gray-300 hover:text-white transition-colors">AI代码魔术课堂</a></li>
+                        <li><a href="../../index.html" class="text-gray-300 hover:text-white transition-colors">返回主站</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2024 Aura school AI教育平台. 保留所有权利.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>

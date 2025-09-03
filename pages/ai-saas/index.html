@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI SAAS - 一站式AI创作与伴学SaaS平台</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-blue': '#1e3a8a',
+                        'cosmic-purple': '#4c1d95',
+                        'neon-green': '#22c55e',
+                        'electric-blue': '#3b82f6',
+                        'sophisticated-gray': '#64748b',
+                        'space-dark': '#0f172a',
+                        'space-purple': '#6366f1',
+                        'ai-cyan': '#06b6d4',
+                        'magic-purple': '#6366f1',
+                        'magic-pink': '#f472b6',
+                        'magic-blue': '#3b82f6',
+                        'magic-green': '#10b981',
+                        'magic-orange': '#f59e0b'
+                    },
+                    fontFamily: {
+                        'display': ['"Noto Sans SC"', 'sans-serif'],
+                        'body': ['"Noto Sans SC"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body class="font-body text-gray-900 bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../../index.html" class="text-2xl font-bold font-display text-cosmic-purple">
+                        🚀 Aura school · AI教育平台
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="../../index.html" class="nav-link">首页</a>
+                        <a href="../../index.html#platforms" class="nav-link">三平台</a>
+                        <a href="../../index.html#features" class="nav-link">特色功能</a>
+                        <a href="index.html" class="nav-link active">AI SAAS</a>
+                        <a href="../../index.html#about" class="nav-link">关于我们</a>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <a href="#contact" class="bg-gradient-to-r from-cosmic-purple to-electric-blue text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                        联系我们
+                    </a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="../../index.html" class="mobile-nav-link">首页</a>
+                <a href="../../index.html#platforms" class="mobile-nav-link">三平台</a>
+                <a href="../../index.html#features" class="mobile-nav-link">特色功能</a>
+                <a href="index.html" class="mobile-nav-link active">AI SAAS</a>
+                <a href="../../index.html#about" class="mobile-nav-link">关于我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-space-dark via-cosmic-purple to-deep-blue">
+        <div class="absolute inset-0 bg-black opacity-30"></div>
+        <div class="relative z-10 text-center text-white max-w-6xl mx-auto px-4">
+            <h1 class="text-5xl md:text-8xl font-bold font-display mb-8 animate-fade-in-up">
+                🚀 AI SAAS
+            </h1>
+            <p class="text-xl md:text-3xl mb-8 opacity-90">
+                🎯 一站式AI创作与伴学SaaS平台
+            </p>
+            <p class="text-lg md:text-xl mb-10 opacity-80">
+                赋能教育机构，重塑教学与学习体验，提升教育机构的核心竞争力
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#platform" class="bg-gradient-to-r from-neon-green to-electric-blue text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                    🎓 了解平台
+                </a>
+                <button onclick="openBetaModal()" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-cosmic-purple transition-all duration-300">
+                    📖 beta 试用
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Introduction Section -->
+    <section id="platform" class="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-cosmic-purple mb-6">
+                    🎯 平台介绍
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    打造一个赋能教育机构的"一站式AI创作与伴学SaaS平台"
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-3xl font-bold text-cosmic-purple mb-6">1.1 关于平台</h3>
+                    <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                        通过提供前沿的AI内容生成工具、个性化智能伴学服务和协作式社区环境，重塑教学与学习体验，提升教育机构的核心竞争力。
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-neon-green rounded-full flex items-center justify-center mr-4 mt-1">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">AI内容生成工具</h4>
+                                <p class="text-gray-600">前沿的AI技术，支持多种内容类型生成</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-neon-green rounded-full flex items-center justify-center mr-4 mt-1">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">个性化智能伴学</h4>
+                                <p class="text-gray-600">根据学生特点提供定制化学习体验</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-neon-green rounded-full flex items-center justify-center mr-4 mt-1">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">协作式社区环境</h4>
+                                <p class="text-gray-600">促进师生互动，构建学习共同体</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-cosmic-purple to-electric-blue rounded-3xl p-8 text-white">
+                    <h3 class="text-2xl font-bold mb-6">1.2 业务范围</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3">当前核心 (To-B)</h4>
+                            <p class="text-white/90 mb-4">
+                                平台所有功能均面向教育机构（租户）以订阅制SaaS模式提供。机构内部的教师、学生、管理员是主要用户，在租户隔离的环境内进行创作、学习和管理。
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3">未来探索 (To-C)</h4>
+                            <p class="text-white/90 mb-4">
+                                平台具备将部分高价值功能模块化并直接向个人用户（年轻妈妈群体）提供服务的能力。
+                            </p>
+                            <ul class="space-y-2 text-white/80">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-white rounded-full mr-3"></span>
+                                    个人版互动游戏创作工具
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-white rounded-full mr-3"></span>
+                                    开放的游戏与作品分享社区
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-white rounded-full mr-3"></span>
+                                    个人虚拟助手
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-white rounded-full mr-3"></span>
+                                    家庭互动和模板
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Features Section -->
+    <section id="features" class="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-cosmic-purple mb-6">
+                    🌟 核心功能模块
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    八大核心功能模块，全面覆盖教育机构需求
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- 创作中心 -->
+                <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-cosmic-purple to-electric-blue rounded-2xl flex items-center justify-center mr-4">
+                            <i class="fas fa-palette text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-cosmic-purple">创作中心</h3>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        互动内容的全生命周期管理，支持AI全自动、人机协作、纯手动三种创作模式。
+                    </p>
+                    <div class="space-y-3">
+                        <h4 class="font-semibold text-gray-800">核心功能：</h4>
+                        <div class="text-sm text-gray-600 space-y-1">
+                            <div>• 创意输入与剧本编写</div>
+                            <div>• AI智能内容生成</div>
+                            <div>• 场景与分支节点设计</div>
+                            <div>• 美术与音频资产配置</div>
+                            <div>• 逻辑编排与测试发布</div>
+                        </div>
+                        <h4 class="font-semibold text-gray-800">用户价值：</h4>
+                        <div class="text-sm text-gray-600">为教师和学生提供强大的内容创作工具，大幅提升教学内容的丰富性和互动性</div>
+                    </div>
+                </div>
+
+                <!-- AI伴学中心 -->
+                <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-neon-green to-ai-cyan rounded-2xl flex items-center justify-center mr-4">
+                            <i class="fas fa-robot text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-neon-green">AI伴学中心</h3>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        提供个性化、可定制的AI助教服务，支持形象、声音、性格、知识范围的全面定制。
+                    </p>
+                    <div class="space-y-3">
+                        <h4 class="font-semibold text-gray-800">核心功能：</h4>
+                        <div class="text-sm text-gray-600 space-y-1">
+                            <div>• 个性化AI助教形象创建</div>
+                            <div>• 私有知识库绑定</div>
+                            <div>• 智能问答与练习</div>
+                            <div>• 学习进度分析</div>
+                            <div>• 个性化学习报告</div>
+                        </div>
+                        <h4 class="font-semibold text-gray-800">用户价值：</h4>
+                        <div class="text-sm text-gray-600">为学生提供24/7的个性化学习陪伴，为教师提供详细的学习分析数据</div>
+                    </div>
+                </div>
+
+                <!-- 课程中心 -->
+                <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-magic-purple to-magic-pink rounded-2xl flex items-center justify-center mr-4">
+                            <i class="fas fa-book text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-magic-purple">课程中心</h3>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        课程内容的聚合、管理与分发，包含官方课程和机构课程两大来源。
+                    </p>
+                    <div class="space-y-3">
+                        <h4 class="font-semibold text-gray-800">核心功能：</h4>
+                        <div class="text-sm text-gray-600 space-y-1">
+                            <div>• 官方AI工具使用教程</div>
+                            <div>• 机构私有课程管理</div>
+                            <div>• 课程与游戏深度绑定</div>
+                            <div>• 按需学习与任务完成</div>
+                            <div>• 学习进度跟踪</div>
+                        </div>
+                        <h4 class="font-semibold text-gray-800">用户价值：</h4>
+                        <div class="text-sm text-gray-600">提供完整的课程管理体系，实现"学、练、创"一体化的教学体验</div>
+                    </div>
+                </div>
+
+                <!-- 社区中心 -->
+                <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-magic-green to-magic-orange rounded-2xl flex items-center justify-center mr-4">
+                            <i class="fas fa-users text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-magic-green">社区中心</h3>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        促进租户内部的交流、分享与协作，形成租户内部的知识沉淀和学习氛围。
+                    </p>
+                    <div class="space-y-3">
+                        <h4 class="font-semibold text-gray-800">核心功能：</h4>
+                        <div class="text-sm text-gray-600 space-y-1">
+                            <div>• 话题讨论区</div>
+                            <div>• 作品分享廊</div>
+                            <div>• 问答板块</div>
+                            <div>• 教师公告与答疑</div>
+                            <div>• 知识沉淀与分享</div>
+                        </div>
+                        <h4 class="font-semibold text-gray-800">用户价值：</h4>
+                        <div class="text-sm text-gray-600">构建活跃的学习社区，促进师生互动，形成良性的学习生态</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Centers Section -->
+    <section class="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-cosmic-purple mb-6">
+                    🔧 运营与支持中心
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    完善的运营管理和技术支持体系
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- 租户与运营中心 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-cosmic-purple to-electric-blue rounded-xl flex items-center justify-center mr-3">
+                            <i class="fas fa-building text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-cosmic-purple">租户与运营中心</h3>
+                    </div>
+                    <p class="text-gray-700 mb-4 text-sm">
+                        B端客户与平台运营的全周期管理
+                    </p>
+                    <div class="space-y-2 text-sm">
+                        <div><strong>核心功能：</strong>组织架构管理、成员权限控制、消费记录查看</div>
+                        <div><strong>运营功能：</strong>机构开通、套餐配置、续费管理</div>
+                        <div><strong>用户价值：</strong>为机构提供完整的管理后台，简化运营流程</div>
+                    </div>
+                </div>
+
+                <!-- 个人中心 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-neon-green to-ai-cyan rounded-xl flex items-center justify-center mr-3">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-neon-green">个人中心</h3>
+                    </div>
+                    <p class="text-gray-700 mb-4 text-sm">
+                        租户内部用户的自我管理
+                    </p>
+                    <div class="space-y-2 text-sm">
+                        <div><strong>核心功能：</strong>个人资料管理、密码修改、学习记录查看</div>
+                        <div><strong>管理功能：</strong>个人创作作品管理、个性化设置</div>
+                        <div><strong>用户价值：</strong>为用户提供便捷的自我管理工具</div>
+                    </div>
+                </div>
+
+                <!-- 数据分析中心 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-magic-purple to-magic-pink rounded-xl flex items-center justify-center mr-3">
+                            <i class="fas fa-chart-line text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-magic-purple">数据分析中心</h3>
+                    </div>
+                    <p class="text-gray-700 mb-4 text-sm">
+                        提供多维度的数据洞察
+                    </p>
+                    <div class="space-y-2 text-sm">
+                        <div><strong>学情分析：</strong>学习进度、知识点掌握情况</div>
+                        <div><strong>运营分析：</strong>参与度、活跃度、互动频率</div>
+                        <div><strong>用户价值：</strong>为教学决策提供数据支持</div>
+                    </div>
+                </div>
+
+                <!-- 消费中心 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-magic-green to-magic-orange rounded-xl flex items-center justify-center mr-3">
+                            <i class="fas fa-credit-card text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-magic-green">消费中心</h3>
+                    </div>
+                    <p class="text-gray-700 mb-4 text-sm">
+                        处理平台内所有计费与支付逻辑
+                    </p>
+                    <div class="space-y-2 text-sm">
+                        <div><strong>订阅模式：</strong>按年/月/季度的SaaS订阅费</div>
+                        <div><strong>资源包：</strong>额外的AI调用、存储等资源包</div>
+                        <div><strong>用户价值：</strong>灵活的计费模式，满足不同机构需求</div>
+                    </div>
+                </div>
+
+                <!-- 系统运维中心 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-deep-blue to-electric-blue rounded-xl flex items-center justify-center mr-3">
+                            <i class="fas fa-server text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-deep-blue">系统运维中心</h3>
+                    </div>
+                    <p class="text-gray-700 mb-4 text-sm">
+                        保障平台稳定、安全、高效运行
+                    </p>
+                    <div class="space-y-2 text-sm">
+                        <div><strong>核心职责：</strong>系统监控、安全审计、数据备份</div>
+                        <div><strong>管理功能：</strong>发布部署、成本优化</div>
+                        <div><strong>用户价值：</strong>确保平台稳定可靠，用户无后顾之忧</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Value Section -->
+    <section class="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-cosmic-purple mb-6">
+                    💎 用户价值
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    为教育机构、教师和学生创造真正的价值
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-cosmic-purple to-electric-blue rounded-3xl p-8 text-white">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-school text-4xl mb-4"></i>
+                        <h3 class="text-2xl font-bold">教育机构价值</h3>
+                    </div>
+                    <ul class="space-y-3 text-white/90">
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-white rounded-full mr-3 mt-2"></span>
+                            <span>提升教学质量和效率</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-white rounded-full mr-3 mt-2"></span>
+                            <span>降低技术门槛和成本</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-white rounded-full mr-3 mt-2"></span>
+                            <span>增强机构竞争力</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-white rounded-full mr-3 mt-2"></span>
+                            <span>实现数字化转型</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-gradient-to-br from-neon-green to-ai-cyan rounded-3xl p-8 text-white">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-chalkboard-teacher text-4xl mb-4"></i>
+                        <h3 class="text-2xl font-bold">教师价值</h3>
+                    </div>
+                    <ul class="space-y-3 text-white/90">
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-white rounded-full mr-3 mt-2"></span>
+                            <span>简化教学内容创作</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-white rounded-full mr-3 mt-2"></span>
+                            <span>获得详细学情分析</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-white rounded-full mr-3 mt-2"></span>
+                            <span>提升教学效果</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-white rounded-full mr-3 mt-2"></span>
+                            <span>减轻工作负担</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-gradient-to-br from-magic-purple to-magic-pink rounded-3xl p-8 text-white">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-user-graduate text-4xl mb-4"></i>
+                        <h3 class="text-2xl font-bold">学生价值</h3>
+                    </div>
+                    <ul class="space-y-3 text-white/90">
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-white rounded-full mr-3 mt-2"></span>
+                            <span>获得个性化学习体验</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-white rounded-full mr-3 mt-2"></span>
+                            <span>24/7智能学习陪伴</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-white rounded-full mr-3 mt-2"></span>
+                            <span>提升学习兴趣和效果</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-white rounded-full mr-3 mt-2"></span>
+                            <span>培养AI时代核心能力</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-cosmic-purple to-deep-blue text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold font-display mb-6">
+                🚀 开启AI教育新篇章
+            </h2>
+            <p class="text-xl md:text-2xl mb-8 opacity-90">
+                加入我们，共同打造下一代AI教育平台
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="mailto:contact@future-ark-ai.com" class="bg-gradient-to-r from-neon-green to-ai-cyan text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                    联系我们
+                </a>
+                <a href="../../index.html" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-cosmic-purple transition-all duration-300">
+                    返回首页
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4">🚀 Aura school · AI教育平台</h3>
+                    <p class="text-gray-300 mb-4">
+                        致力于为学生提供最前沿的AI教育体验，培养面向未来的创新人才。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-qq text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">学习平台</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../ai-creation/index.html" class="text-gray-300 hover:text-white transition-colors">AI智造学院</a></li>
+                        <li><a href="../ai-learning/index.html" class="text-gray-300 hover:text-white transition-colors">AI元能力课程</a></li>
+                        <li><a href="../ai-coding/index.html" class="text-gray-300 hover:text-white transition-colors">AI代码魔术课堂</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">支持资源</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">教师指南</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">学生指南</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">技术支持</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">常见问题</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2024 Aura school AI教育平台. 保留所有权利.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Beta试用弹窗 -->
+    <div id="betaModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-2">
+            <div class="bg-white rounded-2xl shadow-2xl relative overflow-hidden" style="width: 95vw; height: 90vh; max-width: 1600px;">
+                <!-- 弹窗头部 -->
+                <div class="flex justify-between items-center px-4 py-2 border-b border-gray-200 bg-white shrink-0">
+                    <div>
+                        <h3 class="text-lg font-bold text-cosmic-purple">🚀 Beta 试用 - 光圈未来平台</h3>
+                        <p class="text-gray-600 text-xs">体验AI创作与伴学的强大功能</p>
+                    </div>
+                    <button onclick="closeBetaModal()" class="text-gray-400 hover:text-gray-600 text-2xl font-light">
+                        ×
+                    </button>
+                </div>
+                
+                <!-- 弹窗内容 -->
+                <div style="height: calc(100% - 100px);">
+                    <iframe 
+                        src="https://gq.wwyl.tech/" 
+                        class="w-full h-full border-0"
+                        title="光圈未来平台"
+                        loading="lazy">
+                    </iframe>
+                </div>
+                
+                <!-- 弹窗底部 -->
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-cosmic-purple to-electric-blue px-4 py-2 shrink-0">
+                    <div class="flex justify-between items-center text-white">
+                        <div class="text-xs flex items-center">
+                            <span class="mr-2">🔗</span>
+                            <a href="https://gq.wwyl.tech/" target="_blank" class="underline hover:text-yellow-300 transition-colors">
+                                https://gq.wwyl.tech/
+                            </a>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="window.open('https://gq.wwyl.tech/', '_blank')" class="bg-white text-cosmic-purple px-3 py-1 rounded-full text-xs font-semibold hover:bg-gray-100 transition-colors">
+                                新标签页打开
+                            </button>
+                            <button onclick="closeBetaModal()" class="bg-white/20 text-white px-3 py-1 rounded-full text-xs font-semibold hover:bg-white/30 transition-colors">
+                                关闭
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/main.js"></script>
+    
+    <script>
+        // Beta试用弹窗功能
+        function openBetaModal() {
+            document.getElementById('betaModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // 防止背景滚动
+        }
+        
+        function closeBetaModal() {
+            document.getElementById('betaModal').classList.add('hidden');
+            document.body.style.overflow = 'auto'; // 恢复背景滚动
+        }
+        
+        // 点击弹窗外部区域关闭弹窗
+        document.getElementById('betaModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeBetaModal();
+            }
+        });
+        
+        // ESC键关闭弹窗
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeBetaModal();
+            }
+        });
+    </script>
+</body>
+</html> 

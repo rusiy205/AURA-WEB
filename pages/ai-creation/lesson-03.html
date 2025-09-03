@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第3课：AIGC技术概述 - AI智造学院 | Aura school AI教育平台</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-blue': '#1e3a8a',
+                        'cosmic-purple': '#4c1d95',
+                        'neon-green': '#22c55e',
+                        'electric-blue': '#3b82f6',
+                        'sophisticated-gray': '#64748b',
+                        'space-dark': '#0f172a',
+                        'space-purple': '#6366f1',
+                        'ai-cyan': '#06b6d4',
+                        'magic-purple': '#6366f1',
+                        'magic-pink': '#f472b6',
+                        'magic-blue': '#3b82f6',
+                        'magic-green': '#10b981',
+                        'magic-orange': '#f59e0b'
+                    },
+                    fontFamily: {
+                        'display': ['"Noto Sans SC"', 'sans-serif'],
+                        'body': ['"Noto Sans SC"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        .magic-sparkle {
+            animation: sparkle 2s infinite;
+        }
+        .magic-sparkle:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        .magic-sparkle:nth-child(3) {
+            animation-delay: 1s;
+        }
+        @keyframes sparkle {
+            0%, 100% { 
+                opacity: 0.3; 
+                transform: scale(1) rotate(0deg); 
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.2) rotate(180deg); 
+            }
+        }
+        .spell-cast {
+            animation: spellCast 3s infinite;
+        }
+        @keyframes spellCast {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(5deg); }
+            50% { transform: translateY(-5px) rotate(-5deg); }
+            75% { transform: translateY(-15px) rotate(3deg); }
+        }
+        .magic-wand {
+            animation: wand 4s ease-in-out infinite;
+        }
+        @keyframes wand {
+            0%, 100% { transform: rotate(-10deg); }
+            50% { transform: rotate(10deg); }
+        }
+        .generate-animation {
+            animation: generate 2s ease-in-out;
+        }
+        @keyframes generate {
+            0% { opacity: 0; transform: scale(0.8); }
+            50% { opacity: 0.5; transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="font-body text-gray-900 bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../../index.html" class="text-2xl font-bold font-display text-cosmic-purple">
+                        🚀 Aura school
+                    </a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <a href="index.html" class="text-lg font-semibold text-electric-blue">🏭 AI智造学院</a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <span class="text-sophisticated-gray">第3课</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="lesson-02.html" class="nav-link">上一课</a>
+                        <a href="lesson-04.html" class="nav-link">下一课</a>
+                        <a href="course-schedule.html" class="nav-link">课程安排</a>
+                        <a href="../../index.html" class="nav-link">返回主站</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-16 bg-gradient-to-br from-magic-purple via-cosmic-purple to-electric-blue overflow-hidden">
+        <!-- 魔法装饰元素 -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="magic-sparkle absolute top-1/4 left-1/6 text-4xl text-yellow-300">✨</div>
+            <div class="magic-sparkle absolute top-1/3 right-1/4 text-3xl text-pink-300">⭐</div>
+            <div class="magic-sparkle absolute bottom-1/4 left-1/3 text-5xl text-blue-300">🌟</div>
+            <div class="magic-sparkle absolute top-1/2 right-1/6 text-3xl text-purple-300">✨</div>
+            <div class="magic-wand absolute top-1/5 right-1/3 text-6xl">🪄</div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <!-- 课程标识 -->
+            <div class="inline-flex items-center bg-white/20 rounded-full px-6 py-3 mb-8">
+                <span class="text-2xl mr-3">🧙‍♂️</span>
+                <span class="font-semibold">第3课 · 模块一：AI通识与基础</span>
+                <span class="ml-3 bg-white/30 rounded-full px-3 py-1 text-sm">第2周</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold font-display mb-6">
+                ✨ AIGC技术概述
+            </h1>
+            
+            <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-4xl mx-auto">
+                欢迎来到AI魔法学院！让我们一起学习掌握各种神奇的生成魔法
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 max-w-3xl mx-auto">
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">2</div>
+                    <div class="text-sm opacity-80">课时</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">4</div>
+                    <div class="text-sm opacity-80">魔法类型</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">8+</div>
+                    <div class="text-sm opacity-80">魔法工具</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">初级</div>
+                    <div class="text-sm opacity-80">难度等级</div>
+                </div>
+            </div>
+
+            <!-- 课程目标卡片 -->
+            <div class="bg-white/10 rounded-2xl p-6 max-w-4xl mx-auto backdrop-blur-sm">
+                <h2 class="text-2xl font-bold mb-4">🎯 本课魔法目标</h2>
+                <div class="grid md:grid-cols-2 gap-4 text-left">
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-magic-purple rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">1</span>
+                        <span>理解什么是生成式AI（AIGC）</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-magic-pink rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">2</span>
+                        <span>掌握四大类生成魔法技能</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-electric-blue rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">3</span>
+                        <span>学会使用各种AI生成工具</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-magic-orange rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">4</span>
+                        <span>体验AI创作的神奇魅力</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 魔法学院入学仪式 -->
+    <section class="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-magic-purple mb-6">
+                    🏰 欢迎来到AI魔法学院！
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    在这座神奇的魔法城堡里，我们将学习四大类生成魔法的奥秘
+                </p>
+            </div>
+
+            <!-- 魔法学院介绍 -->
+            <div class="bg-gradient-to-br from-magic-purple/10 to-electric-blue/10 rounded-3xl p-8 mb-12">
+                <div class="text-center mb-8">
+                    <div class="text-6xl mb-4">🏰</div>
+                    <h3 class="text-2xl font-bold text-magic-purple mb-4">AI魔法学院的故事</h3>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🧙‍♂️</div>
+                        <h4 class="font-bold text-magic-purple mb-2">你（魔法学徒）</h4>
+                        <p class="text-sm text-gray-600">刚入学的小魔法师，渴望学习各种生成魔法</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3 spell-cast">🪄</div>
+                        <h4 class="font-bold text-electric-blue mb-2">魔法工具</h4>
+                        <p class="text-sm text-gray-600">神奇的AI魔法棒，能创造文字、图画、音乐和视频</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">📜</div>
+                        <h4 class="font-bold text-cosmic-purple mb-2">魔法咒语</h4>
+                        <p class="text-sm text-gray-600">特殊的指令（Prompt），让魔法按你的意愿施展</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-white/50 rounded-2xl p-6 text-center">
+                    <p class="text-gray-700 text-lg">
+                        <strong class="text-magic-purple">AIGC（AI Generated Content）</strong>就是用AI来创造各种内容的魔法！
+                        只要说出正确的咒语，AI就能帮你创造出令人惊叹的作品。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 四大魔法类型 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-magic-purple mb-6">
+                    🎭 四大生成魔法门派
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    每一种魔法都有独特的能力和神奇的工具
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- 文字魔法 -->
+                <div class="bg-gradient-to-br from-magic-purple/10 to-electric-blue/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">✍️</div>
+                        <h3 class="text-2xl font-bold text-magic-purple mb-2">文字魔法门派</h3>
+                        <p class="text-gray-600">能创造任何类型的文字内容</p>
+                    </div>
+
+                    <!-- 魔法工具展示 -->
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-2xl p-4 hover:shadow-lg transition-all duration-300">
+                            <div class="flex items-center mb-3">
+                                <div class="w-12 h-12 bg-gradient-to-r from-magic-purple to-electric-blue rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-white text-lg">🤖</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-magic-purple">ChatGPT 魔法师</h4>
+                                    <p class="text-sm text-gray-600">最强大的对话和写作魔法</p>
+                                </div>
+                            </div>
+                            <div class="bg-magic-purple/10 rounded-lg p-3">
+                                <div class="text-xs text-gray-500 mb-1">魔法能力：</div>
+                                <div class="text-sm space-y-1">
+                                    <div>• 写作文、写诗歌、写故事</div>
+                                    <div>• 回答问题、解释概念</div>
+                                    <div>• 翻译语言、总结内容</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-4 hover:shadow-lg transition-all duration-300">
+                            <div class="flex items-center mb-3">
+                                <div class="w-12 h-12 bg-gradient-to-r from-electric-blue to-magic-pink rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-white text-lg">📝</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-electric-blue">Claude & Gemini</h4>
+                                    <p class="text-sm text-gray-600">其他强大的文字魔法师</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 图像魔法 -->
+                <div class="bg-gradient-to-br from-magic-pink/10 to-magic-orange/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">🎨</div>
+                        <h3 class="text-2xl font-bold text-magic-pink mb-2">图像魔法门派</h3>
+                        <p class="text-gray-600">能画出世界上任何东西</p>
+                    </div>
+
+                    <!-- 魔法工具展示 -->
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-2xl p-4 hover:shadow-lg transition-all duration-300">
+                            <div class="flex items-center mb-3">
+                                <div class="w-12 h-12 bg-gradient-to-r from-magic-pink to-magic-orange rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-white text-lg">🎭</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-magic-pink">Midjourney 画师</h4>
+                                    <p class="text-sm text-gray-600">最艺术的绘画魔法</p>
+                                </div>
+                            </div>
+                            <div class="bg-magic-pink/10 rounded-lg p-3">
+                                <div class="text-xs text-gray-500 mb-1">魔法能力：</div>
+                                <div class="text-sm space-y-1">
+                                    <div>• 创作超现实艺术作品</div>
+                                    <div>• 画出梦境般的场景</div>
+                                    <div>• 各种艺术风格切换</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-4 hover:shadow-lg transition-all duration-300">
+                            <div class="flex items-center mb-3">
+                                <div class="w-12 h-12 bg-gradient-to-r from-magic-orange to-electric-blue rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-white text-lg">🖼️</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-magic-orange">DALL-E & Stable Diffusion</h4>
+                                    <p class="text-sm text-gray-600">其他神奇的画师魔法</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 音乐魔法 -->
+                <div class="bg-gradient-to-br from-electric-blue/10 to-magic-green/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">🎵</div>
+                        <h3 class="text-2xl font-bold text-electric-blue mb-2">音乐魔法门派</h3>
+                        <p class="text-gray-600">能创作动听的旋律和声音</p>
+                    </div>
+
+                    <!-- 魔法工具展示 -->
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-2xl p-4 hover:shadow-lg transition-all duration-300">
+                            <div class="flex items-center mb-3">
+                                <div class="w-12 h-12 bg-gradient-to-r from-electric-blue to-magic-green rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-white text-lg">🎼</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-electric-blue">Suno AI 音乐家</h4>
+                                    <p class="text-sm text-gray-600">最强的作曲魔法</p>
+                                </div>
+                            </div>
+                            <div class="bg-electric-blue/10 rounded-lg p-3">
+                                <div class="text-xs text-gray-500 mb-1">魔法能力：</div>
+                                <div class="text-sm space-y-1">
+                                    <div>• 创作完整的歌曲</div>
+                                    <div>• 各种音乐风格</div>
+                                    <div>• 自动配词配曲</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-4 hover:shadow-lg transition-all duration-300">
+                            <div class="flex items-center mb-3">
+                                <div class="w-12 h-12 bg-gradient-to-r from-magic-green to-magic-purple rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-white text-lg">🎤</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-magic-green">ElevenLabs 配音师</h4>
+                                    <p class="text-sm text-gray-600">神奇的语音克隆魔法</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 视频魔法 -->
+                <div class="bg-gradient-to-br from-magic-green/10 to-magic-purple/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">🎬</div>
+                        <h3 class="text-2xl font-bold text-magic-green mb-2">视频魔法门派</h3>
+                        <p class="text-gray-600">能制作精彩的动画和视频</p>
+                    </div>
+
+                    <!-- 魔法工具展示 -->
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-2xl p-4 hover:shadow-lg transition-all duration-300">
+                            <div class="flex items-center mb-3">
+                                <div class="w-12 h-12 bg-gradient-to-r from-magic-green to-magic-purple rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-white text-lg">🎞️</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-magic-green">Runway ML 导演</h4>
+                                    <p class="text-sm text-gray-600">强大的视频生成魔法</p>
+                                </div>
+                            </div>
+                            <div class="bg-magic-green/10 rounded-lg p-3">
+                                <div class="text-xs text-gray-500 mb-1">魔法能力：</div>
+                                <div class="text-sm space-y-1">
+                                    <div>• 从文字生成视频</div>
+                                    <div>• 图片变成动画</div>
+                                    <div>• 视频风格转换</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-4 hover:shadow-lg transition-all duration-300">
+                            <div class="flex items-center mb-3">
+                                <div class="w-12 h-12 bg-gradient-to-r from-magic-purple to-magic-pink rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-white text-lg">✨</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-magic-purple">Pika Labs & Gen-2</h4>
+                                    <p class="text-sm text-gray-600">其他视频魔法师</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 魔法实验室 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-magic-purple mb-6">
+                    🧪 魔法实验室体验
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    现在让我们亲手体验各种生成魔法的神奇威力！
+                </p>
+            </div>
+
+            <!-- 实验台展示 -->
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- 文字魔法实验 -->
+                <div class="bg-white rounded-3xl shadow-xl p-8">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">📝</div>
+                        <h3 class="text-2xl font-bold text-magic-purple">文字魔法实验台</h3>
+                        <p class="text-gray-600 mt-2">体验AI文字创作的魔力</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- 魔法咒语输入 -->
+                        <div class="bg-magic-purple/10 rounded-2xl p-6">
+                            <h4 class="font-bold text-magic-purple mb-3">🪄 施展咒语</h4>
+                            <div class="bg-white rounded-lg p-4 border-2 border-magic-purple/20">
+                                <div class="text-sm text-gray-600 mb-2">咒语示例：</div>
+                                <div class="bg-gray-50 rounded-lg p-3 text-sm font-mono">
+                                    "请写一个关于小猫学魔法的短故事，要有趣又温馨"
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 生成结果 -->
+                        <div class="bg-gradient-to-br from-magic-purple/5 to-electric-blue/5 rounded-2xl p-6">
+                            <div class="flex items-center mb-3">
+                                <span class="text-lg mr-2">✨</span>
+                                <h4 class="font-bold text-magic-purple">魔法结果</h4>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-sm leading-relaxed generate-animation">
+                                <p class="text-gray-700">
+                                    <strong class="text-magic-purple">小猫咪咪的魔法之旅</strong><br><br>
+                                    在一个阳光明媚的午后，小猫咪咪发现了一本神奇的魔法书。她好奇地翻开第一页，
+                                    书中突然飞出了五颜六色的星星！咪咪兴奋地跳起来，开始跟着书本学习她的第一个魔法...
+                                </p>
+                                <div class="mt-3 text-xs text-magic-purple">✨ AI在0.5秒内创作完成！</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 图像魔法实验 -->
+                <div class="bg-white rounded-3xl shadow-xl p-8">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">🎨</div>
+                        <h3 class="text-2xl font-bold text-magic-pink">图像魔法实验台</h3>
+                        <p class="text-gray-600 mt-2">体验AI绘画创作的魔力</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- 魔法咒语输入 -->
+                        <div class="bg-magic-pink/10 rounded-2xl p-6">
+                            <h4 class="font-bold text-magic-pink mb-3">🎭 施展咒语</h4>
+                            <div class="bg-white rounded-lg p-4 border-2 border-magic-pink/20">
+                                <div class="text-sm text-gray-600 mb-2">咒语示例：</div>
+                                <div class="bg-gray-50 rounded-lg p-3 text-sm font-mono">
+                                    "一只可爱的小猫咪坐在彩虹桥上，背景是星空，卡通风格，色彩明亮"
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 生成结果预览 -->
+                        <div class="bg-gradient-to-br from-magic-pink/5 to-magic-orange/5 rounded-2xl p-6">
+                            <div class="flex items-center mb-3">
+                                <span class="text-lg mr-2">🎨</span>
+                                <h4 class="font-bold text-magic-pink">魔法结果</h4>
+                            </div>
+                            <div class="bg-gradient-to-br from-purple-100 to-pink-100 rounded-lg p-8 text-center generate-animation">
+                                <div class="text-6xl mb-4">🐱</div>
+                                <div class="text-4xl mb-4">🌈</div>
+                                <div class="text-3xl">⭐✨🌟</div>
+                                <div class="mt-4 text-sm text-magic-pink">
+                                    ✨ 想象一下：AI绘制的超可爱彩虹小猫！
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 魔法对战游戏 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-magic-purple mb-6">
+                    ⚔️ 魔法创作大挑战
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    分组进行创意对战，看谁能创作出最神奇的AI作品！
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- 挑战1：故事接龙 -->
+                <div class="bg-gradient-to-br from-magic-purple/10 to-electric-blue/10 rounded-3xl p-8 text-center hover:shadow-xl transition-all duration-300">
+                    <div class="text-6xl mb-6">📚</div>
+                    <h3 class="text-xl font-bold text-magic-purple mb-4">挑战1：AI故事接龙</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-2xl p-4">
+                            <h4 class="font-bold text-magic-purple mb-2">🎯 游戏规则</h4>
+                            <ul class="text-sm text-gray-700 text-left space-y-1">
+                                <li>1. 每组选择一个故事开头</li>
+                                <li>2. 用AI续写一段情节</li>
+                                <li>3. 传给下一组继续</li>
+                                <li>4. 看最后形成什么奇妙故事</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-magic-purple/20 rounded-2xl p-4">
+                            <div class="text-sm font-bold text-magic-purple mb-2">🌟 评分标准</div>
+                            <div class="text-xs text-gray-600 space-y-1">
+                                <div>• 创意性 30%</div>
+                                <div>• 连贯性 30%</div>
+                                <div>• 趣味性 40%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 挑战2：画作猜谜 -->
+                <div class="bg-gradient-to-br from-magic-pink/10 to-magic-orange/10 rounded-3xl p-8 text-center hover:shadow-xl transition-all duration-300">
+                    <div class="text-6xl mb-6">🎨</div>
+                    <h3 class="text-xl font-bold text-magic-pink mb-4">挑战2：AI画作猜谜</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-2xl p-4">
+                            <h4 class="font-bold text-magic-pink mb-2">🎯 游戏规则</h4>
+                            <ul class="text-sm text-gray-700 text-left space-y-1">
+                                <li>1. 一组描述一个场景</li>
+                                <li>2. 另一组猜测并让AI画出来</li>
+                                <li>3. 看谁猜得最准确</li>
+                                <li>4. 比较原设想和AI作品</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-magic-pink/20 rounded-2xl p-4">
+                            <div class="text-sm font-bold text-magic-pink mb-2">🏆 获胜条件</div>
+                            <div class="text-xs text-gray-600 space-y-1">
+                                <div>• 猜中关键元素得分</div>
+                                <div>• AI作品越接近越高分</div>
+                                <div>• 创意加分</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 挑战3：多模态创作 -->
+                <div class="bg-gradient-to-br from-electric-blue/10 to-magic-green/10 rounded-3xl p-8 text-center hover:shadow-xl transition-all duration-300">
+                    <div class="text-6xl mb-6">🎭</div>
+                    <h3 class="text-xl font-bold text-electric-blue mb-4">挑战3：魔法综合创作</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-2xl p-4">
+                            <h4 class="font-bold text-electric-blue mb-2">🎯 游戏规则</h4>
+                            <ul class="text-sm text-gray-700 text-left space-y-1">
+                                <li>1. 选择一个主题（如"太空探险"）</li>
+                                <li>2. 用AI创作故事+配图+配乐</li>
+                                <li>3. 制作完整的作品展示</li>
+                                <li>4. 全班投票选出最佳作品</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-electric-blue/20 rounded-2xl p-4">
+                            <div class="text-sm font-bold text-electric-blue mb-2">🎨 必备元素</div>
+                            <div class="text-xs text-gray-600 space-y-1">
+                                <div>• 1个完整故事</div>
+                                <div>• 3张配图</div>
+                                <div>• 1段背景音乐</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 魔法师进阶指南 -->
+    <section class="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-magic-purple mb-6">
+                    📜 魔法师进阶指南
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    掌握这些技巧，让你的魔法更加强大！
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 咒语技巧 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-4xl mb-4">🪄</div>
+                        <h3 class="text-xl font-bold text-magic-purple">咒语技巧</h3>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-magic-purple/10 rounded-lg p-3">
+                            <h4 class="font-bold text-magic-purple text-sm mb-1">具体描述</h4>
+                            <p class="text-xs text-gray-600">越详细越容易得到想要的结果</p>
+                        </div>
+                        <div class="bg-magic-purple/10 rounded-lg p-3">
+                            <h4 class="font-bold text-magic-purple text-sm mb-1">情境设定</h4>
+                            <p class="text-xs text-gray-600">告诉AI你想要的场景和氛围</p>
+                        </div>
+                        <div class="bg-magic-purple/10 rounded-lg p-3">
+                            <h4 class="font-bold text-magic-purple text-sm mb-1">风格指定</h4>
+                            <p class="text-xs text-gray-600">说明想要的艺术风格或语言风格</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 创意思维 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-4xl mb-4">💡</div>
+                        <h3 class="text-xl font-bold text-magic-pink">创意思维</h3>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-magic-pink/10 rounded-lg p-3">
+                            <h4 class="font-bold text-magic-pink text-sm mb-1">跨界结合</h4>
+                            <p class="text-xs text-gray-600">把不同的元素巧妙组合</p>
+                        </div>
+                        <div class="bg-magic-pink/10 rounded-lg p-3">
+                            <h4 class="font-bold text-magic-pink text-sm mb-1">反向思考</h4>
+                            <p class="text-xs text-gray-600">从不同角度思考同一个问题</p>
+                        </div>
+                        <div class="bg-magic-pink/10 rounded-lg p-3">
+                            <h4 class="font-bold text-magic-pink text-sm mb-1">迭代改进</h4>
+                            <p class="text-xs text-gray-600">不断调整咒语直到满意</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 伦理认知 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-4xl mb-4">⚖️</div>
+                        <h3 class="text-xl font-bold text-electric-blue">魔法师守则</h3>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-electric-blue/10 rounded-lg p-3">
+                            <h4 class="font-bold text-electric-blue text-sm mb-1">尊重原创</h4>
+                            <p class="text-xs text-gray-600">不能直接复制他人作品</p>
+                        </div>
+                        <div class="bg-electric-blue/10 rounded-lg p-3">
+                            <h4 class="font-bold text-electric-blue text-sm mb-1">正面内容</h4>
+                            <p class="text-xs text-gray-600">创作积极向上的内容</p>
+                        </div>
+                        <div class="bg-electric-blue/10 rounded-lg p-3">
+                            <h4 class="font-bold text-electric-blue text-sm mb-1">标注AI</h4>
+                            <p class="text-xs text-gray-600">诚实说明使用了AI工具</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 课程总结 -->
+    <section class="py-20 bg-gradient-to-br from-magic-purple via-electric-blue to-magic-pink text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold font-display mb-8">
+                🎓 恭喜成为AI魔法师！
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">✍️</div>
+                    <h3 class="font-bold mb-2">文字魔法</h3>
+                    <p class="text-sm opacity-90">创作故事、对话、文章</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">🎨</div>
+                    <h3 class="font-bold mb-2">图像魔法</h3>
+                    <p class="text-sm opacity-90">绘制精美的艺术作品</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">🎵</div>
+                    <h3 class="font-bold mb-2">音乐魔法</h3>
+                    <p class="text-sm opacity-90">作曲演唱各种音乐</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">🎬</div>
+                    <h3 class="font-bold mb-2">视频魔法</h3>
+                    <p class="text-sm opacity-90">制作动画和影像</p>
+                </div>
+            </div>
+
+            <div class="bg-white/10 rounded-3xl p-8 backdrop-blur-sm mb-12">
+                <h3 class="text-2xl font-bold mb-4">📝 魔法任务</h3>
+                <div class="grid md:grid-cols-3 gap-4 text-left">
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">🎨 创作任务</h4>
+                        <p class="text-sm opacity-90">选择一种魔法，创作一个完整的作品（故事、画作或音乐）</p>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">🔍 探索任务</h4>
+                        <p class="text-sm opacity-90">尝试3个不同的AI工具，记录使用心得和效果对比</p>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">📚 预习任务</h4>
+                        <p class="text-sm opacity-90">思考：如何写出更好的咒语？为下节课"AI文本创作工具"做准备</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="lesson-04.html" class="bg-white text-magic-purple px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                    🚀 下一课：AI文本创作工具
+                </a>
+                <a href="lesson-02.html" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-magic-purple transition-all duration-300">
+                    🔙 上一课：机器学习基础
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4">🏭 AI智造学院</h3>
+                    <p class="text-gray-300 mb-4">
+                        Aura school AI教育平台 - 培养面向未来的AI创新人才
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-qq text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">课程导航</h4>
+                    <ul class="space-y-2">
+                        <li><a href="lesson-02.html" class="text-gray-300 hover:text-white transition-colors">第2课</a></li>
+                        <li><a href="lesson-04.html" class="text-gray-300 hover:text-white transition-colors">第4课</a></li>
+                        <li><a href="course-schedule.html" class="text-gray-300 hover:text-white transition-colors">课程安排</a></li>
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">学院首页</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">其他平台</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../ai-learning/index.html" class="text-gray-300 hover:text-white transition-colors">AI元能力课程</a></li>
+                        <li><a href="../ai-coding/index.html" class="text-gray-300 hover:text-white transition-colors">AI代码魔术课堂</a></li>
+                        <li><a href="../../index.html" class="text-gray-300 hover:text-white transition-colors">返回主站</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2024 Aura school AI教育平台. 保留所有权利.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>

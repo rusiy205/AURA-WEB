@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第1课：AI是什么？- AI智造学院 | Aura school AI教育平台</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-blue': '#1e3a8a',
+                        'cosmic-purple': '#4c1d95',
+                        'neon-green': '#22c55e',
+                        'electric-blue': '#3b82f6',
+                        'sophisticated-gray': '#64748b',
+                        'space-dark': '#0f172a',
+                        'space-purple': '#6366f1',
+                        'ai-cyan': '#06b6d4',
+                        'magic-purple': '#6366f1',
+                        'magic-pink': '#f472b6',
+                        'magic-blue': '#3b82f6',
+                        'magic-green': '#10b981',
+                        'magic-orange': '#f59e0b'
+                    },
+                    fontFamily: {
+                        'display': ['"Noto Sans SC"', 'sans-serif'],
+                        'body': ['"Noto Sans SC"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        .floating-animation:nth-child(2) {
+            animation-delay: 1s;
+        }
+        .floating-animation:nth-child(3) {
+            animation-delay: 2s;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        .timeline-item {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.6s; }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="font-body text-gray-900 bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../../index.html" class="text-2xl font-bold font-display text-cosmic-purple">
+                        🚀 Aura school
+                    </a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <a href="index.html" class="text-lg font-semibold text-electric-blue">🏭 AI智造学院</a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <span class="text-sophisticated-gray">第1课</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="course-schedule.html" class="nav-link">课程安排</a>
+                        <a href="lesson-02.html" class="nav-link">下一课</a>
+                        <a href="courses.html" class="nav-link">课程总览</a>
+                        <a href="../../index.html" class="nav-link">返回主站</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-16 bg-gradient-to-br from-cosmic-purple via-electric-blue to-neon-green overflow-hidden">
+        <!-- 装饰性浮动元素 -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="floating-animation absolute top-1/4 left-1/4 w-32 h-32 bg-white/10 rounded-full"></div>
+            <div class="floating-animation absolute top-1/3 right-1/4 w-24 h-24 bg-white/10 rounded-full"></div>
+            <div class="floating-animation absolute bottom-1/4 left-1/3 w-28 h-28 bg-white/10 rounded-full"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <!-- 课程标识 -->
+            <div class="inline-flex items-center bg-white/20 rounded-full px-6 py-3 mb-8">
+                <span class="text-2xl mr-3">🤖</span>
+                <span class="font-semibold">第1课 · 模块一：AI通识与基础</span>
+                <span class="ml-3 bg-white/30 rounded-full px-3 py-1 text-sm">第1周</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold font-display mb-6">
+                🌟 AI是什么？
+            </h1>
+            
+            <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-4xl mx-auto">
+                欢迎来到AI的神奇世界！让我们一起踏上时间穿越之旅，探索人工智能的奥秘
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 max-w-3xl mx-auto">
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">2</div>
+                    <div class="text-sm opacity-80">课时</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">3</div>
+                    <div class="text-sm opacity-80">互动游戏</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">5</div>
+                    <div class="text-sm opacity-80">实践项目</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">初级</div>
+                    <div class="text-sm opacity-80">难度等级</div>
+                </div>
+            </div>
+
+            <!-- 课程目标卡片 -->
+            <div class="bg-white/10 rounded-2xl p-6 max-w-4xl mx-auto backdrop-blur-sm">
+                <h2 class="text-2xl font-bold mb-4">🎯 本课学习目标</h2>
+                <div class="grid md:grid-cols-2 gap-4 text-left">
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-neon-green rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">1</span>
+                        <span>理解人工智能的基本概念</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-electric-blue rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">2</span>
+                        <span>了解AI的发展历程</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-magic-pink rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">3</span>
+                        <span>认识生活中的AI应用</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-magic-orange rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">4</span>
+                        <span>培养对AI的正确认知</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 时间穿越故事导入 -->
+    <section class="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-cosmic-purple mb-6">
+                    ⏰ 时光穿梭机启动！
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    搭乘我们的时光穿梭机，一起回到过去，见证AI的诞生与成长
+                </p>
+            </div>
+
+            <!-- 时间线故事 -->
+            <div class="relative max-w-5xl mx-auto">
+                <!-- 时间线 -->
+                <div class="absolute left-1/2 transform -translate-x-0.5 w-1 h-full bg-gradient-to-b from-cosmic-purple via-electric-blue to-neon-green"></div>
+                
+                <!-- 1950年代 -->
+                <div class="timeline-item relative mb-16">
+                    <div class="flex items-center">
+                        <div class="w-1/2 pr-8 text-right">
+                            <div class="bg-white rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                                <div class="flex justify-end items-center mb-4">
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-cosmic-purple">1950年代</h3>
+                                        <p class="text-gray-500">AI的梦想萌芽</p>
+                                    </div>
+                                    <div class="w-16 h-16 bg-gradient-to-r from-cosmic-purple to-electric-blue rounded-full flex items-center justify-center ml-4">
+                                        <span class="text-white text-2xl">🧠</span>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-gray-700 mb-3">
+                                        阿兰·图灵提出了著名的"图灵测试"：如果一台机器能够与人进行对话而不被识破，那它就可以被认为是智能的！
+                                    </p>
+                                    <div class="bg-cosmic-purple/10 rounded-lg p-3">
+                                        <p class="text-sm text-cosmic-purple">
+                                            💡 <strong>小知识：</strong>图灵被称为"计算机科学之父"和"人工智能之父"
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-cosmic-purple rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            1
+                        </div>
+                        
+                        <div class="w-1/2 pl-8">
+                            <div class="bg-gradient-to-br from-cosmic-purple/10 to-electric-blue/10 rounded-2xl p-6">
+                                <div class="text-center">
+                                    <div class="text-6xl mb-4">🤔</div>
+                                    <h4 class="text-lg font-bold text-cosmic-purple mb-2">思考时刻</h4>
+                                    <p class="text-sm text-gray-600">
+                                        如果你遇到了图灵本人，你会问他什么问题呢？
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1980年代 -->
+                <div class="timeline-item relative mb-16">
+                    <div class="flex items-center">
+                        <div class="w-1/2 pr-8">
+                            <div class="bg-gradient-to-br from-electric-blue/10 to-neon-green/10 rounded-2xl p-6">
+                                <div class="text-center">
+                                    <div class="text-6xl mb-4">🎮</div>
+                                    <h4 class="text-lg font-bold text-electric-blue mb-2">互动游戏</h4>
+                                    <p class="text-sm text-gray-600">
+                                        想象你是1980年代的科学家，设计你的第一个AI程序！
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-electric-blue rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            2
+                        </div>
+                        
+                        <div class="w-1/2 pl-8 text-left">
+                            <div class="bg-white rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-16 h-16 bg-gradient-to-r from-electric-blue to-neon-green rounded-full flex items-center justify-center mr-4">
+                                        <span class="text-white text-2xl">💻</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-electric-blue">1980年代</h3>
+                                        <p class="text-gray-500">专家系统时代</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-gray-700 mb-3">
+                                        AI开始在医学诊断、金融分析等专业领域大显身手。专家系统就像是把专家的大脑装进了电脑！
+                                    </p>
+                                    <div class="bg-electric-blue/10 rounded-lg p-3">
+                                        <p class="text-sm text-electric-blue">
+                                            ⚡ <strong>小知识：</strong>这个时期的AI就像一位博学的图书管理员，记住了很多规则和知识
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2010年代 -->
+                <div class="timeline-item relative mb-16">
+                    <div class="flex items-center">
+                        <div class="w-1/2 pr-8 text-right">
+                            <div class="bg-white rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                                <div class="flex justify-end items-center mb-4">
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-neon-green">2010年代</h3>
+                                        <p class="text-gray-500">深度学习革命</p>
+                                    </div>
+                                    <div class="w-16 h-16 bg-gradient-to-r from-neon-green to-electric-blue rounded-full flex items-center justify-center ml-4">
+                                        <span class="text-white text-2xl">🧠</span>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-gray-700 mb-3">
+                                        AlphaGo击败围棋世界冠军，AI开始在图像识别、语音识别等领域超越人类！
+                                    </p>
+                                    <div class="bg-neon-green/10 rounded-lg p-3">
+                                        <p class="text-sm text-neon-green">
+                                            🎯 <strong>小知识：</strong>这个时期的AI就像一个超级聪明的学生，能从大量数据中自主学习
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-neon-green rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            3
+                        </div>
+                        
+                        <div class="w-1/2 pl-8">
+                            <div class="bg-gradient-to-br from-neon-green/10 to-magic-pink/10 rounded-2xl p-6">
+                                <div class="text-center">
+                                    <div class="text-6xl mb-4">🚀</div>
+                                    <h4 class="text-lg font-bold text-neon-green mb-2">成就解锁</h4>
+                                    <p class="text-sm text-gray-600">
+                                        AI开始在我们的生活中无处不在！你能找到多少个例子？
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 现在 -->
+                <div class="timeline-item relative">
+                    <div class="flex items-center">
+                        <div class="w-1/2 pr-8">
+                            <div class="bg-gradient-to-br from-magic-pink/10 to-magic-orange/10 rounded-2xl p-6">
+                                <div class="text-center">
+                                    <div class="text-6xl mb-4">🎭</div>
+                                    <h4 class="text-lg font-bold text-magic-pink mb-2">未来畅想</h4>
+                                    <p class="text-sm text-gray-600">
+                                        如果你是未来的AI设计师，你希望创造什么样的AI？
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-magic-pink rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            4
+                        </div>
+                        
+                        <div class="w-1/2 pl-8 text-left">
+                            <div class="bg-white rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300 border-2 border-magic-pink/30">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-16 h-16 bg-gradient-to-r from-magic-pink to-magic-orange rounded-full flex items-center justify-center mr-4">
+                                        <span class="text-white text-2xl">✨</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-magic-pink">现在</h3>
+                                        <p class="text-gray-500">生成式AI时代</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-gray-700 mb-3">
+                                        ChatGPT、Midjourney等生成式AI让每个人都能成为创作者！AI不再只是工具，更是我们的创作伙伴。
+                                    </p>
+                                    <div class="bg-magic-pink/10 rounded-lg p-3">
+                                        <p class="text-sm text-magic-pink">
+                                            ✨ <strong>小知识：</strong>现在的AI就像一位多才多艺的艺术家，能创作文字、图画、音乐和视频！
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI定义游戏 -->
+    <section class="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-cosmic-purple mb-6">
+                    🎯 AI定义大挑战
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    让我们用有趣的方式来理解"什么是AI"
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- AI vs 普通程序 -->
+                <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-cosmic-purple mb-4">🤖 AI vs 普通程序</h3>
+                        <p class="text-gray-600">让我们来看看AI和普通程序的区别</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- 普通程序 -->
+                        <div class="bg-gray-100 rounded-2xl p-6 text-center">
+                            <div class="text-4xl mb-4">📱</div>
+                            <h4 class="font-bold text-gray-700 mb-3">普通程序</h4>
+                            <div class="space-y-2 text-sm text-gray-600">
+                                <div class="bg-white rounded-lg p-2">
+                                    严格按照指令执行
+                                </div>
+                                <div class="bg-white rounded-lg p-2">
+                                    遇到新情况会"罢工"
+                                </div>
+                                <div class="bg-white rounded-lg p-2">
+                                    就像一台精准的机器
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AI程序 -->
+                        <div class="bg-gradient-to-br from-cosmic-purple/10 to-electric-blue/10 rounded-2xl p-6 text-center">
+                            <div class="text-4xl mb-4">🤖</div>
+                            <h4 class="font-bold text-cosmic-purple mb-3">AI程序</h4>
+                            <div class="space-y-2 text-sm text-cosmic-purple">
+                                <div class="bg-white rounded-lg p-2">
+                                    能够学习和适应
+                                </div>
+                                <div class="bg-white rounded-lg p-2">
+                                    面对新情况能思考
+                                </div>
+                                <div class="bg-white rounded-lg p-2">
+                                    就像一个聪明的助手
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 bg-cosmic-purple/10 rounded-2xl p-4">
+                        <div class="text-center">
+                            <h5 class="font-bold text-cosmic-purple mb-2">💡 简单来说</h5>
+                            <p class="text-sm text-gray-700">
+                                AI就是能够"模拟人类智能"的程序，它能学习、思考、判断，而不只是机械地执行命令！
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI的三大能力 -->
+                <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-neon-green mb-4">⚡ AI的三大超能力</h3>
+                        <p class="text-gray-600">AI究竟有哪些让人惊叹的能力？</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <!-- 学习能力 -->
+                        <div class="bg-gradient-to-r from-neon-green/10 to-electric-blue/10 rounded-2xl p-4 hover:shadow-lg transition-all duration-300">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gradient-to-r from-neon-green to-electric-blue rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-white text-lg">📚</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-bold text-neon-green mb-1">学习能力</h4>
+                                    <p class="text-sm text-gray-600">从数据中发现规律，越用越聪明</p>
+                                </div>
+                                <div class="text-2xl">🧠</div>
+                            </div>
+                        </div>
+
+                        <!-- 感知能力 -->
+                        <div class="bg-gradient-to-r from-electric-blue/10 to-magic-purple/10 rounded-2xl p-4 hover:shadow-lg transition-all duration-300">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gradient-to-r from-electric-blue to-magic-purple rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-white text-lg">👁️</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-bold text-electric-blue mb-1">感知能力</h4>
+                                    <p class="text-sm text-gray-600">能"看"图像，"听"声音，"读"文字</p>
+                                </div>
+                                <div class="text-2xl">👀</div>
+                            </div>
+                        </div>
+
+                        <!-- 创造能力 -->
+                        <div class="bg-gradient-to-r from-magic-purple/10 to-magic-pink/10 rounded-2xl p-4 hover:shadow-lg transition-all duration-300">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gradient-to-r from-magic-purple to-magic-pink rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-white text-lg">🎨</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-bold text-magic-purple mb-1">创造能力</h4>
+                                    <p class="text-sm text-gray-600">能创作文字、图画、音乐等内容</p>
+                                </div>
+                                <div class="text-2xl">✨</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 bg-gradient-to-r from-neon-green/10 to-magic-pink/10 rounded-2xl p-4">
+                        <div class="text-center">
+                            <h5 class="font-bold text-magic-purple mb-2">🎯 小测试</h5>
+                            <p class="text-sm text-gray-700">
+                                你能想到生活中哪些AI应用体现了这三大能力吗？
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 生活中的AI探索 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-cosmic-purple mb-6">
+                    🔍 AI探险队出发！
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    让我们一起寻找生活中隐藏的AI小伙伴们
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 手机AI -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">📱</div>
+                        <h3 class="text-xl font-bold text-cosmic-purple mb-3">手机里的AI</h3>
+                        <div class="space-y-2 text-sm text-gray-600 mb-4">
+                            <div class="bg-cosmic-purple/10 rounded-lg p-2">语音助手（小爱、Siri）</div>
+                            <div class="bg-cosmic-purple/10 rounded-lg p-2">拍照美化</div>
+                            <div class="bg-cosmic-purple/10 rounded-lg p-2">智能翻译</div>
+                        </div>
+                        <div class="bg-gradient-to-r from-cosmic-purple to-electric-blue text-white rounded-full px-4 py-2 text-sm">
+                            随身智能助手
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 家庭AI -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">🏠</div>
+                        <h3 class="text-xl font-bold text-neon-green mb-3">家里的AI</h3>
+                        <div class="space-y-2 text-sm text-gray-600 mb-4">
+                            <div class="bg-neon-green/10 rounded-lg p-2">智能音箱</div>
+                            <div class="bg-neon-green/10 rounded-lg p-2">扫地机器人</div>
+                            <div class="bg-neon-green/10 rounded-lg p-2">智能家电控制</div>
+                        </div>
+                        <div class="bg-gradient-to-r from-neon-green to-electric-blue text-white rounded-full px-4 py-2 text-sm">
+                            贴心生活管家
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 娱乐AI -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">🎮</div>
+                        <h3 class="text-xl font-bold text-electric-blue mb-3">娱乐中的AI</h3>
+                        <div class="space-y-2 text-sm text-gray-600 mb-4">
+                            <div class="bg-electric-blue/10 rounded-lg p-2">游戏智能对手</div>
+                            <div class="bg-electric-blue/10 rounded-lg p-2">音乐推荐</div>
+                            <div class="bg-electric-blue/10 rounded-lg p-2">短视频推送</div>
+                        </div>
+                        <div class="bg-gradient-to-r from-electric-blue to-magic-purple text-white rounded-full px-4 py-2 text-sm">
+                            娱乐好伙伴
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 学习AI -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">📚</div>
+                        <h3 class="text-xl font-bold text-magic-purple mb-3">学习中的AI</h3>
+                        <div class="space-y-2 text-sm text-gray-600 mb-4">
+                            <div class="bg-magic-purple/10 rounded-lg p-2">在线教育平台</div>
+                            <div class="bg-magic-purple/10 rounded-lg p-2">作业批改助手</div>
+                            <div class="bg-magic-purple/10 rounded-lg p-2">知识问答</div>
+                        </div>
+                        <div class="bg-gradient-to-r from-magic-purple to-magic-pink text-white rounded-full px-4 py-2 text-sm">
+                            学习小老师
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 出行AI -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">🚗</div>
+                        <h3 class="text-xl font-bold text-magic-green mb-3">出行中的AI</h3>
+                        <div class="space-y-2 text-sm text-gray-600 mb-4">
+                            <div class="bg-magic-green/10 rounded-lg p-2">导航路线规划</div>
+                            <div class="bg-magic-green/10 rounded-lg p-2">智能停车</div>
+                            <div class="bg-magic-green/10 rounded-lg p-2">自动驾驶</div>
+                        </div>
+                        <div class="bg-gradient-to-r from-magic-green to-magic-orange text-white rounded-full px-4 py-2 text-sm">
+                            出行导航员
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 购物AI -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">🛍️</div>
+                        <h3 class="text-xl font-bold text-magic-orange mb-3">购物中的AI</h3>
+                        <div class="space-y-2 text-sm text-gray-600 mb-4">
+                            <div class="bg-magic-orange/10 rounded-lg p-2">商品推荐</div>
+                            <div class="bg-magic-orange/10 rounded-lg p-2">智能客服</div>
+                            <div class="bg-magic-orange/10 rounded-lg p-2">价格比较</div>
+                        </div>
+                        <div class="bg-gradient-to-r from-magic-orange to-cosmic-purple text-white rounded-full px-4 py-2 text-sm">
+                            购物小助手
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 探索任务 -->
+            <div class="mt-16 bg-gradient-to-r from-cosmic-purple to-electric-blue rounded-3xl p-8 text-white text-center">
+                <h3 class="text-2xl font-bold mb-4">🎯 探索任务</h3>
+                <p class="text-lg mb-6">
+                    回家后，和家人一起找找还有哪些AI应用？制作一个"我身边的AI地图"！
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span class="bg-white/20 rounded-full px-4 py-2 text-sm">找到5个AI应用</span>
+                    <span class="bg-white/20 rounded-full px-4 py-2 text-sm">画出AI地图</span>
+                    <span class="bg-white/20 rounded-full px-4 py-2 text-sm">分享给同学</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 课堂实践活动 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-cosmic-purple mb-6">
+                    🎲 实践活动时间
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    通过动手实践，加深对AI的理解
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- 活动1：AI分类游戏 -->
+                <div class="bg-gradient-to-br from-cosmic-purple/10 to-electric-blue/10 rounded-3xl p-8">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">🎯</div>
+                        <h3 class="text-2xl font-bold text-cosmic-purple">活动1：AI侦探游戏</h3>
+                        <p class="text-gray-600 mt-2">判断哪些是AI，哪些不是</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-2xl p-4">
+                            <h4 class="font-bold text-cosmic-purple mb-3">🎮 游戏规则</h4>
+                            <ol class="text-sm text-gray-700 space-y-2">
+                                <li>1. 老师展示不同的应用场景</li>
+                                <li>2. 学生判断是否使用了AI技术</li>
+                                <li>3. 说出判断的理由</li>
+                                <li>4. 正确答案获得"AI侦探"徽章</li>
+                            </ol>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-4">
+                            <h4 class="font-bold text-cosmic-purple mb-3">📝 示例题目</h4>
+                            <div class="grid grid-cols-2 gap-2 text-sm">
+                                <div class="bg-neon-green/20 rounded-lg p-2 text-center">✅ 语音助手</div>
+                                <div class="bg-gray-200 rounded-lg p-2 text-center">❌ 计算器</div>
+                                <div class="bg-neon-green/20 rounded-lg p-2 text-center">✅ 拍照识物</div>
+                                <div class="bg-gray-200 rounded-lg p-2 text-center">❌ 定闹钟</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 活动2：AI畅想画 -->
+                <div class="bg-gradient-to-br from-neon-green/10 to-electric-blue/10 rounded-3xl p-8">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">🎨</div>
+                        <h3 class="text-2xl font-bold text-neon-green">活动2：未来AI设计师</h3>
+                        <p class="text-gray-600 mt-2">设计你心目中的AI助手</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-2xl p-4">
+                            <h4 class="font-bold text-neon-green mb-3">✏️ 设计要求</h4>
+                            <ol class="text-sm text-gray-700 space-y-2">
+                                <li>1. 给你的AI起个有趣的名字</li>
+                                <li>2. 画出AI的外观（可以是机器人、小精灵等）</li>
+                                <li>3. 写出AI的3个超能力</li>
+                                <li>4. 说明AI如何帮助人们</li>
+                            </ol>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-4">
+                            <h4 class="font-bold text-neon-green mb-3">🌟 设计灵感</h4>
+                            <div class="text-sm text-gray-600 space-y-1">
+                                <div>• 学习助手：帮助解答难题</div>
+                                <div>• 健康管家：监测身体状况</div>
+                                <div>• 环保卫士：保护地球环境</div>
+                                <div>• 创意伙伴：一起创作艺术作品</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 课程总结 -->
+    <section class="py-20 bg-gradient-to-br from-cosmic-purple to-electric-blue text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold font-display mb-8">
+                🎉 今天我们学到了什么？
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">🧠</div>
+                    <h3 class="font-bold mb-2">AI的定义</h3>
+                    <p class="text-sm opacity-90">模拟人类智能的计算机程序</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">⏰</div>
+                    <h3 class="font-bold mb-2">AI的历史</h3>
+                    <p class="text-sm opacity-90">从1950年代到现在的发展历程</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">⚡</div>
+                    <h3 class="font-bold mb-2">AI的能力</h3>
+                    <p class="text-sm opacity-90">学习、感知、创造三大超能力</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">🔍</div>
+                    <h3 class="font-bold mb-2">生活应用</h3>
+                    <p class="text-sm opacity-90">AI在我们身边无处不在</p>
+                </div>
+            </div>
+
+            <div class="bg-white/10 rounded-3xl p-8 backdrop-blur-sm mb-12">
+                <h3 class="text-2xl font-bold mb-4">📝 课后任务</h3>
+                <div class="grid md:grid-cols-3 gap-4 text-left">
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">🔍 探索任务</h4>
+                        <p class="text-sm opacity-90">和家人一起找出家中5个AI应用，制作"我身边的AI地图"</p>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">🎨 创作任务</h4>
+                        <p class="text-sm opacity-90">完成"未来AI设计师"的设计作品，准备下节课分享</p>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">📚 预习任务</h4>
+                        <p class="text-sm opacity-90">思考：机器是如何学习的？为下节课"机器学习基础"做准备</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="lesson-02.html" class="bg-white text-cosmic-purple px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                    🚀 下一课：机器学习基础
+                </a>
+                <a href="course-schedule.html" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-cosmic-purple transition-all duration-300">
+                    📅 返回课程安排
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4">🏭 AI智造学院</h3>
+                    <p class="text-gray-300 mb-4">
+                        Aura school AI教育平台 - 培养面向未来的AI创新人才
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-qq text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">课程导航</h4>
+                    <ul class="space-y-2">
+                        <li><a href="course-schedule.html" class="text-gray-300 hover:text-white transition-colors">课程安排</a></li>
+                        <li><a href="lesson-02.html" class="text-gray-300 hover:text-white transition-colors">第2课</a></li>
+                        <li><a href="courses.html" class="text-gray-300 hover:text-white transition-colors">课程总览</a></li>
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">学院首页</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">其他平台</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../ai-learning/index.html" class="text-gray-300 hover:text-white transition-colors">AI元能力课程</a></li>
+                        <li><a href="../ai-coding/index.html" class="text-gray-300 hover:text-white transition-colors">AI代码魔术课堂</a></li>
+                        <li><a href="../../index.html" class="text-gray-300 hover:text-white transition-colors">返回主站</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2024 Aura school AI教育平台. 保留所有权利.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>

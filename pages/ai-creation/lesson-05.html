@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第5课：AI图像生成 - AI智造学院 | Aura school AI教育平台</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-blue': '#1e3a8a',
+                        'cosmic-purple': '#4c1d95',
+                        'neon-green': '#22c55e',
+                        'electric-blue': '#3b82f6',
+                        'sophisticated-gray': '#64748b',
+                        'space-dark': '#0f172a',
+                        'space-purple': '#6366f1',
+                        'ai-cyan': '#06b6d4',
+                        'magic-purple': '#6366f1',
+                        'magic-pink': '#f472b6',
+                        'magic-blue': '#3b82f6',
+                        'magic-green': '#10b981',
+                        'magic-orange': '#f59e0b',
+                        'art-red': '#ef4444',
+                        'art-purple': '#a855f7',
+                        'art-pink': '#ec4899',
+                        'art-indigo': '#6366f1',
+                        'art-cyan': '#06b6d4'
+                    },
+                    fontFamily: {
+                        'display': ['"Noto Sans SC"', 'sans-serif'],
+                        'body': ['"Noto Sans SC"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        .paint-splash {
+            animation: paintSplash 3s ease-in-out infinite;
+        }
+        .paint-splash:nth-child(2) {
+            animation-delay: 1s;
+        }
+        .paint-splash:nth-child(3) {
+            animation-delay: 2s;
+        }
+        @keyframes paintSplash {
+            0%, 100% { 
+                opacity: 0.7; 
+                transform: scale(1) rotate(0deg); 
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.1) rotate(10deg); 
+            }
+        }
+        .brush-stroke {
+            animation: brushStroke 4s ease-in-out infinite;
+        }
+        @keyframes brushStroke {
+            0%, 100% { transform: rotate(-15deg) translateY(0px); }
+            25% { transform: rotate(-10deg) translateY(-5px); }
+            50% { transform: rotate(-20deg) translateY(-10px); }
+            75% { transform: rotate(-5deg) translateY(-5px); }
+        }
+        .color-wheel {
+            animation: colorWheel 8s linear infinite;
+        }
+        @keyframes colorWheel {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .image-generate {
+            animation: imageGenerate 3s ease-in-out;
+        }
+        @keyframes imageGenerate {
+            0% { opacity: 0; transform: scale(0.8) blur(10px); }
+            30% { opacity: 0.3; transform: scale(0.9) blur(5px); }
+            70% { opacity: 0.7; transform: scale(1.05) blur(2px); }
+            100% { opacity: 1; transform: scale(1) blur(0px); }
+        }
+        .style-morph {
+            animation: styleMorph 6s ease-in-out infinite;
+        }
+        @keyframes styleMorph {
+            0%, 100% { filter: hue-rotate(0deg) saturate(1); }
+            33% { filter: hue-rotate(120deg) saturate(1.5); }
+            66% { filter: hue-rotate(240deg) saturate(0.8); }
+        }
+        .canvas-float {
+            animation: canvasFloat 5s ease-in-out infinite;
+        }
+        @keyframes canvasFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+    </style>
+</head>
+<body class="font-body text-gray-900 bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../../index.html" class="text-2xl font-bold font-display text-cosmic-purple">
+                        🚀 Aura school
+                    </a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <a href="index.html" class="text-lg font-semibold text-electric-blue">🏭 AI智造学院</a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <span class="text-sophisticated-gray">第5课</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="lesson-04.html" class="nav-link">上一课</a>
+                        <a href="lesson-06.html" class="nav-link">下一课</a>
+                        <a href="course-schedule.html" class="nav-link">课程安排</a>
+                        <a href="../../index.html" class="nav-link">返回主站</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-16 bg-gradient-to-br from-art-pink via-art-purple to-art-indigo overflow-hidden">
+        <!-- 艺术装饰元素 -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="paint-splash absolute top-1/4 left-1/6 text-5xl text-yellow-300">🎨</div>
+            <div class="paint-splash absolute top-1/3 right-1/4 text-4xl text-pink-300">🖌️</div>
+            <div class="paint-splash absolute bottom-1/4 left-1/3 text-6xl text-blue-300">🎭</div>
+            <div class="brush-stroke absolute top-1/5 right-1/3 text-5xl text-white/80">🖍️</div>
+            <div class="color-wheel absolute bottom-1/6 right-1/6 text-4xl">🌈</div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <!-- 课程标识 -->
+            <div class="inline-flex items-center bg-white/20 rounded-full px-6 py-3 mb-8">
+                <span class="text-2xl mr-3">🎨</span>
+                <span class="font-semibold">第5课 · 模块二：文本与图像创作</span>
+                <span class="ml-3 bg-white/30 rounded-full px-3 py-1 text-sm">第5周</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold font-display mb-6">
+                🖼️ AI图像生成
+            </h1>
+            
+            <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-4xl mx-auto">
+                欢迎来到AI画师工作室！让我们一起用神奇的AI画笔创造奇幻世界
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 max-w-3xl mx-auto">
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">2</div>
+                    <div class="text-sm opacity-80">课时</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">5</div>
+                    <div class="text-sm opacity-80">绘画工具</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">8+</div>
+                    <div class="text-sm opacity-80">艺术风格</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">初级</div>
+                    <div class="text-sm opacity-80">难度等级</div>
+                </div>
+            </div>
+
+            <!-- 课程目标卡片 -->
+            <div class="bg-white/10 rounded-2xl p-6 max-w-4xl mx-auto backdrop-blur-sm">
+                <h2 class="text-2xl font-bold mb-4">🎯 本课学习目标</h2>
+                <div class="grid md:grid-cols-2 gap-4 text-left">
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-art-pink rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">1</span>
+                        <span>掌握Midjourney等AI绘画工具</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-art-purple rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">2</span>
+                        <span>学会图像提示词的撰写技巧</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-art-indigo rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">3</span>
+                        <span>体验多种艺术风格的创作</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-art-cyan rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">4</span>
+                        <span>完成个人艺术作品集</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI画师工作室介绍 -->
+    <section class="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-art-purple mb-6">
+                    🎨 欢迎来到AI画师工作室！
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    在这个充满创意的艺术空间里，AI将成为你最棒的绘画伙伴
+                </p>
+            </div>
+
+            <!-- 工作室环境介绍 -->
+            <div class="bg-gradient-to-br from-art-pink/10 to-art-purple/10 rounded-3xl p-8 mb-12">
+                <div class="text-center mb-8">
+                    <div class="text-6xl mb-4">🎨</div>
+                    <h3 class="text-2xl font-bold text-art-purple mb-4">AI画师工作室的故事</h3>
+                </div>
+                
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🎨</div>
+                        <h4 class="font-bold text-art-pink mb-2">你（见习画师）</h4>
+                        <p class="text-sm text-gray-600">刚进入工作室的艺术新手，对创作充满想象</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3 style-morph">🤖</div>
+                        <h4 class="font-bold text-art-purple mb-2">AI绘画助手</h4>
+                        <p class="text-sm text-gray-600">技艺高超的虚拟画师，能实现任何创意构想</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🖌️</div>
+                        <h4 class="font-bold text-art-indigo mb-2">神奇画笔</h4>
+                        <p class="text-sm text-gray-600">各种风格的AI绘画工具，从写实到抽象应有尽有</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3 canvas-float">🖼️</div>
+                        <h4 class="font-bold text-art-cyan mb-2">作品展示墙</h4>
+                        <p class="text-sm text-gray-600">展示你创作的精美AI艺术作品</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-white/50 rounded-2xl p-6 text-center">
+                    <p class="text-gray-700 text-lg">
+                        在AI画师工作室里，<strong class="text-art-purple">你是艺术总监，AI是执行画师</strong>。
+                        你负责创意构思和艺术指导，AI帮你实现天马行空的想象！
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 五大AI绘画工具介绍 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-art-purple mb-6">
+                    🛠️ 五支神奇的AI画笔
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    每支画笔都有独特的绘画风格和创作特色
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Midjourney -->
+                <div class="bg-gradient-to-br from-art-purple/10 to-art-pink/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 lg:col-span-2">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">🎭</div>
+                        <h3 class="text-2xl font-bold text-art-purple mb-2">Midjourney 大师画笔</h3>
+                        <p class="text-gray-600 text-sm">最艺术、最梦幻的AI绘画工具</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <div class="bg-white/80 rounded-2xl p-4">
+                                <h4 class="font-bold text-art-purple mb-2">🌟 擅长风格</h4>
+                                <div class="text-sm text-gray-700 space-y-1">
+                                    <div>• 超现实主义艺术</div>
+                                    <div>• 梦幻奇幻风格</div>
+                                    <div>• 电影级场景</div>
+                                    <div>• 角色设计</div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white/80 rounded-2xl p-4">
+                                <h4 class="font-bold text-art-purple mb-2">✨ 特色功能</h4>
+                                <div class="text-sm text-gray-700 space-y-1">
+                                    <div>• 多种长宽比选择</div>
+                                    <div>• 风格化程度调节</div>
+                                    <div>• 图片变体生成</div>
+                                    <div>• 高分辨率放大</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-art-purple/20 to-art-pink/20 rounded-2xl p-4">
+                            <h4 class="font-bold text-art-purple mb-4 text-center">🎨 作品预览</h4>
+                            <div class="space-y-3">
+                                <div class="bg-white/50 rounded-lg p-3 text-center">
+                                    <div class="text-3xl mb-2">🏰</div>
+                                    <div class="text-xs text-gray-600">梦幻城堡</div>
+                                </div>
+                                <div class="bg-white/50 rounded-lg p-3 text-center">
+                                    <div class="text-3xl mb-2">🦄</div>
+                                    <div class="text-xs text-gray-600">独角兽</div>
+                                </div>
+                                <div class="bg-white/50 rounded-lg p-3 text-center">
+                                    <div class="text-3xl mb-2">🌌</div>
+                                    <div class="text-xs text-gray-600">星空场景</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DALL-E -->
+                <div class="bg-gradient-to-br from-art-indigo/10 to-art-cyan/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">🤖</div>
+                        <h3 class="text-xl font-bold text-art-indigo mb-2">DALL-E 智能画笔</h3>
+                        <p class="text-gray-600 text-sm">OpenAI出品的通用绘画工具</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-art-indigo mb-2">🎯 特点</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 理解能力强</div>
+                                <div>• 概念组合佳</div>
+                                <div>• 文字渲染好</div>
+                                <div>• 细节丰富</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-art-indigo mb-2">🎨 适合</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 日常插画</div>
+                                <div>• 商业设计</div>
+                                <div>• 教育图片</div>
+                                <div>• 概念设计</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stable Diffusion -->
+                <div class="bg-gradient-to-br from-art-red/10 to-art-pink/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">⚡</div>
+                        <h3 class="text-xl font-bold text-art-red mb-2">Stable Diffusion</h3>
+                        <p class="text-gray-600 text-sm">开源免费的强大画笔</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-art-red mb-2">💪 优势</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 完全免费</div>
+                                <div>• 可本地运行</div>
+                                <div>• 模型丰富</div>
+                                <div>• 可定制化</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-art-red mb-2">🎪 功能</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 图生图</div>
+                                <div>• 文生图</div>
+                                <div>• 图像修复</div>
+                                <div>• 风格迁移</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leonardo AI -->
+                <div class="bg-gradient-to-br from-art-cyan/10 to-electric-blue/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">🎪</div>
+                        <h3 class="text-xl font-bold text-art-cyan mb-2">Leonardo AI</h3>
+                        <p class="text-gray-600 text-sm">专业级创作平台</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-art-cyan mb-2">🎯 特色</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 游戏美术</div>
+                                <div>• 角色设计</div>
+                                <div>• 场景概念图</div>
+                                <div>• 3D模型辅助</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-art-cyan mb-2">🌟 亮点</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 质量稳定</div>
+                                <div>• 批量生成</div>
+                                <div>• 训练模型</div>
+                                <div>• 社区分享</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adobe Firefly -->
+                <div class="bg-gradient-to-br from-magic-orange/10 to-art-red/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">🔥</div>
+                        <h3 class="text-xl font-bold text-magic-orange mb-2">Adobe Firefly</h3>
+                        <p class="text-gray-600 text-sm">Adobe家的专业画笔</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-magic-orange mb-2">🏢 优势</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 商业可用</div>
+                                <div>• 版权安全</div>
+                                <div>• 集成Adobe</div>
+                                <div>• 专业品质</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-magic-orange mb-2">🎨 应用</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 广告设计</div>
+                                <div>• 品牌视觉</div>
+                                <div>• 产品设计</div>
+                                <div>• 营销素材</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 艺术风格探索馆 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-art-purple mb-6">
+                    🎭 艺术风格探索馆
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    体验八种经典艺术风格的AI创作魅力
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 卡通动漫风格 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3 style-morph">🦸</div>
+                        <h3 class="text-lg font-bold text-art-pink">卡通动漫</h3>
+                        <p class="text-sm text-gray-600">可爱萌系，色彩鲜艳</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-art-pink/10 rounded-lg p-3 text-center">
+                            <div class="text-2xl mb-1">👶</div>
+                            <div class="text-xs">Q版人物</div>
+                        </div>
+                        <div class="bg-art-pink/10 rounded-lg p-3 text-center">
+                            <div class="text-2xl mb-1">🐱</div>
+                            <div class="text-xs">萌系动物</div>
+                        </div>
+                        <div class="bg-art-pink/20 rounded-lg p-2">
+                            <div class="text-xs font-mono text-art-pink">
+                                "anime style, cute character"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 写实摄影风格 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">📸</div>
+                        <h3 class="text-lg font-bold text-art-indigo">写实摄影</h3>
+                        <p class="text-sm text-gray-600">逼真细腻，宛如照片</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-art-indigo/10 rounded-lg p-3 text-center">
+                            <div class="text-2xl mb-1">👤</div>
+                            <div class="text-xs">人物肖像</div>
+                        </div>
+                        <div class="bg-art-indigo/10 rounded-lg p-3 text-center">
+                            <div class="text-2xl mb-1">🌅</div>
+                            <div class="text-xs">自然风景</div>
+                        </div>
+                        <div class="bg-art-indigo/20 rounded-lg p-2">
+                            <div class="text-xs font-mono text-art-indigo">
+                                "photorealistic, detailed"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 油画艺术风格 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">🖼️</div>
+                        <h3 class="text-lg font-bold text-art-purple">油画艺术</h3>
+                        <p class="text-sm text-gray-600">经典高雅，笔触丰富</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-art-purple/10 rounded-lg p-3 text-center">
+                            <div class="text-2xl mb-1">🏛️</div>
+                            <div class="text-xs">古典场景</div>
+                        </div>
+                        <div class="bg-art-purple/10 rounded-lg p-3 text-center">
+                            <div class="text-2xl mb-1">💃</div>
+                            <div class="text-xs">人物画像</div>
+                        </div>
+                        <div class="bg-art-purple/20 rounded-lg p-2">
+                            <div class="text-xs font-mono text-art-purple">
+                                "oil painting, classical"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 水彩画风格 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">🌸</div>
+                        <h3 class="text-lg font-bold text-art-cyan">水彩画</h3>
+                        <p class="text-sm text-gray-600">清新淡雅，朦胧美感</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-art-cyan/10 rounded-lg p-3 text-center">
+                            <div class="text-2xl mb-1">🌺</div>
+                            <div class="text-xs">花卉植物</div>
+                        </div>
+                        <div class="bg-art-cyan/10 rounded-lg p-3 text-center">
+                            <div class="text-2xl mb-1">🦋</div>
+                            <div class="text-xs">自然生物</div>
+                        </div>
+                        <div class="bg-art-cyan/20 rounded-lg p-2">
+                            <div class="text-xs font-mono text-art-cyan">
+                                "watercolor, soft, dreamy"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 赛博朋克风格 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">🤖</div>
+                        <h3 class="text-lg font-bold text-electric-blue">赛博朋克</h3>
+                        <p class="text-sm text-gray-600">未来科幻，霓虹闪烁</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-electric-blue/10 rounded-lg p-3 text-center">
+                            <div class="text-2xl mb-1">🏙️</div>
+                            <div class="text-xs">未来都市</div>
+                        </div>
+                        <div class="bg-electric-blue/10 rounded-lg p-3 text-center">
+                            <div class="text-2xl mb-1">🚗</div>
+                            <div class="text-xs">科幻载具</div>
+                        </div>
+                        <div class="bg-electric-blue/20 rounded-lg p-2">
+                            <div class="text-xs font-mono text-electric-blue">
+                                "cyberpunk, neon, futuristic"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 像素艺术风格 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">🎮</div>
+                        <h3 class="text-lg font-bold text-neon-green">像素艺术</h3>
+                        <p class="text-sm text-gray-600">复古游戏，怀旧风情</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-neon-green/10 rounded-lg p-3 text-center">
+                            <div class="text-2xl mb-1">👾</div>
+                            <div class="text-xs">游戏角色</div>
+                        </div>
+                        <div class="bg-neon-green/10 rounded-lg p-3 text-center">
+                            <div class="text-2xl mb-1">🏰</div>
+                            <div class="text-xs">场景建筑</div>
+                        </div>
+                        <div class="bg-neon-green/20 rounded-lg p-2">
+                            <div class="text-xs font-mono text-neon-green">
+                                "pixel art, 8bit, retro"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 抽象艺术风格 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">🌀</div>
+                        <h3 class="text-lg font-bold text-magic-orange">抽象艺术</h3>
+                        <p class="text-sm text-gray-600">创意无限，意境深远</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-magic-orange/10 rounded-lg p-3 text-center">
+                            <div class="text-2xl mb-1">🎨</div>
+                            <div class="text-xs">色彩构成</div>
+                        </div>
+                        <div class="bg-magic-orange/10 rounded-lg p-3 text-center">
+                            <div class="text-2xl mb-1">🔮</div>
+                            <div class="text-xs">几何图形</div>
+                        </div>
+                        <div class="bg-magic-orange/20 rounded-lg p-2">
+                            <div class="text-xs font-mono text-magic-orange">
+                                "abstract, geometric, colorful"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 蒸汽朋克风格 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">⚙️</div>
+                        <h3 class="text-lg font-bold text-sophisticated-gray">蒸汽朋克</h3>
+                        <p class="text-sm text-gray-600">复古机械，工业美学</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-gray-200 rounded-lg p-3 text-center">
+                            <div class="text-2xl mb-1">🚂</div>
+                            <div class="text-xs">机械装置</div>
+                        </div>
+                        <div class="bg-gray-200 rounded-lg p-3 text-center">
+                            <div class="text-2xl mb-1">🎩</div>
+                            <div class="text-xs">维多利亚</div>
+                        </div>
+                        <div class="bg-gray-300 rounded-lg p-2">
+                            <div class="text-xs font-mono text-sophisticated-gray">
+                                "steampunk, mechanical, brass"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI绘画实战工坊 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-art-purple mb-6">
+                    🎨 AI绘画实战工坊
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    通过实际操作，掌握AI图像生成的核心技能
+                </p>
+            </div>
+
+            <!-- Midjourney实战演示 -->
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden mb-12">
+                <div class="bg-gradient-to-r from-art-purple to-art-pink text-white p-6">
+                    <div class="flex items-center">
+                        <div class="text-4xl mr-4">🎭</div>
+                        <div>
+                            <h3 class="text-2xl font-bold">Midjourney 实战工作台</h3>
+                            <p class="opacity-90">体验最艺术的AI绘画创作</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-8">
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <!-- 左侧：提示词构建 -->
+                        <div>
+                            <h4 class="text-xl font-bold text-art-purple mb-6">🔮 图像提示词构建法</h4>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-art-purple/10 rounded-2xl p-4">
+                                    <h5 class="font-bold text-art-purple mb-2">1. 主体描述（必需）</h5>
+                                    <div class="bg-white rounded-lg p-3 text-sm font-mono">
+                                        "a cute little dragon, sitting on a rainbow"
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-1">描述你想画的主要对象</p>
+                                </div>
+
+                                <div class="bg-art-pink/10 rounded-2xl p-4">
+                                    <h5 class="font-bold text-art-pink mb-2">2. 风格指定（重要）</h5>
+                                    <div class="bg-white rounded-lg p-3 text-sm font-mono">
+                                        "anime style, Studio Ghibli, watercolor"
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-1">指定你想要的艺术风格</p>
+                                </div>
+
+                                <div class="bg-art-indigo/10 rounded-2xl p-4">
+                                    <h5 class="font-bold text-art-indigo mb-2">3. 环境背景（辅助）</h5>
+                                    <div class="bg-white rounded-lg p-3 text-sm font-mono">
+                                        "in a magical forest, sunlight filtering through trees"
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-1">描述周围的环境和氛围</p>
+                                </div>
+
+                                <div class="bg-art-cyan/10 rounded-2xl p-4">
+                                    <h5 class="font-bold text-art-cyan mb-2">4. 质量参数（提升）</h5>
+                                    <div class="bg-white rounded-lg p-3 text-sm font-mono">
+                                        "--ar 16:9 --stylize 100 --quality 2"
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-1">控制图像尺寸比例和质量</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 右侧：生成演示 -->
+                        <div>
+                            <h4 class="text-xl font-bold text-art-pink mb-6">🎨 生成过程演示</h4>
+                            
+                            <!-- 模拟生成界面 -->
+                            <div class="bg-gray-50 rounded-2xl p-4 space-y-4">
+                                <!-- 用户输入 -->
+                                <div class="text-right">
+                                    <div class="bg-art-purple text-white rounded-2xl px-4 py-2 max-w-xs ml-auto text-sm">
+                                        /imagine a cute little dragon sitting on a rainbow, anime style, Studio Ghibli, magical forest --ar 16:9
+                                    </div>
+                                </div>
+
+                                <!-- AI生成过程 -->
+                                <div class="text-left">
+                                    <div class="bg-white rounded-2xl px-4 py-2 max-w-md shadow-md">
+                                        <div class="text-center mb-3">
+                                            <div class="text-xs text-gray-500 mb-2">🎨 AI正在创作中...</div>
+                                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                                <div class="bg-gradient-to-r from-art-purple to-art-pink h-2 rounded-full image-generate" style="width: 85%;"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- 四个变体预览 -->
+                                        <div class="grid grid-cols-2 gap-2 mb-3">
+                                            <div class="bg-gradient-to-br from-purple-100 to-pink-100 rounded-lg p-3 text-center">
+                                                <div class="text-2xl mb-1">🐲</div>
+                                                <div class="text-xs">变体1</div>
+                                            </div>
+                                            <div class="bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg p-3 text-center">
+                                                <div class="text-2xl mb-1">🌈</div>
+                                                <div class="text-xs">变体2</div>
+                                            </div>
+                                            <div class="bg-gradient-to-br from-pink-100 to-red-100 rounded-lg p-3 text-center">
+                                                <div class="text-2xl mb-1">🏰</div>
+                                                <div class="text-xs">变体3</div>
+                                            </div>
+                                            <div class="bg-gradient-to-br from-green-100 to-blue-100 rounded-lg p-3 text-center">
+                                                <div class="text-2xl mb-1">✨</div>
+                                                <div class="text-xs">变体4</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="text-center">
+                                            <div class="text-xs text-art-purple">
+                                                ✨ 选择你最喜欢的版本进行放大或变体！
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 操作技巧 -->
+                            <div class="mt-6 bg-gradient-to-r from-art-purple/10 to-art-pink/10 rounded-2xl p-4">
+                                <h5 class="font-bold text-art-purple mb-2">🛠️ 操作小贴士</h5>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• U1-U4: 放大对应的图像</li>
+                                    <li>• V1-V4: 基于图像生成变体</li>
+                                    <li>• 🔄: 重新生成四个新版本</li>
+                                    <li>• 可以继续对放大的图像做变体</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 创意挑战竞技场 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-art-purple mb-6">
+                    🏟️ 创意挑战竞技场
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    通过有趣的比赛，提升AI绘画技能！
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- 挑战1：风格模仿大赛 -->
+                <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">🎭</div>
+                        <h3 class="text-xl font-bold text-art-purple">风格模仿大赛</h3>
+                        <p class="text-gray-600 mt-2">看谁能最准确地模仿经典艺术风格</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- 比赛规则 -->
+                        <div class="bg-art-purple/10 rounded-2xl p-4">
+                            <h4 class="font-bold text-art-purple mb-2">🎯 比赛规则</h4>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>1. 随机抽取一种艺术风格</li>
+                                <li>2. 用AI创作该风格的作品</li>
+                                <li>3. 其他同学猜测风格类型</li>
+                                <li>4. 最相似的获胜</li>
+                            </ul>
+                        </div>
+
+                        <!-- 风格卡片 -->
+                        <div class="bg-white border-2 border-art-purple/20 rounded-2xl p-4">
+                            <h4 class="font-bold text-art-purple mb-3 text-center">🎨 风格卡片示例</h4>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div class="bg-art-purple/20 rounded-lg p-2 text-center text-xs">梵高</div>
+                                <div class="bg-art-pink/20 rounded-lg p-2 text-center text-xs">毕加索</div>
+                                <div class="bg-art-indigo/20 rounded-lg p-2 text-center text-xs">莫奈</div>
+                                <div class="bg-art-cyan/20 rounded-lg p-2 text-center text-xs">达芬奇</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-art-purple/20 to-art-pink/20 rounded-2xl p-3 text-center">
+                            <div class="text-sm font-bold text-art-purple">🏆 评分标准</div>
+                            <div class="text-xs text-gray-600 mt-1">风格相似度 50% + 创意性 30% + 技术实现 20%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 挑战2：主题创作赛 -->
+                <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">🌟</div>
+                        <h3 class="text-xl font-bold text-art-pink">主题创作赛</h3>
+                        <p class="text-gray-600 mt-2">围绕相同主题，看谁的创意最独特</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- 比赛流程 -->
+                        <div class="bg-art-pink/10 rounded-2xl p-4">
+                            <h4 class="font-bold text-art-pink mb-2">📝 比赛流程</h4>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>1. 公布统一主题（如"未来学校"）</li>
+                                <li>2. 15分钟创作时间</li>
+                                <li>3. 作品展示和说明</li>
+                                <li>4. 全班投票选出最佳</li>
+                            </ul>
+                        </div>
+
+                        <!-- 主题示例 -->
+                        <div class="bg-white border-2 border-art-pink/20 rounded-2xl p-4">
+                            <h4 class="font-bold text-art-pink mb-3 text-center">💡 主题示例</h4>
+                            <div class="space-y-2">
+                                <div class="bg-art-pink/20 rounded-lg p-2 text-center text-sm">🚀 太空旅行</div>
+                                <div class="bg-art-pink/20 rounded-lg p-2 text-center text-sm">🏖️ 梦想假期</div>
+                                <div class="bg-art-pink/20 rounded-lg p-2 text-center text-sm">🦄 神奇动物</div>
+                                <div class="bg-art-pink/20 rounded-lg p-2 text-center text-sm">🏰 童话世界</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-art-pink/20 to-magic-orange/20 rounded-2xl p-3 text-center">
+                            <div class="text-sm font-bold text-art-pink">⭐ 获胜秘诀</div>
+                            <div class="text-xs text-gray-600 mt-1">独特角度 + 精美细节 + 创新思维</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 挑战3：协作拼图赛 -->
+                <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">🧩</div>
+                        <h3 class="text-xl font-bold text-art-indigo">协作拼图赛</h3>
+                        <p class="text-gray-600 mt-2">团队合作创作大型拼图作品</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- 协作方式 -->
+                        <div class="bg-art-indigo/10 rounded-2xl p-4">
+                            <h4 class="font-bold text-art-indigo mb-2">🤝 协作方式</h4>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>1. 分组设计大型场景</li>
+                                <li>2. 每人负责一个区域</li>
+                                <li>3. 确保风格统一</li>
+                                <li>4. 最后拼合展示</li>
+                            </ul>
+                        </div>
+
+                        <!-- 拼图示例 -->
+                        <div class="bg-white border-2 border-art-indigo/20 rounded-2xl p-4">
+                            <h4 class="font-bold text-art-indigo mb-3 text-center">🗺️ 拼图示例</h4>
+                            <div class="grid grid-cols-2 gap-1">
+                                <div class="bg-sky-200 rounded p-2 text-center text-xs">天空部分</div>
+                                <div class="bg-green-200 rounded p-2 text-center text-xs">山脉部分</div>
+                                <div class="bg-blue-200 rounded p-2 text-center text-xs">湖泊部分</div>
+                                <div class="bg-yellow-200 rounded p-2 text-center text-xs">城堡部分</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-art-indigo/20 to-art-cyan/20 rounded-2xl p-3 text-center">
+                            <div class="text-sm font-bold text-art-indigo">🎯 成功要点</div>
+                            <div class="text-xs text-gray-600 mt-1">沟通协调 + 风格统一 + 细节完美</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品展览馆 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-art-purple mb-6">
+                    🏛️ 学生作品展览馆
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    展示同学们的精彩AI艺术创作成果
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 作品1：梦幻城堡 -->
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+                    <div class="bg-gradient-to-br from-purple-400 to-pink-400 h-48 flex items-center justify-center">
+                        <div class="text-6xl">🏰</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="text-2xl mr-3">🎭</div>
+                            <div>
+                                <h3 class="font-bold text-art-purple">《梦幻城堡》</h3>
+                                <p class="text-sm text-gray-500">小丽 × Midjourney</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-700 leading-relaxed mb-3">
+                            融合了童话和未来元素的梦幻城堡，漂浮在云海之中，散发着神秘的紫色光芒...
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="text-xs text-art-purple">
+                                🎨 风格：奇幻艺术
+                            </div>
+                            <div class="text-xs text-amber-600">
+                                ⭐ 创意指数：★★★★★
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作品2：赛博朋克街道 -->
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+                    <div class="bg-gradient-to-br from-blue-500 to-purple-600 h-48 flex items-center justify-center">
+                        <div class="text-6xl">🌃</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="text-2xl mr-3">🤖</div>
+                            <div>
+                                <h3 class="font-bold text-electric-blue">《未来街道》</h3>
+                                <p class="text-sm text-gray-500">小明 × DALL-E</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-700 leading-relaxed mb-3">
+                            霓虹灯闪烁的赛博朋克风格街道，飞行汽车穿梭在高楼大厦之间，充满科幻感...
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="text-xs text-electric-blue">
+                                🚀 风格：赛博朋克
+                            </div>
+                            <div class="text-xs text-amber-600">
+                                ⭐ 技术指数：★★★★★
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作品3：水彩花园 -->
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+                    <div class="bg-gradient-to-br from-green-300 to-pink-300 h-48 flex items-center justify-center">
+                        <div class="text-6xl">🌸</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="text-2xl mr-3">🌺</div>
+                            <div>
+                                <h3 class="font-bold text-art-cyan">《春日花园》</h3>
+                                <p class="text-sm text-gray-500">小华 × Stable Diffusion</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-700 leading-relaxed mb-3">
+                            淡雅的水彩风格花园，樱花飞舞，蝴蝶翩翩，营造出诗意盎然的春日氛围...
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="text-xs text-art-cyan">
+                                🎨 风格：水彩画
+                            </div>
+                            <div class="text-xs text-amber-600">
+                                ⭐ 美感指数：★★★★★
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作品4：像素世界 -->
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+                    <div class="bg-gradient-to-br from-green-500 to-yellow-500 h-48 flex items-center justify-center">
+                        <div class="text-6xl">🎮</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="text-2xl mr-3">👾</div>
+                            <div>
+                                <h3 class="font-bold text-neon-green">《像素王国》</h3>
+                                <p class="text-sm text-gray-500">小刚 × Leonardo AI</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-700 leading-relaxed mb-3">
+                            充满怀旧感的8位像素艺术，再现了经典游戏中的王国场景，细节精致...
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="text-xs text-neon-green">
+                                🎮 风格：像素艺术
+                            </div>
+                            <div class="text-xs text-amber-600">
+                                ⭐ 怀旧指数：★★★★★
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作品5：抽象构成 -->
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+                    <div class="bg-gradient-to-br from-orange-400 to-red-500 h-48 flex items-center justify-center">
+                        <div class="text-6xl">🌀</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="text-2xl mr-3">🎨</div>
+                            <div>
+                                <h3 class="font-bold text-magic-orange">《色彩交响》</h3>
+                                <p class="text-sm text-gray-500">小雅 × Adobe Firefly</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-700 leading-relaxed mb-3">
+                            抽象的几何构成与色彩碰撞，表达了音乐与视觉艺术的完美融合...
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="text-xs text-magic-orange">
+                                🔮 风格：抽象艺术
+                            </div>
+                            <div class="text-xs text-amber-600">
+                                ⭐ 抽象指数：★★★★★
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作品6：蒸汽朋克机械 -->
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+                    <div class="bg-gradient-to-br from-gray-600 to-amber-600 h-48 flex items-center justify-center">
+                        <div class="text-6xl">⚙️</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="text-2xl mr-3">🚂</div>
+                            <div>
+                                <h3 class="font-bold text-sophisticated-gray">《机械奇观》</h3>
+                                <p class="text-sm text-gray-500">小涛 × Midjourney</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-700 leading-relaxed mb-3">
+                            精密的蒸汽朋克风格机械装置，铜制齿轮和蒸汽管道构成复杂而美丽的结构...
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="text-xs text-sophisticated-gray">
+                                ⚙️ 风格：蒸汽朋克
+                            </div>
+                            <div class="text-xs text-amber-600">
+                                ⭐ 精密指数：★★★★★
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 作品征集区 -->
+            <div class="mt-16 bg-gradient-to-r from-art-purple/10 to-art-pink/10 rounded-3xl p-8 text-center">
+                <h3 class="text-2xl font-bold text-art-purple mb-4">🎨 作品征集</h3>
+                <p class="text-gray-700 mb-6">
+                    完成课堂练习后，欢迎提交你的AI艺术作品到展览馆！<br>
+                    优秀作品将在全校展示，并有机会参加校外AI艺术比赛。
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span class="bg-art-purple/20 text-art-purple rounded-full px-4 py-2 text-sm">原创构思</span>
+                    <span class="bg-art-pink/20 text-art-pink rounded-full px-4 py-2 text-sm">技术熟练</span>
+                    <span class="bg-art-indigo/20 text-art-indigo rounded-full px-4 py-2 text-sm">创意独特</span>
+                    <span class="bg-art-cyan/20 text-art-cyan rounded-full px-4 py-2 text-sm">表达完整</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 课程总结 -->
+    <section class="py-20 bg-gradient-to-br from-art-pink via-art-purple to-art-indigo text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold font-display mb-8">
+                🎓 恭喜成为AI画师！
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">🎭</div>
+                    <h3 class="font-bold mb-2">绘画工具</h3>
+                    <p class="text-sm opacity-90">Midjourney、DALL-E等</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">🎨</div>
+                    <h3 class="font-bold mb-2">艺术风格</h3>
+                    <p class="text-sm opacity-90">8种经典绘画风格</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">🖼️</div>
+                    <h3 class="font-bold mb-2">提示词技巧</h3>
+                    <p class="text-sm opacity-90">构建完美的图像描述</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">🏆</div>
+                    <h3 class="font-bold mb-2">创作能力</h3>
+                    <p class="text-sm opacity-90">独立完成艺术创作</p>
+                </div>
+            </div>
+
+            <div class="bg-white/10 rounded-3xl p-8 backdrop-blur-sm mb-12">
+                <h3 class="text-2xl font-bold mb-4">📝 创作任务</h3>
+                <div class="grid md:grid-cols-3 gap-4 text-left">
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">🎨 作品创作</h4>
+                        <p class="text-sm opacity-90">使用2种不同的AI工具，创作3幅不同风格的作品</p>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">📊 技能对比</h4>
+                        <p class="text-sm opacity-90">对比不同AI绘画工具的特点，制作对比表格</p>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">📚 预习任务</h4>
+                        <p class="text-sm opacity-90">思考：什么是提示词工程？为下节课做准备</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="lesson-06.html" class="bg-white text-art-purple px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                    🚀 下一课：提示词工程
+                </a>
+                <a href="lesson-04.html" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-art-purple transition-all duration-300">
+                    🔙 上一课：AI文本创作工具
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4">🏭 AI智造学院</h3>
+                    <p class="text-gray-300 mb-4">
+                        Aura school AI教育平台 - 培养面向未来的AI创新人才
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-qq text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">课程导航</h4>
+                    <ul class="space-y-2">
+                        <li><a href="lesson-04.html" class="text-gray-300 hover:text-white transition-colors">第4课</a></li>
+                        <li><a href="lesson-06.html" class="text-gray-300 hover:text-white transition-colors">第6课</a></li>
+                        <li><a href="course-schedule.html" class="text-gray-300 hover:text-white transition-colors">课程安排</a></li>
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">学院首页</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">其他平台</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../ai-learning/index.html" class="text-gray-300 hover:text-white transition-colors">AI元能力课程</a></li>
+                        <li><a href="../ai-coding/index.html" class="text-gray-300 hover:text-white transition-colors">AI代码魔术课堂</a></li>
+                        <li><a href="../../index.html" class="text-gray-300 hover:text-white transition-colors">返回主站</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2024 Aura school AI教育平台. 保留所有权利.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>

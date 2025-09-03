@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第11课：团队协作实践 - AI智造学院 | Aura school AI教育平台</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-blue': '#1e3a8a',
+                        'cosmic-purple': '#4c1d95',
+                        'neon-green': '#22c55e',
+                        'electric-blue': '#3b82f6',
+                        'sophisticated-gray': '#64748b',
+                        'space-dark': '#0f172a',
+                        'space-purple': '#6366f1',
+                        'ai-cyan': '#06b6d4',
+                        'magic-purple': '#6366f1',
+                        'magic-pink': '#f472b6',
+                        'magic-blue': '#3b82f6',
+                        'magic-green': '#10b981',
+                        'magic-orange': '#f59e0b',
+                        'team-blue': '#2563eb',
+                        'team-indigo': '#4338ca',
+                        'team-purple': '#7c3aed',
+                        'team-pink': '#db2777',
+                        'team-rose': '#e11d48',
+                        'team-orange': '#ea580c',
+                        'collab-emerald': '#059669',
+                        'collab-teal': '#0d9488',
+                        'collab-cyan': '#0891b2'
+                    },
+                    fontFamily: {
+                        'display': ['"Noto Sans SC"', 'sans-serif'],
+                        'body': ['"Noto Sans SC"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        .team-circle {
+            animation: teamCircle 8s linear infinite;
+        }
+        @keyframes teamCircle {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .collab-handshake {
+            animation: collabHandshake 4s ease-in-out infinite;
+        }
+        @keyframes collabHandshake {
+            0%, 100% { 
+                transform: translateX(0px) scale(1);
+                opacity: 1;
+            }
+            25% { 
+                transform: translateX(3px) scale(1.05);
+                opacity: 0.9;
+            }
+            50% { 
+                transform: translateX(-2px) scale(0.95);
+                opacity: 0.8;
+            }
+            75% { 
+                transform: translateX(1px) scale(1.02);
+                opacity: 0.95;
+            }
+        }
+        .workflow-pulse {
+            animation: workflowPulse 3s ease-in-out infinite;
+        }
+        .workflow-pulse:nth-child(2) { animation-delay: 0.5s; }
+        .workflow-pulse:nth-child(3) { animation-delay: 1s; }
+        .workflow-pulse:nth-child(4) { animation-delay: 1.5s; }
+        @keyframes workflowPulse {
+            0%, 100% { 
+                opacity: 0.6; 
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.1);
+            }
+        }
+        .connection-line {
+            animation: connectionLine 2s ease-in-out infinite;
+        }
+        @keyframes connectionLine {
+            0%, 100% { 
+                stroke-dasharray: 5,5;
+                stroke-dashoffset: 0;
+            }
+            50% { 
+                stroke-dasharray: 10,2;
+                stroke-dashoffset: 10;
+            }
+        }
+        .team-sync {
+            animation: teamSync 5s ease-in-out infinite;
+        }
+        @keyframes teamSync {
+            0%, 100% { 
+                transform: translateY(0px);
+                box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            }
+            50% { 
+                transform: translateY(-5px);
+                box-shadow: 0 8px 25px rgba(37, 99, 235, 0.5);
+            }
+        }
+    </style>
+</head>
+<body class="font-body text-gray-900 bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../../index.html" class="text-2xl font-bold font-display text-cosmic-purple">
+                        🚀 Aura school
+                    </a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <a href="index.html" class="text-lg font-semibold text-electric-blue">🏭 AI智造学院</a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <span class="text-sophisticated-gray">第11课</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="lesson-10.html" class="nav-link">上一课</a>
+                        <a href="lesson-12.html" class="nav-link">下一课</a>
+                        <a href="course-schedule.html" class="nav-link">课程安排</a>
+                        <a href="../../index.html" class="nav-link">返回主站</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-16 bg-gradient-to-br from-team-blue via-team-indigo via-team-purple to-collab-emerald overflow-hidden">
+        <!-- 团队协作装饰元素 -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="collab-handshake absolute top-1/4 left-1/6 text-5xl text-white/80">🤝</div>
+            <div class="workflow-pulse absolute top-1/3 right-1/4 text-4xl text-white/80">👥</div>
+            <div class="workflow-pulse absolute bottom-1/4 left-1/3 text-6xl text-white/80">🎯</div>
+            <div class="workflow-pulse absolute top-1/5 right-1/3 text-4xl text-white/80">💡</div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <!-- 课程标识 -->
+            <div class="inline-flex items-center bg-white/20 rounded-full px-6 py-3 mb-8">
+                <span class="text-2xl mr-3">🤝</span>
+                <span class="font-semibold">第11课 · 模块四：综合创新项目</span>
+                <span class="ml-3 bg-white/30 rounded-full px-3 py-1 text-sm">第11周</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold font-display mb-6">
+                🤝 团队协作实践
+            </h1>
+            
+            <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-4xl mx-auto">
+                欢迎来到AI协作工坊！学会与同伴协作，创造更强大的AI作品
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 max-w-3xl mx-auto">
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">2</div>
+                    <div class="text-sm opacity-80">课时</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">6</div>
+                    <div class="text-sm opacity-80">协作技能</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">4</div>
+                    <div class="text-sm opacity-80">团队挑战</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">高级</div>
+                    <div class="text-sm opacity-80">难度等级</div>
+                </div>
+            </div>
+
+            <!-- 课程目标卡片 -->
+            <div class="bg-white/10 rounded-2xl p-6 max-w-4xl mx-auto backdrop-blur-sm">
+                <h2 class="text-2xl font-bold mb-4">🎯 本课学习目标</h2>
+                <div class="grid md:grid-cols-2 gap-4 text-left">
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-team-blue rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">1</span>
+                        <span>掌握团队协作的核心技能</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-team-indigo rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">2</span>
+                        <span>学会使用协作工具和平台</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-team-purple rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">3</span>
+                        <span>体验敏捷开发和项目管理</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-collab-emerald rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">4</span>
+                        <span>完成团队AI创作大项目</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI协作工坊介绍 -->
+    <section class="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-team-blue mb-6">
+                    🏭 欢迎来到AI协作工坊！
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    在这里，你将学会与团队合作，创造比个人更强大的AI作品
+                </p>
+            </div>
+
+            <!-- 协作工坊介绍 -->
+            <div class="bg-gradient-to-br from-team-blue/10 to-collab-emerald/10 rounded-3xl p-8 mb-12">
+                <div class="text-center mb-8">
+                    <div class="text-6xl mb-4">🏭</div>
+                    <h3 class="text-2xl font-bold text-team-blue mb-4">AI协作工坊的团队精神</h3>
+                </div>
+                
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">👤</div>
+                        <h4 class="font-bold text-team-blue mb-2">你（团队成员）</h4>
+                        <p class="text-sm text-gray-600">带着前10课技能加入协作团队</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3 team-circle">👥</div>
+                        <h4 class="font-bold text-team-indigo mb-2">协作团队</h4>
+                        <p class="text-sm text-gray-600">3-5人的多技能AI创作团队</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🛠️</div>
+                        <h4 class="font-bold text-team-purple mb-2">协作工具</h4>
+                        <p class="text-sm text-gray-600">现代化的团队协作平台和工具</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🏆</div>
+                        <h4 class="font-bold text-collab-emerald mb-2">共同目标</h4>
+                        <p class="text-sm text-gray-600">完成大型AI创作项目</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-white/50 rounded-2xl p-6 text-center">
+                    <p class="text-gray-700 text-lg">
+                        在AI协作工坊里，<strong class="text-team-blue">每个人都是专家，团队就是超级大脑</strong>。
+                        通过分工合作，创造单人无法完成的惊艳作品！
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 六大协作技能 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-team-blue mb-6">
+                    🎯 六大团队协作技能
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    掌握现代团队协作的核心技能和方法
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 技能1：沟通协调 -->
+                <div class="bg-gradient-to-br from-team-blue/10 to-team-indigo/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 team-sync">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">💬</div>
+                        <h3 class="text-xl font-bold text-team-blue mb-2">技能1：沟通协调</h3>
+                        <p class="text-gray-600 text-sm">有效交流，避免误解</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-team-blue mb-2">💡 沟通要点</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 明确表达自己的想法</div>
+                                <div>• 认真倾听他人意见</div>
+                                <div>• 及时反馈和确认</div>
+                                <div>• 尊重不同观点</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-team-blue mb-2">📱 沟通工具</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 即时通讯软件</div>
+                                <div>• 视频会议系统</div>
+                                <div>• 项目讨论区</div>
+                                <div>• 文档协作平台</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 技能2：任务分工 -->
+                <div class="bg-gradient-to-br from-team-indigo/10 to-team-purple/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">⚖️</div>
+                        <h3 class="text-xl font-bold text-team-indigo mb-2">技能2：任务分工</h3>
+                        <p class="text-gray-600 text-sm">合理分配，发挥专长</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-team-indigo mb-2">🎭 角色分工</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 项目经理（统筹协调）</div>
+                                <div>• 创意总监（概念设计）</div>
+                                <div>• 技术专家（工具操作）</div>
+                                <div>• 质量控制（测试优化）</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-team-indigo mb-2">📋 分工原则</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 根据能力和兴趣</div>
+                                <div>• 任务清晰具体</div>
+                                <div>• 责任明确到人</div>
+                                <div>• 互相支援帮助</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 技能3：进度管理 -->
+                <div class="bg-gradient-to-br from-team-purple/10 to-team-pink/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">📊</div>
+                        <h3 class="text-xl font-bold text-team-purple mb-2">技能3：进度管理</h3>
+                        <p class="text-gray-600 text-sm">把控节奏，按时完成</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-team-purple mb-2">⏰ 时间规划</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 制定里程碑计划</div>
+                                <div>• 设置检查点</div>
+                                <div>• 预留缓冲时间</div>
+                                <div>• 定期进度汇报</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-team-purple mb-2">📈 管理工具</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 甘特图时间线</div>
+                                <div>• 看板任务板</div>
+                                <div>• 进度追踪表</div>
+                                <div>• 风险预警系统</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 技能4：文件协作 -->
+                <div class="bg-gradient-to-br from-team-pink/10 to-team-rose/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">📁</div>
+                        <h3 class="text-xl font-bold text-team-pink mb-2">技能4：文件协作</h3>
+                        <p class="text-gray-600 text-sm">共享资源，同步更新</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-team-pink mb-2">☁️ 云端协作</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 共享文件夹</div>
+                                <div>• 实时编辑功能</div>
+                                <div>• 版本控制管理</div>
+                                <div>• 访问权限设置</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-team-pink mb-2">📋 文件规范</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 统一命名规则</div>
+                                <div>• 目录结构清晰</div>
+                                <div>• 备份机制完善</div>
+                                <div>• 定期整理归档</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 技能5：冲突解决 -->
+                <div class="bg-gradient-to-br from-team-rose/10 to-team-orange/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">🤝</div>
+                        <h3 class="text-xl font-bold text-team-rose mb-2">技能5：冲突解决</h3>
+                        <p class="text-gray-600 text-sm">化解分歧，达成共识</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-team-rose mb-2">🎯 解决方法</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 理性讨论问题</div>
+                                <div>• 寻找共同点</div>
+                                <div>• 提出折中方案</div>
+                                <div>• 民主投票决定</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-team-rose mb-2">💡 预防措施</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 建立团队规则</div>
+                                <div>• 保持开放心态</div>
+                                <div>• 及时沟通反馈</div>
+                                <div>• 尊重个体差异</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 技能6：成果整合 -->
+                <div class="bg-gradient-to-br from-team-orange/10 to-collab-emerald/10 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">🎨</div>
+                        <h3 class="text-xl font-bold text-team-orange mb-2">技能6：成果整合</h3>
+                        <p class="text-gray-600 text-sm">统一风格，完整呈现</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-team-orange mb-2">🎭 整合要点</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 统一视觉风格</div>
+                                <div>• 内容逻辑连贯</div>
+                                <div>• 技术标准一致</div>
+                                <div>• 用户体验流畅</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-team-orange mb-2">🔧 整合流程</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 制定统一标准</div>
+                                <div>• 逐步合并内容</div>
+                                <div>• 测试完整效果</div>
+                                <div>• 优化细节问题</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 敏捷开发体验营 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-team-blue mb-6">
+                    ⚡ 敏捷开发体验营
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    体验现代软件开发的敏捷协作方法
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- 左侧：敏捷概念 -->
+                <div>
+                    <h3 class="text-2xl font-bold text-team-blue mb-8 text-center">🎯 敏捷开发核心理念</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-3xl shadow-xl p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-team-blue rounded-2xl flex items-center justify-center text-white text-xl mr-4">🚀</div>
+                                <h4 class="text-lg font-bold text-team-blue">快速迭代</h4>
+                            </div>
+                            <p class="text-gray-700 text-sm">将大项目分解为小阶段，每个阶段快速完成和测试，及时调整方向</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl shadow-xl p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-team-indigo rounded-2xl flex items-center justify-center text-white text-xl mr-4">👥</div>
+                                <h4 class="text-lg font-bold text-team-indigo">团队合作</h4>
+                            </div>
+                            <p class="text-gray-700 text-sm">强调跨职能团队协作，每个成员都参与决策和问题解决</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl shadow-xl p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-team-purple rounded-2xl flex items-center justify-center text-white text-xl mr-4">🔄</div>
+                                <h4 class="text-lg font-bold text-team-purple">持续改进</h4>
+                            </div>
+                            <p class="text-gray-700 text-sm">定期回顾和反思，不断优化工作流程和团队合作方式</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl shadow-xl p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-collab-emerald rounded-2xl flex items-center justify-center text-white text-xl mr-4">💡</div>
+                                <h4 class="text-lg font-bold text-collab-emerald">响应变化</h4>
+                            </div>
+                            <p class="text-gray-700 text-sm">拥抱变化而非抗拒，根据反馈快速调整产品和策略</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右侧：Sprint冲刺演示 -->
+                <div>
+                    <h3 class="text-2xl font-bold text-team-indigo mb-8 text-center">⚡ 2周Sprint冲刺体验</h3>
+                    
+                    <!-- Sprint看板 -->
+                    <div class="bg-white rounded-3xl shadow-xl p-6">
+                        <div class="grid grid-cols-4 gap-4">
+                            <!-- 待办列表 -->
+                            <div class="text-center">
+                                <h4 class="font-bold text-gray-600 mb-3 text-sm">📋 待办事项</h4>
+                                <div class="space-y-2">
+                                    <div class="bg-gray-100 rounded-lg p-2 text-xs">需求分析</div>
+                                    <div class="bg-gray-100 rounded-lg p-2 text-xs">UI设计</div>
+                                    <div class="bg-gray-100 rounded-lg p-2 text-xs">内容创作</div>
+                                    <div class="bg-gray-100 rounded-lg p-2 text-xs">测试验收</div>
+                                </div>
+                            </div>
+
+                            <!-- 进行中 -->
+                            <div class="text-center">
+                                <h4 class="font-bold text-team-blue mb-3 text-sm">🔄 进行中</h4>
+                                <div class="space-y-2">
+                                    <div class="bg-team-blue/20 rounded-lg p-2 text-xs workflow-pulse">AI文本生成</div>
+                                    <div class="bg-team-blue/20 rounded-lg p-2 text-xs workflow-pulse">配音制作</div>
+                                </div>
+                            </div>
+
+                            <!-- 测试中 -->
+                            <div class="text-center">
+                                <h4 class="font-bold text-team-orange mb-3 text-sm">🧪 测试中</h4>
+                                <div class="space-y-2">
+                                    <div class="bg-team-orange/20 rounded-lg p-2 text-xs">图像生成</div>
+                                </div>
+                            </div>
+
+                            <!-- 已完成 -->
+                            <div class="text-center">
+                                <h4 class="font-bold text-collab-emerald mb-3 text-sm">✅ 已完成</h4>
+                                <div class="space-y-2">
+                                    <div class="bg-collab-emerald/20 rounded-lg p-2 text-xs">项目规划</div>
+                                    <div class="bg-collab-emerald/20 rounded-lg p-2 text-xs">团队组建</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sprint进度条 -->
+                        <div class="mt-6 pt-4 border-t border-gray-200">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-sm font-semibold text-team-blue">Sprint 1 进度</span>
+                                <span class="text-sm text-gray-600">第1周 / 共2周</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-team-blue to-team-indigo h-3 rounded-full team-sync" style="width: 60%;"></div>
+                            </div>
+                            <div class="text-xs text-gray-500 mt-1">6/10 任务完成</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 四大团队挑战 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-team-blue mb-6">
+                    🏆 四大团队协作挑战
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    通过实战挑战，掌握团队协作的精髓
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- 挑战1：AI教育产品 -->
+                <div class="bg-gradient-to-br from-team-blue/10 to-team-indigo/10 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">📚</div>
+                        <h3 class="text-2xl font-bold text-team-blue">挑战1：AI教育产品开发</h3>
+                        <p class="text-gray-600 mt-2">5人团队，4周开发周期</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-team-blue/10 rounded-2xl p-4">
+                            <h4 class="font-bold text-team-blue mb-2">🎯 项目目标</h4>
+                            <p class="text-sm text-gray-700 mb-3">开发一套完整的AI学习产品，包含课程、练习、测评三大模块</p>
+                            
+                            <div class="grid grid-cols-2 gap-2 text-xs">
+                                <div class="bg-white rounded p-2 text-center">📖 课程内容</div>
+                                <div class="bg-white rounded p-2 text-center">🎮 互动练习</div>
+                                <div class="bg-white rounded p-2 text-center">📊 学习测评</div>
+                                <div class="bg-white rounded p-2 text-center">🏆 成就系统</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border-2 border-team-blue/20 rounded-2xl p-4">
+                            <h4 class="font-bold text-team-blue mb-2">👥 团队角色</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 产品经理：需求分析和项目统筹</div>
+                                <div>• 内容设计师：课程内容和教学设计</div>
+                                <div>• AI工程师：智能功能开发和优化</div>
+                                <div>• UI设计师：界面设计和用户体验</div>
+                                <div>• 测试工程师：质量保证和用户测试</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 挑战2：AI文创工作室 -->
+                <div class="bg-gradient-to-br from-team-purple/10 to-team-pink/10 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">🎨</div>
+                        <h3 class="text-2xl font-bold text-team-purple">挑战2：AI文创工作室</h3>
+                        <p class="text-gray-600 mt-2">4人创意团队，3周创作周期</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-team-purple/10 rounded-2xl p-4">
+                            <h4 class="font-bold text-team-purple mb-2">🎭 创作任务</h4>
+                            <p class="text-sm text-gray-700 mb-3">打造AI文创品牌，产出完整的品牌故事、视觉形象、宣传物料</p>
+                            
+                            <div class="grid grid-cols-2 gap-2 text-xs">
+                                <div class="bg-white rounded p-2 text-center">📝 品牌故事</div>
+                                <div class="bg-white rounded p-2 text-center">🎨 视觉设计</div>
+                                <div class="bg-white rounded p-2 text-center">🎵 主题音乐</div>
+                                <div class="bg-white rounded p-2 text-center">🎬 宣传视频</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border-2 border-team-purple/20 rounded-2xl p-4">
+                            <h4 class="font-bold text-team-purple mb-2">🎪 分工协作</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 创意总监：整体概念和创意把控</div>
+                                <div>• 文案策划：品牌故事和文本内容</div>
+                                <div>• 视觉设计：Logo、海报、包装设计</div>
+                                <div>• 多媒体制作：音乐、视频、动画</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 挑战3：AI社区平台 -->
+                <div class="bg-gradient-to-br from-collab-emerald/10 to-collab-teal/10 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">🌐</div>
+                        <h3 class="text-2xl font-bold text-collab-emerald">挑战3：AI学习社区平台</h3>
+                        <p class="text-gray-600 mt-2">6人技术团队，5周开发周期</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-collab-emerald/10 rounded-2xl p-4">
+                            <h4 class="font-bold text-collab-emerald mb-2">💻 平台功能</h4>
+                            <p class="text-sm text-gray-700 mb-3">构建AI学习者交流社区，支持作品分享、技能交流、协作项目</p>
+                            
+                            <div class="grid grid-cols-2 gap-2 text-xs">
+                                <div class="bg-white rounded p-2 text-center">👤 用户系统</div>
+                                <div class="bg-white rounded p-2 text-center">📱 作品展示</div>
+                                <div class="bg-white rounded p-2 text-center">💬 交流讨论</div>
+                                <div class="bg-white rounded p-2 text-center">🤝 项目协作</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border-2 border-collab-emerald/20 rounded-2xl p-4">
+                            <h4 class="font-bold text-collab-emerald mb-2">⚡ 敏捷开发</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 产品负责人：需求管理和优先级</div>
+                                <div>• 技术架构师：系统设计和技术选型</div>
+                                <div>• 前端开发：用户界面和交互实现</div>
+                                <div>• 后端开发：服务器逻辑和数据库</div>
+                                <div>• DevOps工程师：部署运维和监控</div>
+                                <div>• Scrum Master：流程协调和问题解决</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 挑战4：AI创业大赛 -->
+                <div class="bg-gradient-to-br from-team-rose/10 to-team-orange/10 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">🚀</div>
+                        <h3 class="text-2xl font-bold text-team-rose">挑战4：AI创业项目大赛</h3>
+                        <p class="text-gray-600 mt-2">3-4人创业团队，6周完整周期</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-team-rose/10 rounded-2xl p-4">
+                            <h4 class="font-bold text-team-rose mb-2">💡 创业挑战</h4>
+                            <p class="text-sm text-gray-700 mb-3">从idea到MVP，体验完整的AI产品创业流程</p>
+                            
+                            <div class="grid grid-cols-2 gap-2 text-xs">
+                                <div class="bg-white rounded p-2 text-center">💡 商业计划</div>
+                                <div class="bg-white rounded p-2 text-center">📱 产品原型</div>
+                                <div class="bg-white rounded p-2 text-center">📈 市场验证</div>
+                                <div class="bg-white rounded p-2 text-center">🎯 路演展示</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border-2 border-team-rose/20 rounded-2xl p-4">
+                            <h4 class="font-bold text-team-rose mb-2">🏆 评判标准</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 创新性：30% 解决方案的原创性</div>
+                                <div>• 可行性：25% 技术实现的可能性</div>
+                                <div>• 市场性：25% 商业价值和市场需求</div>
+                                <div>• 团队协作：20% 团队合作和执行力</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 协作工具实战 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-team-blue mb-6">
+                    🛠️ 现代协作工具实战
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    掌握业界主流的团队协作工具和平台
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 项目管理工具 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">📋</div>
+                        <h3 class="text-lg font-bold text-team-blue">项目管理</h3>
+                        <p class="text-sm text-gray-600">规划和追踪进度</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-team-blue/10 rounded-lg p-3">
+                            <div class="font-semibold text-team-blue text-sm mb-1">Trello</div>
+                            <div class="text-xs text-gray-600">看板式任务管理</div>
+                        </div>
+                        <div class="bg-team-blue/10 rounded-lg p-3">
+                            <div class="font-semibold text-team-blue text-sm mb-1">Asana</div>
+                            <div class="text-xs text-gray-600">团队项目协作</div>
+                        </div>
+                        <div class="bg-team-blue/10 rounded-lg p-3">
+                            <div class="font-semibold text-team-blue text-sm mb-1">Monday</div>
+                            <div class="text-xs text-gray-600">工作流程管理</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 文件协作工具 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">📁</div>
+                        <h3 class="text-lg font-bold text-team-indigo">文件协作</h3>
+                        <p class="text-sm text-gray-600">共享和实时编辑</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-team-indigo/10 rounded-lg p-3">
+                            <div class="font-semibold text-team-indigo text-sm mb-1">Google Drive</div>
+                            <div class="text-xs text-gray-600">云端文件共享</div>
+                        </div>
+                        <div class="bg-team-indigo/10 rounded-lg p-3">
+                            <div class="font-semibold text-team-indigo text-sm mb-1">Notion</div>
+                            <div class="text-xs text-gray-600">一体化工作空间</div>
+                        </div>
+                        <div class="bg-team-indigo/10 rounded-lg p-3">
+                            <div class="font-semibold text-team-indigo text-sm mb-1">Figma</div>
+                            <div class="text-xs text-gray-600">设计协作平台</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 沟通交流工具 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">💬</div>
+                        <h3 class="text-lg font-bold text-team-purple">沟通交流</h3>
+                        <p class="text-sm text-gray-600">即时消息和会议</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-team-purple/10 rounded-lg p-3">
+                            <div class="font-semibold text-team-purple text-sm mb-1">Slack</div>
+                            <div class="text-xs text-gray-600">团队即时通讯</div>
+                        </div>
+                        <div class="bg-team-purple/10 rounded-lg p-3">
+                            <div class="font-semibold text-team-purple text-sm mb-1">Zoom</div>
+                            <div class="text-xs text-gray-600">视频会议系统</div>
+                        </div>
+                        <div class="bg-team-purple/10 rounded-lg p-3">
+                            <div class="font-semibold text-team-purple text-sm mb-1">Discord</div>
+                            <div class="text-xs text-gray-600">社区讨论平台</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 代码协作工具 -->
+                <div class="bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">💻</div>
+                        <h3 class="text-lg font-bold text-collab-emerald">代码协作</h3>
+                        <p class="text-sm text-gray-600">版本控制和协作</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-collab-emerald/10 rounded-lg p-3">
+                            <div class="font-semibold text-collab-emerald text-sm mb-1">GitHub</div>
+                            <div class="text-xs text-gray-600">代码版本管理</div>
+                        </div>
+                        <div class="bg-collab-emerald/10 rounded-lg p-3">
+                            <div class="font-semibold text-collab-emerald text-sm mb-1">GitLab</div>
+                            <div class="text-xs text-gray-600">DevOps一体化</div>
+                        </div>
+                        <div class="bg-collab-emerald/10 rounded-lg p-3">
+                            <div class="font-semibold text-collab-emerald text-sm mb-1">VS Code</div>
+                            <div class="text-xs text-gray-600">实时协作编程</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 课程总结 -->
+    <section class="py-20 bg-gradient-to-br from-team-blue via-team-indigo via-team-purple to-collab-emerald text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold font-display mb-8">
+                🎓 恭喜成为团队协作专家！
+            </h2>
+            
+            <div class="grid md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12">
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">💬</div>
+                    <h3 class="font-bold mb-2">沟通协调</h3>
+                    <p class="text-sm opacity-90">有效交流协作</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">⚖️</div>
+                    <h3 class="font-bold mb-2">任务分工</h3>
+                    <p class="text-sm opacity-90">合理分配角色</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">📊</div>
+                    <h3 class="font-bold mb-2">进度管理</h3>
+                    <p class="text-sm opacity-90">掌控项目节奏</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">📁</div>
+                    <h3 class="font-bold mb-2">文件协作</h3>
+                    <p class="text-sm opacity-90">共享同步资源</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">🤝</div>
+                    <h3 class="font-bold mb-2">冲突解决</h3>
+                    <p class="text-sm opacity-90">化解团队分歧</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">🎨</div>
+                    <h3 class="font-bold mb-2">成果整合</h3>
+                    <p class="text-sm opacity-90">统一完整呈现</p>
+                </div>
+            </div>
+
+            <div class="bg-white/10 rounded-3xl p-8 backdrop-blur-sm mb-12">
+                <h3 class="text-2xl font-bold mb-4">📝 协作实践任务</h3>
+                <div class="grid md:grid-cols-3 gap-4 text-left">
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">👥 组建团队</h4>
+                        <p class="text-sm opacity-90">找到3-4位同学，组建AI创作团队，明确各自擅长领域</p>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">🚀 选择挑战</h4>
+                        <p class="text-sm opacity-90">从四大挑战中选择一个，制定详细的协作计划</p>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">📚 预习任务</h4>
+                        <p class="text-sm opacity-90">准备团队作品展示，为最后一课的毕业展做准备</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="lesson-12.html" class="bg-white text-team-blue px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                    🎊 最后一课：作品展示与毕业
+                </a>
+                <a href="lesson-10.html" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-team-blue transition-all duration-300">
+                    🔙 上一课：综合项目实战
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4">🏭 AI智造学院</h3>
+                    <p class="text-gray-300 mb-4">
+                        Aura school AI教育平台 - 培养面向未来的AI创新人才
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-qq text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">课程导航</h4>
+                    <ul class="space-y-2">
+                        <li><a href="lesson-10.html" class="text-gray-300 hover:text-white transition-colors">第10课</a></li>
+                        <li><a href="lesson-12.html" class="text-gray-300 hover:text-white transition-colors">第12课</a></li>
+                        <li><a href="course-schedule.html" class="text-gray-300 hover:text-white transition-colors">课程安排</a></li>
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">学院首页</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">其他平台</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../ai-learning/index.html" class="text-gray-300 hover:text-white transition-colors">AI元能力课程</a></li>
+                        <li><a href="../ai-coding/index.html" class="text-gray-300 hover:text-white transition-colors">AI代码魔术课堂</a></li>
+                        <li><a href="../../index.html" class="text-gray-300 hover:text-white transition-colors">返回主站</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2024 Aura school AI教育平台. 保留所有权利.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>

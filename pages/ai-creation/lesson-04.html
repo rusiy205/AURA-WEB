@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第4课：AI文本创作工具 - AI智造学院 | Aura school AI教育平台</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-blue': '#1e3a8a',
+                        'cosmic-purple': '#4c1d95',
+                        'neon-green': '#22c55e',
+                        'electric-blue': '#3b82f6',
+                        'sophisticated-gray': '#64748b',
+                        'space-dark': '#0f172a',
+                        'space-purple': '#6366f1',
+                        'ai-cyan': '#06b6d4',
+                        'magic-purple': '#6366f1',
+                        'magic-pink': '#f472b6',
+                        'magic-blue': '#3b82f6',
+                        'magic-green': '#10b981',
+                        'magic-orange': '#f59e0b'
+                    },
+                    fontFamily: {
+                        'display': ['"Noto Sans SC"', 'sans-serif'],
+                        'body': ['"Noto Sans SC"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        .typewriter {
+            animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
+        }
+        @keyframes typing {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+        .book-float {
+            animation: bookFloat 3s ease-in-out infinite;
+        }
+        @keyframes bookFloat {
+            0%, 100% { transform: translateY(0px) rotate(-2deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+        .quill-write {
+            animation: quillWrite 2s ease-in-out infinite;
+        }
+        @keyframes quillWrite {
+            0%, 100% { transform: rotate(-5deg) translateY(0px); }
+            50% { transform: rotate(5deg) translateY(-3px); }
+        }
+        .word-appear {
+            animation: wordAppear 0.5s ease-in forwards;
+            opacity: 0;
+        }
+        .word-appear:nth-child(1) { animation-delay: 0.1s; }
+        .word-appear:nth-child(2) { animation-delay: 0.2s; }
+        .word-appear:nth-child(3) { animation-delay: 0.3s; }
+        @keyframes wordAppear {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .creativity-pulse {
+            animation: creativityPulse 2s infinite;
+        }
+        @keyframes creativityPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body class="font-body text-gray-900 bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../../index.html" class="text-2xl font-bold font-display text-cosmic-purple">
+                        🚀 Aura school
+                    </a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <a href="index.html" class="text-lg font-semibold text-electric-blue">🏭 AI智造学院</a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <span class="text-sophisticated-gray">第4课</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="lesson-03.html" class="nav-link">上一课</a>
+                        <a href="course-schedule.html" class="nav-link">课程安排</a>
+                        <a href="courses.html" class="nav-link">课程总览</a>
+                        <a href="../../index.html" class="nav-link">返回主站</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-16 bg-gradient-to-br from-amber-400 via-orange-500 to-red-500 overflow-hidden">
+        <!-- 书籍和文字装饰 -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="book-float absolute top-1/4 left-1/6 text-5xl text-white/80">📚</div>
+            <div class="book-float absolute top-1/3 right-1/4 text-4xl text-white/80" style="animation-delay: 1s;">📖</div>
+            <div class="quill-write absolute bottom-1/4 left-1/3 text-6xl text-white/80">🖋️</div>
+            <div class="book-float absolute top-1/5 right-1/3 text-4xl text-white/80" style="animation-delay: 0.5s;">📝</div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <!-- 课程标识 -->
+            <div class="inline-flex items-center bg-white/20 rounded-full px-6 py-3 mb-8">
+                <span class="text-2xl mr-3">✍️</span>
+                <span class="font-semibold">第4课 · 模块二：文本与图像创作</span>
+                <span class="ml-3 bg-white/30 rounded-full px-3 py-1 text-sm">第4周</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold font-display mb-6">
+                📚 AI文本创作工具
+            </h1>
+            
+            <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-4xl mx-auto">
+                欢迎来到AI作家工坊！让我们一起学习用AI创作属于自己的奇幻故事
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 max-w-3xl mx-auto">
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">2</div>
+                    <div class="text-sm opacity-80">课时</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">6</div>
+                    <div class="text-sm opacity-80">写作类型</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">10+</div>
+                    <div class="text-sm opacity-80">创作技巧</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">初级</div>
+                    <div class="text-sm opacity-80">难度等级</div>
+                </div>
+            </div>
+
+            <!-- 课程目标卡片 -->
+            <div class="bg-white/10 rounded-2xl p-6 max-w-4xl mx-auto backdrop-blur-sm">
+                <h2 class="text-2xl font-bold mb-4">🎯 本课学习目标</h2>
+                <div class="grid md:grid-cols-2 gap-4 text-left">
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">1</span>
+                        <span>掌握ChatGPT等AI写作工具</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">2</span>
+                        <span>学会写作提示词技巧</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">3</span>
+                        <span>体验多种文本创作类型</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-pink-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">4</span>
+                        <span>完成个人创意写作项目</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作家工坊介绍 -->
+    <section class="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-amber-600 mb-6">
+                    🏛️ 欢迎来到AI作家工坊！
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    在这个神奇的文字创作空间里，AI将成为你最好的写作伙伴
+                </p>
+            </div>
+
+            <!-- 工坊环境介绍 -->
+            <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl p-8 mb-12">
+                <div class="text-center mb-8">
+                    <div class="text-6xl mb-4">🏛️</div>
+                    <h3 class="text-2xl font-bold text-amber-600 mb-4">AI作家工坊的故事</h3>
+                </div>
+                
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">✍️</div>
+                        <h4 class="font-bold text-amber-600 mb-2">你（见习作家）</h4>
+                        <p class="text-sm text-gray-600">刚踏进工坊的新手，对文字创作充满热情</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3 creativity-pulse">🤖</div>
+                        <h4 class="font-bold text-orange-600 mb-2">AI写作助手</h4>
+                        <p class="text-sm text-gray-600">经验丰富的虚拟导师，随时提供创作灵感</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">📚</div>
+                        <h4 class="font-bold text-red-500 mb-2">创作工具台</h4>
+                        <p class="text-sm text-gray-600">各种写作工具和技巧，助你完成精彩作品</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🎭</div>
+                        <h4 class="font-bold text-pink-500 mb-2">作品展示厅</h4>
+                        <p class="text-sm text-gray-600">展示你创作的精彩故事和文章</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-white/50 rounded-2xl p-6 text-center">
+                    <p class="text-gray-700 text-lg">
+                        在AI作家工坊里，<strong class="text-amber-600">你是主创作者，AI是你的得力助手</strong>。
+                        通过人机协作，我们能创造出比单独创作更精彩的作品！
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 六大写作类型工作室 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-amber-600 mb-6">
+                    🎨 六大写作工作室
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    每个工作室都有独特的创作秘籍和神奇工具
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 故事创作工作室 -->
+                <div class="bg-gradient-to-br from-purple-100 to-blue-100 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">📖</div>
+                        <h3 class="text-xl font-bold text-purple-600 mb-2">故事创作工作室</h3>
+                        <p class="text-gray-600 text-sm">编织引人入胜的奇幻故事</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-purple-600 mb-2">✨ 创作类型</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 童话故事</div>
+                                <div>• 科幻冒险</div>
+                                <div>• 校园生活</div>
+                                <div>• 奇幻探险</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-purple-600 mb-2">🛠️ 写作工具</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 人物设定卡</div>
+                                <div>• 情节转折器</div>
+                                <div>• 对话生成器</div>
+                                <div>• 场景描述助手</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 诗歌工作室 -->
+                <div class="bg-gradient-to-br from-pink-100 to-rose-100 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">🌹</div>
+                        <h3 class="text-xl font-bold text-pink-600 mb-2">诗歌工作室</h3>
+                        <p class="text-gray-600 text-sm">用美丽的韵律表达真挚情感</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-pink-600 mb-2">🎵 诗歌类型</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 现代诗</div>
+                                <div>• 古体诗</div>
+                                <div>• 儿童诗</div>
+                                <div>• 散文诗</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-pink-600 mb-2">🎼 创作技巧</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 韵律节拍</div>
+                                <div>• 意象运用</div>
+                                <div>• 情感表达</div>
+                                <div>• 修辞手法</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作文工作室 -->
+                <div class="bg-gradient-to-br from-green-100 to-emerald-100 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">📝</div>
+                        <h3 class="text-xl font-bold text-green-600 mb-2">作文工作室</h3>
+                        <p class="text-gray-600 text-sm">写出结构清晰的优秀文章</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-green-600 mb-2">📄 文章类型</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 记叙文</div>
+                                <div>• 议论文</div>
+                                <div>• 说明文</div>
+                                <div>• 读后感</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-green-600 mb-2">🔧 写作技能</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 开头结尾</div>
+                                <div>• 段落结构</div>
+                                <div>• 论证方法</div>
+                                <div>• 语言润色</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 日记工作室 -->
+                <div class="bg-gradient-to-br from-blue-100 to-cyan-100 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">📓</div>
+                        <h3 class="text-xl font-bold text-blue-600 mb-2">日记工作室</h3>
+                        <p class="text-gray-600 text-sm">记录生活点滴的美好时光</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-blue-600 mb-2">📅 日记类型</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 成长日记</div>
+                                <div>• 旅行日记</div>
+                                <div>• 学习日记</div>
+                                <div>• 观察日记</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-blue-600 mb-2">💝 记录技巧</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 真实记录</div>
+                                <div>• 细节描写</div>
+                                <div>• 情感表达</div>
+                                <div>• 反思总结</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 对话工作室 -->
+                <div class="bg-gradient-to-br from-yellow-100 to-orange-100 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">💬</div>
+                        <h3 class="text-xl font-bold text-yellow-600 mb-2">对话工作室</h3>
+                        <p class="text-gray-600 text-sm">创造生动有趣的角色对话</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-yellow-600 mb-2">🎭 对话场景</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 朋友聊天</div>
+                                <div>• 家庭对话</div>
+                                <div>• 课堂讨论</div>
+                                <div>• 角色扮演</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-yellow-600 mb-2">🎪 对话技巧</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 性格特点</div>
+                                <div>• 语言风格</div>
+                                <div>• 情绪变化</div>
+                                <div>• 推动情节</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 翻译工作室 -->
+                <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl mb-4">🌍</div>
+                        <h3 class="text-xl font-bold text-indigo-600 mb-2">翻译工作室</h3>
+                        <p class="text-gray-600 text-sm">连接不同语言的文化桥梁</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-indigo-600 mb-2">🗺️ 翻译类型</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 英汉互译</div>
+                                <div>• 诗歌翻译</div>
+                                <div>• 故事翻译</div>
+                                <div>• 文化解释</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/80 rounded-2xl p-4">
+                            <h4 class="font-bold text-indigo-600 mb-2">🔮 翻译技能</h4>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <div>• 准确理解</div>
+                                <div>• 文化转换</div>
+                                <div>• 语言优美</div>
+                                <div>• 创意表达</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI写作助手训练营 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-amber-600 mb-6">
+                    🤖 AI写作助手训练营
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    学会与ChatGPT等AI写作伙伴高效协作的秘诀
+                </p>
+            </div>
+
+            <!-- ChatGPT工作台 -->
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden mb-12">
+                <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white p-6">
+                    <div class="flex items-center">
+                        <div class="text-4xl mr-4">🤖</div>
+                        <div>
+                            <h3 class="text-2xl font-bold">ChatGPT 写作工作台</h3>
+                            <p class="opacity-90">你最得力的AI写作助手</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-8">
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <!-- 左侧：提示词技巧 -->
+                        <div>
+                            <h4 class="text-xl font-bold text-green-600 mb-6">📝 提示词写作秘籍</h4>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-green-50 rounded-2xl p-4">
+                                    <h5 class="font-bold text-green-700 mb-2">1. 明确角色设定</h5>
+                                    <div class="bg-white rounded-lg p-3 text-sm font-mono">
+                                        "你是一位专业的儿童文学作家，擅长创作温馨有趣的童话故事..."
+                                    </div>
+                                </div>
+
+                                <div class="bg-blue-50 rounded-2xl p-4">
+                                    <h5 class="font-bold text-blue-700 mb-2">2. 详细任务描述</h5>
+                                    <div class="bg-white rounded-lg p-3 text-sm font-mono">
+                                        "请帮我写一个500字的童话故事，主角是一只会说话的小兔子，故事要传达友谊的珍贵..."
+                                    </div>
+                                </div>
+
+                                <div class="bg-purple-50 rounded-2xl p-4">
+                                    <h5 class="font-bold text-purple-700 mb-2">3. 指定输出格式</h5>
+                                    <div class="bg-white rounded-lg p-3 text-sm font-mono">
+                                        "请按照：标题-开头-发展-高潮-结局的结构来写，每部分用序号标明..."
+                                    </div>
+                                </div>
+
+                                <div class="bg-orange-50 rounded-2xl p-4">
+                                    <h5 class="font-bold text-orange-700 mb-2">4. 提供具体要求</h5>
+                                    <div class="bg-white rounded-lg p-3 text-sm font-mono">
+                                        "语言要生动活泼，适合8-10岁儿童阅读，多使用对话和动作描写..."
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 右侧：实战演示 -->
+                        <div>
+                            <h4 class="text-xl font-bold text-blue-600 mb-6">💫 实战演示</h4>
+                            
+                            <!-- 模拟对话界面 -->
+                            <div class="bg-gray-50 rounded-2xl p-4 space-y-4 max-h-96 overflow-y-auto">
+                                <!-- 用户输入 -->
+                                <div class="flex justify-end">
+                                    <div class="bg-blue-500 text-white rounded-2xl px-4 py-2 max-w-xs text-sm">
+                                        你是一位优秀的故事作家。请帮我创作一个关于小猫学游泳的短故事，要有趣又励志。
+                                    </div>
+                                </div>
+
+                                <!-- AI回复 -->
+                                <div class="flex justify-start">
+                                    <div class="bg-white rounded-2xl px-4 py-2 max-w-md text-sm shadow-md">
+                                        <div class="font-semibold text-green-600 mb-2">🐱 小花猫的游泳奇遇</div>
+                                        <div class="text-gray-700 leading-relaxed">
+                                            小花猫咪咪一直害怕水，看到小池塘都会绕道走。可是当她看到小鸭子们在水中快乐地游泳时，心里充满了羡慕...
+                                        </div>
+                                        <div class="mt-2 text-xs text-gray-500">✨ 是否需要我继续完成这个故事？</div>
+                                    </div>
+                                </div>
+
+                                <!-- 用户继续 -->
+                                <div class="flex justify-end">
+                                    <div class="bg-blue-500 text-white rounded-2xl px-4 py-2 max-w-xs text-sm">
+                                        太棒了！请继续，我想知道咪咪是怎么学会游泳的。
+                                    </div>
+                                </div>
+
+                                <!-- AI继续 -->
+                                <div class="flex justify-start">
+                                    <div class="bg-white rounded-2xl px-4 py-2 max-w-md text-sm shadow-md">
+                                        <div class="text-gray-700 leading-relaxed">
+                                            老乌龟爷爷看出了咪咪的心思，温和地说："小咪咪，游泳就像学走路一样，需要一步一步来。我来教你吧！" 
+                                        </div>
+                                        <div class="mt-2 text-xs text-green-600">💡 正在生成精彩结尾...</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 协作技巧 -->
+                            <div class="mt-6 bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-4">
+                                <h5 class="font-bold text-amber-600 mb-2">🤝 协作小贴士</h5>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• 可以要求AI修改或继续创作</li>
+                                    <li>• 及时给出反馈和新的要求</li>
+                                    <li>• 尝试不同的写作风格和类型</li>
+                                    <li>• 保持创作的主导权和个人风格</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 创作实战演练 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-amber-600 mb-6">
+                    ⚔️ 创作实战演练场
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    通过实际练习，掌握AI辅助写作的精髓
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- 任务1：故事创作 -->
+                <div class="bg-gradient-to-br from-purple-50 to-blue-50 rounded-3xl p-8">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">📚</div>
+                        <h3 class="text-2xl font-bold text-purple-600">任务1：童话故事创作</h3>
+                        <p class="text-gray-600 mt-2">创作一个完整的原创童话故事</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- 任务要求 -->
+                        <div class="bg-white rounded-2xl p-6">
+                            <h4 class="font-bold text-purple-600 mb-4">📋 创作要求</h4>
+                            <div class="space-y-3 text-sm">
+                                <div class="flex items-center">
+                                    <span class="w-6 h-6 bg-purple-500 text-white rounded-full flex items-center justify-center text-xs mr-3">1</span>
+                                    <span>选择一个动物作为主角</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="w-6 h-6 bg-purple-500 text-white rounded-full flex items-center justify-center text-xs mr-3">2</span>
+                                    <span>设定一个有趣的困难或挑战</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="w-6 h-6 bg-purple-500 text-white rounded-full flex items-center justify-center text-xs mr-3">3</span>
+                                    <span>故事要传达一个积极的道理</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="w-6 h-6 bg-purple-500 text-white rounded-full flex items-center justify-center text-xs mr-3">4</span>
+                                    <span>字数控制在300-500字</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 创作步骤 -->
+                        <div class="bg-white rounded-2xl p-6">
+                            <h4 class="font-bold text-purple-600 mb-4">🛠️ 创作步骤</h4>
+                            <div class="space-y-2 text-sm text-gray-700">
+                                <div>步骤1: 确定主角和设定</div>
+                                <div>步骤2: 用AI brainstorm情节想法</div>
+                                <div>步骤3: 让AI写出故事大纲</div>
+                                <div>步骤4: 逐段完善故事内容</div>
+                                <div>步骤5: 润色和修改语言</div>
+                            </div>
+                        </div>
+
+                        <!-- 示例提示词 -->
+                        <div class="bg-purple-100 rounded-2xl p-4">
+                            <h4 class="font-bold text-purple-600 mb-2">💡 提示词示例</h4>
+                            <div class="bg-white rounded-lg p-3 text-xs font-mono">
+                                "请帮我创作一个童话故事：主角是一只小刺猬，它很想交朋友但总是因为身上的刺而困扰。故事要温暖治愈，适合小朋友阅读，400字左右。"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 任务2：创意作文 -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-8">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">📝</div>
+                        <h3 class="text-2xl font-bold text-green-600">任务2：创意作文创作</h3>
+                        <p class="text-gray-600 mt-2">写一篇富有想象力的记叙文</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- 题目选择 -->
+                        <div class="bg-white rounded-2xl p-6">
+                            <h4 class="font-bold text-green-600 mb-4">🎯 题目选择（三选一）</h4>
+                            <div class="space-y-3">
+                                <div class="bg-green-100 rounded-lg p-3 cursor-pointer hover:bg-green-200 transition-colors">
+                                    <span class="font-semibold text-green-700">题目1:</span>
+                                    <span class="text-gray-700"> 《假如我有一个时光机》</span>
+                                </div>
+                                <div class="bg-green-100 rounded-lg p-3 cursor-pointer hover:bg-green-200 transition-colors">
+                                    <span class="font-semibold text-green-700">题目2:</span>
+                                    <span class="text-gray-700"> 《我和AI机器人的一天》</span>
+                                </div>
+                                <div class="bg-green-100 rounded-lg p-3 cursor-pointer hover:bg-green-200 transition-colors">
+                                    <span class="font-semibold text-green-700">题目3:</span>
+                                    <span class="text-gray-700"> 《奇妙的梦境之旅》</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 写作框架 -->
+                        <div class="bg-white rounded-2xl p-6">
+                            <h4 class="font-bold text-green-600 mb-4">🏗️ 文章结构</h4>
+                            <div class="space-y-3">
+                                <div class="border-l-4 border-green-500 pl-4">
+                                    <div class="font-semibold text-green-700">开头（引入）</div>
+                                    <div class="text-sm text-gray-600">设置悬念，吸引读者</div>
+                                </div>
+                                <div class="border-l-4 border-blue-500 pl-4">
+                                    <div class="font-semibold text-blue-700">发展（经过）</div>
+                                    <div class="text-sm text-gray-600">详细描述事件过程</div>
+                                </div>
+                                <div class="border-l-4 border-purple-500 pl-4">
+                                    <div class="font-semibold text-purple-700">高潮（转折）</div>
+                                    <div class="text-sm text-gray-600">最精彩的部分</div>
+                                </div>
+                                <div class="border-l-4 border-pink-500 pl-4">
+                                    <div class="font-semibold text-pink-700">结尾（感悟）</div>
+                                    <div class="text-sm text-gray-600">总结感悟，升华主题</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AI协作建议 -->
+                        <div class="bg-green-100 rounded-2xl p-4">
+                            <h4 class="font-bold text-green-600 mb-2">🤖 AI协作建议</h4>
+                            <ul class="text-xs text-gray-700 space-y-1">
+                                <li>• 让AI帮你构思文章大纲</li>
+                                <li>• 请AI协助丰富细节描写</li>
+                                <li>• 用AI检查语法和表达</li>
+                                <li>• 让AI提供不同的结尾选择</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 作品展示区域 -->
+            <div class="mt-16 bg-gradient-to-r from-amber-50 to-orange-50 rounded-3xl p-8">
+                <h3 class="text-2xl font-bold text-amber-600 text-center mb-8">🎨 学生作品展示廊</h3>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-2xl p-6 hover:shadow-lg transition-all duration-300">
+                        <div class="text-center mb-4">
+                            <div class="text-3xl mb-2">🦔</div>
+                            <h4 class="font-bold text-purple-600">《小刺猬找朋友》</h4>
+                            <p class="text-sm text-gray-500">作者：小明 × AI助手</p>
+                        </div>
+                        <div class="text-sm text-gray-700 leading-relaxed">
+                            小刺猬波波总是很孤独，因为其他小动物都害怕他身上的刺。直到有一天，下雨了，他用自己的刺帮小兔子们撑起了叶子伞...
+                        </div>
+                        <div class="mt-4 text-xs text-amber-600">
+                            ⭐ 创意指数：★★★★★
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 hover:shadow-lg transition-all duration-300">
+                        <div class="text-center mb-4">
+                            <div class="text-3xl mb-2">⏰</div>
+                            <h4 class="font-bold text-green-600">《时光机的秘密》</h4>
+                            <p class="text-sm text-gray-500">作者：小丽 × AI助手</p>
+                        </div>
+                        <div class="text-sm text-gray-700 leading-relaxed">
+                            当我按下时光机的按钮时，一切都变得模糊起来。睁开眼，我竟然来到了恐龙时代！一只友善的小恐龙走向了我...
+                        </div>
+                        <div class="mt-4 text-xs text-amber-600">
+                            ⭐ 想象力：★★★★★
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 hover:shadow-lg transition-all duration-300">
+                        <div class="text-center mb-4">
+                            <div class="text-3xl mb-2">🤖</div>
+                            <h4 class="font-bold text-blue-600">《我的AI好朋友》</h4>
+                            <p class="text-sm text-gray-500">作者：小华 × AI助手</p>
+                        </div>
+                        <div class="text-sm text-gray-700 leading-relaxed">
+                            阿尔法是我的AI机器人朋友，它不仅帮我做作业，还陪我聊天。有一天，它突然问我："什么是友谊？"...
+                        </div>
+                        <div class="mt-4 text-xs text-amber-600">
+                            ⭐ 温暖指数：★★★★★
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 写作技巧进阶 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-amber-600 mb-6">
+                    🎯 写作技巧进阶宝典
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    掌握这些高级技巧，让你的文字更加生动有趣
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 技巧1：生动描写 -->
+                <div class="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-4xl mb-3">🎨</div>
+                        <h3 class="text-lg font-bold text-red-500">生动描写</h3>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-red-50 rounded-lg p-3">
+                            <h4 class="font-semibold text-red-600 text-sm mb-1">五感描写</h4>
+                            <p class="text-xs text-gray-600">视觉、听觉、触觉、嗅觉、味觉</p>
+                        </div>
+                        <div class="bg-red-50 rounded-lg p-3">
+                            <h4 class="font-semibold text-red-600 text-sm mb-1">细节捕捉</h4>
+                            <p class="text-xs text-gray-600">抓住独特的小细节</p>
+                        </div>
+                        <div class="bg-red-50 rounded-lg p-3">
+                            <h4 class="font-semibold text-red-600 text-sm mb-1">比喻拟人</h4>
+                            <p class="text-xs text-gray-600">让文字活起来</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 技巧2：对话艺术 -->
+                <div class="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-4xl mb-3">💬</div>
+                        <h3 class="text-lg font-bold text-blue-500">对话艺术</h3>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-blue-50 rounded-lg p-3">
+                            <h4 class="font-semibold text-blue-600 text-sm mb-1">性格化语言</h4>
+                            <p class="text-xs text-gray-600">不同角色说话风格不同</p>
+                        </div>
+                        <div class="bg-blue-50 rounded-lg p-3">
+                            <h4 class="font-semibold text-blue-600 text-sm mb-1">推动情节</h4>
+                            <p class="text-xs text-gray-600">对话要服务于故事发展</p>
+                        </div>
+                        <div class="bg-blue-50 rounded-lg p-3">
+                            <h4 class="font-semibold text-blue-600 text-sm mb-1">情感表达</h4>
+                            <p class="text-xs text-gray-600">通过话语传达情绪</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 技巧3：情节设计 -->
+                <div class="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-4xl mb-3">🎢</div>
+                        <h3 class="text-lg font-bold text-green-500">情节设计</h3>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-green-50 rounded-lg p-3">
+                            <h4 class="font-semibold text-green-600 text-sm mb-1">悬念设置</h4>
+                            <p class="text-xs text-gray-600">让读者想要继续读下去</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-3">
+                            <h4 class="font-semibold text-green-600 text-sm mb-1">冲突转折</h4>
+                            <p class="text-xs text-gray-600">在关键时刻来个大转弯</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-3">
+                            <h4 class="font-semibold text-green-600 text-sm mb-1">节奏控制</h4>
+                            <p class="text-xs text-gray-600">快慢结合，张弛有度</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 技巧4：主题升华 -->
+                <div class="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <div class="text-4xl mb-3">💎</div>
+                        <h3 class="text-lg font-bold text-purple-500">主题升华</h3>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-purple-50 rounded-lg p-3">
+                            <h4 class="font-semibold text-purple-600 text-sm mb-1">深度思考</h4>
+                            <p class="text-xs text-gray-600">透过现象看本质</p>
+                        </div>
+                        <div class="bg-purple-50 rounded-lg p-3">
+                            <h4 class="font-semibold text-purple-600 text-sm mb-1">价值传递</h4>
+                            <p class="text-xs text-gray-600">传达积极正面的价值观</p>
+                        </div>
+                        <div class="bg-purple-50 rounded-lg p-3">
+                            <h4 class="font-semibold text-purple-600 text-sm mb-1">情感共鸣</h4>
+                            <p class="text-xs text-gray-600">让读者产生情感共鸣</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 课程总结 -->
+    <section class="py-20 bg-gradient-to-br from-amber-400 via-orange-500 to-red-500 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold font-display mb-8">
+                🎓 恭喜成为AI作家！
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">📚</div>
+                    <h3 class="font-bold mb-2">写作类型</h3>
+                    <p class="text-sm opacity-90">故事、诗歌、作文、日记等</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">🤖</div>
+                    <h3 class="font-bold mb-2">AI协作</h3>
+                    <p class="text-sm opacity-90">掌握与AI高效协作技巧</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">✍️</div>
+                    <h3 class="font-bold mb-2">写作技能</h3>
+                    <p class="text-sm opacity-90">描写、对话、情节、主题</p>
+                </div>
+            </div>
+
+            <div class="bg-white/10 rounded-3xl p-8 backdrop-blur-sm mb-12">
+                <h3 class="text-2xl font-bold mb-4">📝 写作任务</h3>
+                <div class="grid md:grid-cols-3 gap-4 text-left">
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">📖 创作任务</h4>
+                        <p class="text-sm opacity-90">完成课堂上的故事或作文创作，并在班级分享</p>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">🔍 技能练习</h4>
+                        <p class="text-sm opacity-90">每天练习一种写作技巧，记录心得体会</p>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">📚 预习任务</h4>
+                        <p class="text-sm opacity-90">思考：AI能画出什么样的图？为下节课"AI图像生成"做准备</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="course-schedule.html" class="bg-white text-amber-600 px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                    📅 返回课程安排
+                </a>
+                <a href="lesson-03.html" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-amber-600 transition-all duration-300">
+                    🔙 上一课：AIGC技术概述
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4">🏭 AI智造学院</h3>
+                    <p class="text-gray-300 mb-4">
+                        Aura school AI教育平台 - 培养面向未来的AI创新人才
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-qq text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">课程导航</h4>
+                    <ul class="space-y-2">
+                        <li><a href="lesson-03.html" class="text-gray-300 hover:text-white transition-colors">第3课</a></li>
+                        <li><a href="course-schedule.html" class="text-gray-300 hover:text-white transition-colors">课程安排</a></li>
+                        <li><a href="courses.html" class="text-gray-300 hover:text-white transition-colors">课程总览</a></li>
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">学院首页</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">其他平台</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../ai-learning/index.html" class="text-gray-300 hover:text-white transition-colors">AI元能力课程</a></li>
+                        <li><a href="../ai-coding/index.html" class="text-gray-300 hover:text-white transition-colors">AI代码魔术课堂</a></li>
+                        <li><a href="../../index.html" class="text-gray-300 hover:text-white transition-colors">返回主站</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2024 Aura school AI教育平台. 保留所有权利.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>

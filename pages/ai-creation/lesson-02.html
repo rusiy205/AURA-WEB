@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第2课：机器学习基础 - AI智造学院 | Aura school AI教育平台</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/4c1d/+HNXf/hzV3/">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-blue': '#1e3a8a',
+                        'cosmic-purple': '#4c1d95',
+                        'neon-green': '#22c55e',
+                        'electric-blue': '#3b82f6',
+                        'sophisticated-gray': '#64748b',
+                        'space-dark': '#0f172a',
+                        'space-purple': '#6366f1',
+                        'ai-cyan': '#06b6d4',
+                        'magic-purple': '#6366f1',
+                        'magic-pink': '#f472b6',
+                        'magic-blue': '#3b82f6',
+                        'magic-green': '#10b981',
+                        'magic-orange': '#f59e0b'
+                    },
+                    fontFamily: {
+                        'display': ['"Noto Sans SC"', 'sans-serif'],
+                        'body': ['"Noto Sans SC"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        .pet-bounce {
+            animation: bounce 2s infinite;
+        }
+        .pet-wag {
+            animation: wag 1.5s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
+        }
+        @keyframes wag {
+            0%, 100% { transform: rotate(-10deg); }
+            50% { transform: rotate(10deg); }
+        }
+        .learning-progress {
+            animation: progress 3s infinite;
+        }
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+    </style>
+</head>
+<body class="font-body text-gray-900 bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../../index.html" class="text-2xl font-bold font-display text-cosmic-purple">
+                        🚀 Aura school
+                    </a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <a href="index.html" class="text-lg font-semibold text-electric-blue">🏭 AI智造学院</a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <span class="text-sophisticated-gray">第2课</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="lesson-01.html" class="nav-link">上一课</a>
+                        <a href="course-schedule.html" class="nav-link">课程安排</a>
+                        <a href="courses.html" class="nav-link">课程总览</a>
+                        <a href="../../index.html" class="nav-link">返回主站</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-16 bg-gradient-to-br from-neon-green via-electric-blue to-cosmic-purple overflow-hidden">
+        <!-- 装饰性动画元素 -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="pet-bounce absolute top-1/4 left-1/6 text-4xl">🐕</div>
+            <div class="pet-bounce absolute top-1/3 right-1/4 text-4xl" style="animation-delay: 0.5s;">🐱</div>
+            <div class="pet-bounce absolute bottom-1/4 left-1/3 text-4xl" style="animation-delay: 1s;">🐦</div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <!-- 课程标识 -->
+            <div class="inline-flex items-center bg-white/20 rounded-full px-6 py-3 mb-8">
+                <span class="text-2xl mr-3">🐾</span>
+                <span class="font-semibold">第2课 · 模块一：AI通识与基础</span>
+                <span class="ml-3 bg-white/30 rounded-full px-3 py-1 text-sm">第1周</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold font-display mb-6">
+                🤖 机器学习基础
+            </h1>
+            
+            <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-4xl mx-auto">
+                欢迎来到AI宠物训练营！让我们一起训练虚拟宠物，理解机器学习的神奇原理
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 max-w-3xl mx-auto">
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">2</div>
+                    <div class="text-sm opacity-80">课时</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">5</div>
+                    <div class="text-sm opacity-80">宠物种类</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">10+</div>
+                    <div class="text-sm opacity-80">训练技能</div>
+                </div>
+                <div class="text-center bg-white/10 rounded-2xl p-4">
+                    <div class="text-3xl font-bold mb-2">初级</div>
+                    <div class="text-sm opacity-80">难度等级</div>
+                </div>
+            </div>
+
+            <!-- 课程目标卡片 -->
+            <div class="bg-white/10 rounded-2xl p-6 max-w-4xl mx-auto backdrop-blur-sm">
+                <h2 class="text-2xl font-bold mb-4">🎯 本课学习目标</h2>
+                <div class="grid md:grid-cols-2 gap-4 text-left">
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-neon-green rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">1</span>
+                        <span>理解机器学习的基本概念</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-electric-blue rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">2</span>
+                        <span>认识监督学习和无监督学习</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-magic-pink rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">3</span>
+                        <span>体验训练数据的重要性</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 bg-magic-orange rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">4</span>
+                        <span>学会观察和分析学习过程</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 宠物训练营故事导入 -->
+    <section class="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-neon-green mb-6">
+                    🏠 欢迎来到AI宠物训练营！
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    在这里，每个同学都是宠物训练师，让我们一起探索机器是如何"学习"的
+                </p>
+            </div>
+
+            <!-- 训练营介绍 -->
+            <div class="bg-gradient-to-br from-neon-green/10 to-electric-blue/10 rounded-3xl p-8 mb-12">
+                <div class="text-center mb-8">
+                    <div class="text-6xl mb-4">🎪</div>
+                    <h3 class="text-2xl font-bold text-neon-green mb-4">训练营的故事</h3>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">👨‍🏫</div>
+                        <h4 class="font-bold text-neon-green mb-2">训练师（你）</h4>
+                        <p class="text-sm text-gray-600">负责教导AI宠物学习各种技能</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3 pet-bounce">🤖</div>
+                        <h4 class="font-bold text-electric-blue mb-2">AI宠物</h4>
+                        <p class="text-sm text-gray-600">聪明的虚拟伙伴，渴望学习新技能</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🎓</div>
+                        <h4 class="font-bold text-cosmic-purple mb-2">训练过程</h4>
+                        <p class="text-sm text-gray-600">通过反复练习和奖励来提升技能</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-white/50 rounded-2xl p-6 text-center">
+                    <p class="text-gray-700 text-lg">
+                        就像训练真实的宠物一样，<strong class="text-neon-green">AI也需要大量的练习和正确的指导才能学会新技能！</strong>
+                        这就是机器学习的基本原理。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 机器学习类型对比 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-electric-blue mb-6">
+                    🎭 两种不同的训练方法
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    让我们通过宠物训练来理解监督学习和无监督学习的区别
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- 监督学习 -->
+                <div class="bg-gradient-to-br from-neon-green/10 to-electric-blue/10 rounded-3xl p-8">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">👨‍🏫</div>
+                        <h3 class="text-2xl font-bold text-neon-green mb-2">监督学习</h3>
+                        <p class="text-gray-600">有老师指导的学习方式</p>
+                    </div>
+
+                    <!-- 训练场景展示 -->
+                    <div class="bg-white rounded-2xl p-6 mb-6">
+                        <h4 class="font-bold text-neon-green mb-4">🐕 训练小狗认识物品</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-center bg-neon-green/10 rounded-lg p-3">
+                                <div class="text-2xl mr-3">🥎</div>
+                                <div class="flex-1">
+                                    <div class="font-semibold">训练师指着球说："这是球"</div>
+                                    <div class="text-sm text-gray-600">给出正确答案</div>
+                                </div>
+                                <div class="text-neon-green">✅</div>
+                            </div>
+                            <div class="flex items-center bg-neon-green/10 rounded-lg p-3">
+                                <div class="text-2xl mr-3">🦴</div>
+                                <div class="flex-1">
+                                    <div class="font-semibold">训练师指着骨头说："这是骨头"</div>
+                                    <div class="text-sm text-gray-600">不断重复教学</div>
+                                </div>
+                                <div class="text-neon-green">✅</div>
+                            </div>
+                            <div class="flex items-center bg-electric-blue/10 rounded-lg p-3">
+                                <div class="text-2xl mr-3">❓</div>
+                                <div class="flex-1">
+                                    <div class="font-semibold">小狗看到新物品能正确识别！</div>
+                                    <div class="text-sm text-gray-600">学会了分类规律</div>
+                                </div>
+                                <div class="text-electric-blue">🎉</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-neon-green/20 rounded-2xl p-4">
+                        <h5 class="font-bold text-neon-green mb-2">💡 特点总结</h5>
+                        <ul class="text-sm text-gray-700 space-y-1">
+                            <li>• 有正确答案作为指导</li>
+                            <li>• 通过对比学习规律</li>
+                            <li>• 适合分类和预测任务</li>
+                            <li>• 需要大量标注好的数据</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 无监督学习 -->
+                <div class="bg-gradient-to-br from-electric-blue/10 to-cosmic-purple/10 rounded-3xl p-8">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">🔍</div>
+                        <h3 class="text-2xl font-bold text-electric-blue mb-2">无监督学习</h3>
+                        <p class="text-gray-600">自主探索发现的学习方式</p>
+                    </div>
+
+                    <!-- 训练场景展示 -->
+                    <div class="bg-white rounded-2xl p-6 mb-6">
+                        <h4 class="font-bold text-electric-blue mb-4">🐱 小猫自主探索玩具</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-center bg-electric-blue/10 rounded-lg p-3">
+                                <div class="text-2xl mr-3">🧶</div>
+                                <div class="flex-1">
+                                    <div class="font-semibold">小猫发现：毛球是软的，能滚动</div>
+                                    <div class="text-sm text-gray-600">自己观察总结特征</div>
+                                </div>
+                                <div class="text-electric-blue">🤔</div>
+                            </div>
+                            <div class="flex items-center bg-electric-blue/10 rounded-lg p-3">
+                                <div class="text-2xl mr-3">🔔</div>
+                                <div class="flex-1">
+                                    <div class="font-semibold">小猫发现：铃铛是硬的，会响</div>
+                                    <div class="text-sm text-gray-600">继续探索和分类</div>
+                                </div>
+                                <div class="text-electric-blue">🤔</div>
+                            </div>
+                            <div class="flex items-center bg-cosmic-purple/10 rounded-lg p-3">
+                                <div class="text-2xl mr-3">📊</div>
+                                <div class="flex-1">
+                                    <div class="font-semibold">小猫把玩具分为"软的"和"硬的"</div>
+                                    <div class="text-sm text-gray-600">发现隐藏的规律</div>
+                                </div>
+                                <div class="text-cosmic-purple">💡</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-electric-blue/20 rounded-2xl p-4">
+                        <h5 class="font-bold text-electric-blue mb-2">💡 特点总结</h5>
+                        <ul class="text-sm text-gray-700 space-y-1">
+                            <li>• 没有标准答案指导</li>
+                            <li>• 自主发现数据规律</li>
+                            <li>• 适合聚类和降维任务</li>
+                            <li>• 能发现人类未知的模式</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 互动训练游戏 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-cosmic-purple mb-6">
+                    🎮 互动训练游戏
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    现在轮到你来训练AI宠物了！
+                </p>
+            </div>
+
+            <!-- 游戏1：监督学习训练 -->
+            <div class="bg-white rounded-3xl shadow-xl p-8 mb-12">
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div>
+                        <div class="text-center mb-6">
+                            <div class="text-6xl mb-4 pet-bounce">🐕</div>
+                            <h3 class="text-2xl font-bold text-neon-green">游戏1：训练小狗识别形状</h3>
+                            <p class="text-gray-600 mt-2">监督学习实践</p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="bg-neon-green/10 rounded-2xl p-4">
+                                <h4 class="font-bold text-neon-green mb-3">🎯 游戏规则</h4>
+                                <ol class="text-sm text-gray-700 space-y-2">
+                                    <li>1. 给小狗看不同形状的图片</li>
+                                    <li>2. 告诉小狗正确的形状名称</li>
+                                    <li>3. 重复训练多次</li>
+                                    <li>4. 测试小狗是否学会识别</li>
+                                </ol>
+                            </div>
+
+                            <div class="bg-white border-2 border-neon-green/20 rounded-2xl p-4">
+                                <h4 class="font-bold text-neon-green mb-3">📊 训练数据</h4>
+                                <div class="grid grid-cols-3 gap-2">
+                                    <div class="text-center bg-neon-green/10 rounded-lg p-2">
+                                        <div class="text-2xl mb-1">🔵</div>
+                                        <div class="text-xs">圆形</div>
+                                    </div>
+                                    <div class="text-center bg-neon-green/10 rounded-lg p-2">
+                                        <div class="text-2xl mb-1">⬜</div>
+                                        <div class="text-xs">正方形</div>
+                                    </div>
+                                    <div class="text-center bg-neon-green/10 rounded-lg p-2">
+                                        <div class="text-2xl mb-1">🔺</div>
+                                        <div class="text-xs">三角形</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <!-- 模拟训练界面 -->
+                        <div class="bg-gradient-to-br from-neon-green/10 to-electric-blue/10 rounded-2xl p-6">
+                            <h4 class="font-bold text-center mb-4">🖥️ 训练界面</h4>
+                            
+                            <!-- 训练阶段 -->
+                            <div class="space-y-4">
+                                <div class="bg-white rounded-lg p-4">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-sm font-semibold">训练进度</span>
+                                        <span class="text-sm text-neon-green">85%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-gradient-to-r from-neon-green to-electric-blue h-2 rounded-full learning-progress" style="width: 85%;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white rounded-lg p-4">
+                                    <div class="text-center mb-3">
+                                        <div class="text-4xl mb-2">🔵</div>
+                                        <div class="text-sm text-gray-600">这是什么形状？</div>
+                                    </div>
+                                    <div class="grid grid-cols-3 gap-2">
+                                        <button class="bg-neon-green text-white rounded-lg py-2 text-sm">圆形</button>
+                                        <button class="bg-gray-200 rounded-lg py-2 text-sm">正方形</button>
+                                        <button class="bg-gray-200 rounded-lg py-2 text-sm">三角形</button>
+                                    </div>
+                                </div>
+
+                                <div class="bg-neon-green/20 rounded-lg p-3 text-center">
+                                    <div class="flex items-center justify-center">
+                                        <span class="text-lg mr-2">🎉</span>
+                                        <span class="text-sm font-semibold text-neon-green">答对了！小狗很开心！</span>
+                                        <span class="text-lg ml-2 pet-wag">🐕</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 游戏2：无监督学习探索 -->
+            <div class="bg-white rounded-3xl shadow-xl p-8">
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div>
+                        <!-- 模拟探索界面 -->
+                        <div class="bg-gradient-to-br from-electric-blue/10 to-cosmic-purple/10 rounded-2xl p-6">
+                            <h4 class="font-bold text-center mb-4">🔍 探索界面</h4>
+                            
+                            <!-- 数据聚类可视化 -->
+                            <div class="space-y-4">
+                                <div class="bg-white rounded-lg p-4">
+                                    <div class="text-center mb-3">
+                                        <div class="text-sm text-gray-600 mb-2">AI发现的分类规律</div>
+                                    </div>
+                                    
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div class="bg-electric-blue/20 rounded-lg p-3">
+                                            <div class="text-center font-semibold text-electric-blue mb-2">大型玩具</div>
+                                            <div class="flex justify-center space-x-2">
+                                                <span class="text-lg">🏀</span>
+                                                <span class="text-lg">🎾</span>
+                                                <span class="text-lg">🏈</span>
+                                            </div>
+                                        </div>
+                                        <div class="bg-cosmic-purple/20 rounded-lg p-3">
+                                            <div class="text-center font-semibold text-cosmic-purple mb-2">小型玩具</div>
+                                            <div class="flex justify-center space-x-2">
+                                                <span class="text-lg">🧸</span>
+                                                <span class="text-lg">🪀</span>
+                                                <span class="text-lg">🔮</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-gradient-to-r from-electric-blue/20 to-cosmic-purple/20 rounded-lg p-3 text-center">
+                                    <div class="flex items-center justify-center">
+                                        <span class="text-lg mr-2">💡</span>
+                                        <span class="text-sm font-semibold">小猫自己发现了玩具的大小规律！</span>
+                                        <span class="text-lg ml-2">🐱</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="text-center mb-6">
+                            <div class="text-6xl mb-4 pet-bounce">🐱</div>
+                            <h3 class="text-2xl font-bold text-electric-blue">游戏2：小猫自主探索玩具</h3>
+                            <p class="text-gray-600 mt-2">无监督学习实践</p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="bg-electric-blue/10 rounded-2xl p-4">
+                                <h4 class="font-bold text-electric-blue mb-3">🔍 游戏规则</h4>
+                                <ol class="text-sm text-gray-700 space-y-2">
+                                    <li>1. 给小猫一堆混在一起的玩具</li>
+                                    <li>2. 不告诉小猫任何分类信息</li>
+                                    <li>3. 让小猫自由探索和玩耍</li>
+                                    <li>4. 观察小猫如何给玩具分类</li>
+                                </ol>
+                            </div>
+
+                            <div class="bg-white border-2 border-electric-blue/20 rounded-2xl p-4">
+                                <h4 class="font-bold text-electric-blue mb-3">🎁 玩具堆</h4>
+                                <div class="text-center bg-electric-blue/5 rounded-lg p-4">
+                                    <div class="text-2xl mb-2">
+                                        🏀 🧸 🎾 🪀 🏈 🔮 ⚽ 🎯
+                                    </div>
+                                    <div class="text-sm text-gray-600">小猫会怎么分类呢？</div>
+                                </div>
+                            </div>
+
+                            <div class="bg-electric-blue/20 rounded-2xl p-4">
+                                <h4 class="font-bold text-electric-blue mb-2">🤔 思考题</h4>
+                                <p class="text-sm text-gray-700">
+                                    如果你是小猫，你会按什么规律来分类这些玩具？
+                                    颜色？大小？材质？还是其他规律？
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 机器学习过程演示 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display text-cosmic-purple mb-6">
+                    ⚙️ 机器学习的魔法过程
+                </h2>
+                <p class="text-xl md:text-2xl text-sophisticated-gray max-w-4xl mx-auto">
+                    让我们揭开机器学习的神秘面纱
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-4 gap-6">
+                <!-- 步骤1：数据收集 -->
+                <div class="bg-gradient-to-br from-neon-green/10 to-electric-blue/10 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300">
+                    <div class="text-5xl mb-4">📊</div>
+                    <h3 class="text-xl font-bold text-neon-green mb-3">1. 收集数据</h3>
+                    <p class="text-sm text-gray-600 mb-4">就像准备训练教材，越多越好</p>
+                    <div class="bg-white/50 rounded-lg p-3">
+                        <div class="text-xs text-gray-500 mb-1">示例：</div>
+                        <div class="text-sm">收集1000张猫咪照片</div>
+                    </div>
+                </div>
+
+                <!-- 步骤2：训练模型 -->
+                <div class="bg-gradient-to-br from-electric-blue/10 to-cosmic-purple/10 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300">
+                    <div class="text-5xl mb-4">🧠</div>
+                    <h3 class="text-xl font-bold text-electric-blue mb-3">2. 训练模型</h3>
+                    <p class="text-sm text-gray-600 mb-4">让AI不断学习和调整</p>
+                    <div class="bg-white/50 rounded-lg p-3">
+                        <div class="text-xs text-gray-500 mb-1">示例：</div>
+                        <div class="text-sm">反复练习识别猫咪特征</div>
+                    </div>
+                </div>
+
+                <!-- 步骤3：测试验证 -->
+                <div class="bg-gradient-to-br from-cosmic-purple/10 to-magic-pink/10 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300">
+                    <div class="text-5xl mb-4">🎯</div>
+                    <h3 class="text-xl font-bold text-cosmic-purple mb-3">3. 测试验证</h3>
+                    <p class="text-sm text-gray-600 mb-4">检查AI是否学会了</p>
+                    <div class="bg-white/50 rounded-lg p-3">
+                        <div class="text-xs text-gray-500 mb-1">示例：</div>
+                        <div class="text-sm">用新照片测试识别准确率</div>
+                    </div>
+                </div>
+
+                <!-- 步骤4：实际应用 -->
+                <div class="bg-gradient-to-br from-magic-pink/10 to-magic-orange/10 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300">
+                    <div class="text-5xl mb-4">🚀</div>
+                    <h3 class="text-xl font-bold text-magic-pink mb-3">4. 实际应用</h3>
+                    <p class="text-sm text-gray-600 mb-4">让AI为人类服务</p>
+                    <div class="bg-white/50 rounded-lg p-3">
+                        <div class="text-xs text-gray-500 mb-1">示例：</div>
+                        <div class="text-sm">帮助用户识别宠物种类</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 过程演示动画 -->
+            <div class="mt-12 bg-gradient-to-r from-neon-green/10 via-electric-blue/10 to-cosmic-purple/10 rounded-3xl p-8">
+                <h3 class="text-2xl font-bold text-center text-cosmic-purple mb-6">🎬 学习过程动画演示</h3>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="bg-white rounded-2xl p-6 mb-4 shadow-lg">
+                            <div class="text-4xl mb-3">📈</div>
+                            <h4 class="font-bold text-neon-green mb-2">准确率提升</h4>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span>训练开始:</span>
+                                    <span class="text-red-500">20%</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>训练中期:</span>
+                                    <span class="text-yellow-500">70%</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>训练完成:</span>
+                                    <span class="text-neon-green">95%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="bg-white rounded-2xl p-6 mb-4 shadow-lg">
+                            <div class="text-4xl mb-3">⏱️</div>
+                            <h4 class="font-bold text-electric-blue mb-2">训练时间</h4>
+                            <div class="space-y-2 text-sm">
+                                <div>数据量: 1000张图片</div>
+                                <div>训练轮数: 100轮</div>
+                                <div>总时间: 2小时</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="bg-white rounded-2xl p-6 mb-4 shadow-lg">
+                            <div class="text-4xl mb-3">🎯</div>
+                            <h4 class="font-bold text-cosmic-purple mb-2">最终效果</h4>
+                            <div class="space-y-2 text-sm">
+                                <div class="text-neon-green">✅ 能识别猫咪</div>
+                                <div class="text-neon-green">✅ 能识别狗狗</div>
+                                <div class="text-neon-green">✅ 能识别鸟类</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 课程总结 -->
+    <section class="py-20 bg-gradient-to-br from-neon-green via-electric-blue to-cosmic-purple text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold font-display mb-8">
+                🎉 恭喜成为AI训练师！
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">🐕</div>
+                    <h3 class="font-bold mb-2">监督学习</h3>
+                    <p class="text-sm opacity-90">有老师指导的学习方式</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">🐱</div>
+                    <h3 class="font-bold mb-2">无监督学习</h3>
+                    <p class="text-sm opacity-90">自主探索的学习方式</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">📊</div>
+                    <h3 class="font-bold mb-2">训练数据</h3>
+                    <p class="text-sm opacity-90">AI学习的重要"教材"</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl mb-4">⚙️</div>
+                    <h3 class="font-bold mb-2">学习过程</h3>
+                    <p class="text-sm opacity-90">数据→训练→测试→应用</p>
+                </div>
+            </div>
+
+            <div class="bg-white/10 rounded-3xl p-8 backdrop-blur-sm mb-12">
+                <h3 class="text-2xl font-bold mb-4">📝 课后任务</h3>
+                <div class="grid md:grid-cols-3 gap-4 text-left">
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">🎨 创作任务</h4>
+                        <p class="text-sm opacity-90">设计你的AI宠物训练计划，包括宠物种类、训练技能和方法</p>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">🔍 观察任务</h4>
+                        <p class="text-sm opacity-90">观察身边的AI应用，分析它们使用的是监督学习还是无监督学习</p>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="font-bold mb-2">📚 预习任务</h4>
+                        <p class="text-sm opacity-90">思考：AI能够创造什么？为下节课"AIGC技术概述"做准备</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="lesson-01.html" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-cosmic-purple transition-all duration-300">
+                    🔙 上一课：AI是什么？
+                </a>
+                <a href="course-schedule.html" class="bg-white text-cosmic-purple px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                    📅 返回课程安排
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4">🏭 AI智造学院</h3>
+                    <p class="text-gray-300 mb-4">
+                        Aura school AI教育平台 - 培养面向未来的AI创新人才
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-qq text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">课程导航</h4>
+                    <ul class="space-y-2">
+                        <li><a href="lesson-01.html" class="text-gray-300 hover:text-white transition-colors">第1课</a></li>
+                        <li><a href="course-schedule.html" class="text-gray-300 hover:text-white transition-colors">课程安排</a></li>
+                        <li><a href="courses.html" class="text-gray-300 hover:text-white transition-colors">课程总览</a></li>
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">学院首页</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">其他平台</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../ai-learning/index.html" class="text-gray-300 hover:text-white transition-colors">AI元能力课程</a></li>
+                        <li><a href="../ai-coding/index.html" class="text-gray-300 hover:text-white transition-colors">AI代码魔术课堂</a></li>
+                        <li><a href="../../index.html" class="text-gray-300 hover:text-white transition-colors">返回主站</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2024 Aura school AI教育平台. 保留所有权利.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>
